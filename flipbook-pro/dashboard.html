@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Dashboard - FlipBook Pro SaaS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="assets/js/firebase-config.js"></script>
+
+    <style>
+        :root { --primary: #4f46e5; --bg-color: #f3f4f6; --surface: #ffffff; --text-dark: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --danger: #ef4444; --success: #10b981; --gold: #f59e0b; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--bg-color); color: var(--text-dark); overflow-x: hidden; }
+        
+        #page-loader { display: flex; height: 100vh; align-items: center; justify-content: center; flex-direction: column; background: var(--bg-color); z-index: 99999; }
+        #page-loader i { color: var(--primary); font-size: 50px; }
+        
+        #auth-section { display: none; height: 100vh; align-items: center; justify-content: center; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+        .auth-box { background: var(--surface); padding: 40px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); width: 100%; max-width: 380px; text-align: center; }
+        .auth-box h2 { margin-top: 0; font-weight: 700; font-size: 28px; margin-bottom: 25px; }
+        .input-group { position: relative; margin-bottom: 15px; }
+        .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .auth-box input { width: 100%; padding: 14px 14px 14px 45px; border: 1px solid var(--border); border-radius: 8px; box-sizing: border-box; font-family: inherit; transition: 0.3s; outline: none;}
+        .auth-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+        .auth-btn { width: 100%; background: var(--primary); color: #fff; border: none; padding: 14px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; margin-top: 10px; }
+        .toggle-auth { color: var(--primary); cursor: pointer; font-size: 14px; margin-top: 20px; display: inline-block; font-weight: 500; }
+
+        #dashboard-section { display: none; height: 100vh; flex-direction: row; }
+        .sidebar { width: 260px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+        .brand { padding: 25px 20px; display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 700; color: var(--primary); border-bottom: 1px solid var(--border); }
+        .nav-menu { padding: 20px 15px; flex: 1; }
+        .nav-item { display: flex; align-items: center; gap: 15px; padding: 12px 15px; color: var(--text-muted); text-decoration: none; font-weight: 500; border-radius: 8px; margin-bottom: 5px; cursor: pointer; transition: 0.2s;}
+        .nav-item.active { background: #eff6ff; color: var(--primary); }
+        .nav-item:hover:not(.active) { background: #f8fafc; }
+        .nav-item.upgrade { background: #fffbeb; color: var(--gold); border: 1px solid #fde68a; transition: 0.3s; }
+        
+        .user-profile { padding: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+        .avatar { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px; text-transform: uppercase;}
+        
+        .plan-badge { font-size: 10px; padding: 3px 8px; border-radius: 12px; font-weight: bold; margin-left: 8px; vertical-align: middle; }
+        .badge-free { background: #e2e8f0; color: #475569; }
+        .badge-pro { background: var(--gold); color: #fff; }
+
+        .main-content { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+        .top-header { background: var(--surface); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .btn-create { background: var(--primary); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2); }
+
+        .dashboard-container { padding: 40px; }
+        
+        /* Analytics CSS */
+        .analytics-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .analytics-header h3 { margin: 0; color: var(--text-dark); font-size: 18px; display: flex; align-items: center; gap: 8px;}
+        .filter-select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; outline: none; font-family: inherit; font-weight: 500; color: var(--text-dark); cursor: pointer; background: var(--surface); }
+        .chart-wrapper { background: var(--surface); padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,0.03); height: 350px; }
+
+        /* Books CSS */
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .book-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; transition: 0.3s; position: relative; }
+        .book-card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.08); }
+        .book-cover { height: 170px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .book-info { padding: 20px; }
+        .book-title { font-size: 16px; font-weight: 600; margin: 0 0 10px 0; color: var(--text-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        
+        .book-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 15px; align-items: center; }
+        .book-views { background: #eff6ff; color: var(--primary); padding: 3px 8px; border-radius: 20px; font-weight: 600; }
+
+        .book-actions { display: flex; gap: 8px; }
+        .action-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 8px; border-radius: 6px; cursor: pointer; border: none; font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-view { background: #f3f4f6; color: var(--text-dark); }
+        .btn-edit { background: #fdf2f8; color: #db2777; } 
+        .btn-embed { background: #eff6ff; color: var(--primary); }
+        .btn-delete { background: none; border: 1px solid var(--danger); color: var(--danger); flex: 0 0 auto; width: 35px; }
+        
+        #empty-msg { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <div id="page-loader"><i class="fas fa-circle-notch fa-spin"></i><h3 style="margin-top:15px; color:#333;">Loading Workspace...</h3></div>
+
+    <div id="auth-section">
+        <div class="auth-box">
+            <h2 id="auth-title">Welcome Back</h2>
+            <div class="input-group" id="name-group" style="display: none;">
+                <i class="fas fa-user"></i>
+                <input type="text" id="user-name" placeholder="Full Name">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email Address">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-key"></i>
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button class="auth-btn" id="auth-submit" onclick="handleAuth()">Sign In</button>
+            <span class="toggle-auth" onclick="toggleAuthMode()">Don't have an account? Sign up</span>
+        </div>
+    </div>
+
+    <div id="dashboard-section">
+        <!-- 🔥 Sidebar Update -->
+        <div class="sidebar">
+            <div class="brand"><i class="fas fa-layer-group"></i> FlipBook Pro</div>
+<div class="nav-menu">
+                <a href="#" id="nav-books" class="nav-item active" onclick="switchDashboardTab('books')"><i class="fas fa-th-large"></i> My Books</a>
+                <a href="#" id="nav-analytics" class="nav-item" onclick="switchDashboardTab('analytics')"><i class="fas fa-chart-line"></i> Views Analytics</a>
+                
+                <!-- 🔥 NEW: Documentation Link in Dashboard -->
+                <a href="documentation.html" target="_blank" class="nav-item"><i class="fas fa-book-open"></i> User Guide</a>
+                
+                <a href="#" class="nav-item upgrade" id="redeem-btn" onclick="openRedeemModal()"><i class="fas fa-gift"></i> Redeem AppSumo</a>
+            </div>
+            <div class="user-profile">
+                <div class="avatar" id="user-avatar">U</div>
+                <div style="flex:1; overflow:hidden;">
+                    <div style="font-weight: 700; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" id="user-name-display">Name</div>
+                    <div style="margin-top:2px;"><span id="plan-badge" class="plan-badge badge-free">FREE</span></div>
+                </div>
+                <button class="logout-btn" onclick="logout()" style="color:var(--danger); border:none; background:transparent; cursor:pointer; font-size:16px;" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Header Update -->
+            <div class="top-header">
+                <div>
+                    <h1 id="top-title">My Workspace</h1>
+                    <p id="top-desc" style="margin: 5px 0 0 0; font-size: 14px; color: var(--text-muted);">Manage and edit your published flipbooks</p>
+                </div>
+                <a href="editor/index.html" class="btn-create"><i class="fas fa-plus"></i> Create New Book</a>
+            </div>
+            
+            <div class="dashboard-container">
+                
+                <!-- 🔥 TAB 1: Books Grid -->
+                <div id="tab-books">
+                    <div class="analytics-header">
+                        <h3><i class="fas fa-book" style="color:var(--primary);"></i> Published Books</h3>
+                    </div>
+                    <div class="books-grid" id="books-grid"></div>
+                </div>
+
+                <!-- 🔥 TAB 2: Analytics Chart (Hidden by default) -->
+                <div id="tab-analytics" style="display: none;">
+                    <div class="analytics-header">
+                        <h3><i class="fas fa-chart-bar" style="color:var(--primary);"></i> View Performance</h3>
+                        <select id="time-filter" class="filter-select" onchange="applyFilters()">
+                            <option value="all">All Time</option>
+                            <option value="7">Last 7 Days</option>
+                            <option value="15">Last 15 Days</option>
+                            <option value="30">Last 1 Month</option>
+                        </select>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="viewsChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        try { if (typeof FIREBASE_CONFIG !== 'undefined') firebase.initializeApp(FIREBASE_CONFIG); } catch(e) {}
+        
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let allBooksData =[]; 
+        let analyticsChart = null; 
+
+        // 1. Auth Observer
+        auth.onAuthStateChanged(async user => {
+            document.getElementById('page-loader').style.display = 'none';
+            if (user) {
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('dashboard-section').style.display = 'flex';
+                document.getElementById('user-name-display').innerText = user.displayName || "Author";
+                document.getElementById('user-avatar').innerText = (user.displayName || "U").charAt(0).toUpperCase();
+                
+                await checkUserPlan(user);
+                fetchMyBooks(user.uid);
+            } else {
+                document.getElementById('auth-section').style.display = 'flex';
+                document.getElementById('dashboard-section').style.display = 'none';
+            }
+        });
+
+        // 2. Plan Check & Redeem
+        async function checkUserPlan(user) {
+            try {
+                const userRef = db.collection("users").doc(user.uid);
+                const doc = await userRef.get();
+                if (!doc.exists) {
+                    await userRef.set({ name: user.displayName || "", email: user.email, plan: "free", createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+                    updatePlanBadge("free");
+                } else { updatePlanBadge(doc.data().plan || "free"); }
+            } catch(e) {}
+        }
+
+        function updatePlanBadge(plan) {
+            const badge = document.getElementById('plan-badge');
+            const redeemBtn = document.getElementById('redeem-btn');
+            if (plan === "pro") {
+                badge.className = "plan-badge badge-pro"; badge.innerText = "PRO LIFETIME";
+                if(redeemBtn) redeemBtn.style.display = "none";
+            } else {
+                badge.className = "plan-badge badge-free"; badge.innerText = "FREE PLAN";
+                if(redeemBtn) redeemBtn.style.display = "flex";
+            }
+        }
+
+        window.openRedeemModal = function() {
+            Swal.fire({
+                title: 'Redeem AppSumo Code', input: 'text', inputPlaceholder: 'SUMO-ABCD-1234', showCancelButton: true, confirmButtonText: 'Redeem Now', confirmButtonColor: '#f59e0b', showLoaderOnConfirm: true,
+                preConfirm: async (code) => {
+                    try {
+                        const codeRef = db.collection('appsumo_codes').doc(code);
+                        const codeDoc = await codeRef.get();
+                        if(!codeDoc.exists) throw new Error("Invalid Code!");
+                        if(codeDoc.data().used) throw new Error("Code already used!");
+                        await codeRef.update({ used: true, usedBy: auth.currentUser.email, usedAt: firebase.firestore.FieldValue.serverTimestamp() });
+                        await db.collection("users").doc(auth.currentUser.uid).update({ plan: "pro" });
+                        return true;
+                    } catch (error) { Swal.showValidationMessage(error.message); }
+                }
+            }).then((result) => { if (result.isConfirmed) { Swal.fire('Unlocked!', 'Account upgraded to PRO.', 'success'); updatePlanBadge("pro"); } });
+        }
+
+        // 3. Auth & Logout
+        let isLoginMode = true;
+        window.toggleAuthMode = function() {
+            isLoginMode = !isLoginMode;
+            document.getElementById('auth-title').innerText = isLoginMode ? "Welcome Back" : "Create Account";
+            document.getElementById('auth-submit').innerText = isLoginMode ? "Sign In" : "Sign Up";
+            document.getElementById('name-group').style.display = isLoginMode ? "none" : "block";
+            document.querySelector('.toggle-auth').innerText = isLoginMode ? "Don't have an account? Sign up" : "Already have an account? Sign in";
+        }
+        window.handleAuth = async function() {
+            const name = document.getElementById('user-name').value.trim(); const email = document.getElementById('email').value.trim(); const password = document.getElementById('password').value.trim();
+            if(!email || !password) return Swal.fire("Error", "Enter email and password.", "error");
+            const btn = document.getElementById('auth-submit'); btn.disabled = true; btn.innerText = "Processing...";
+            try {
+                if (isLoginMode) await auth.signInWithEmailAndPassword(email, password); 
+                else { const userCred = await auth.createUserWithEmailAndPassword(email, password); await userCred.user.updateProfile({ displayName: name }); }
+            } catch (error) { Swal.fire("Error", error.message, "error"); } 
+            finally { btn.innerText = isLoginMode ? "Sign In" : "Sign Up"; btn.disabled = false; }
+        }
+        window.logout = function() { auth.signOut(); }
+
+        // 🔥 4. SWITCH TAB LOGIC
+        window.switchDashboardTab = function(tabName) {
+            document.getElementById('nav-books').classList.remove('active');
+            document.getElementById('nav-analytics').classList.remove('active');
+            document.getElementById('nav-' + tabName).classList.add('active');
+
+            document.getElementById('tab-books').style.display = 'none';
+            document.getElementById('tab-analytics').style.display = 'none';
+            document.getElementById('tab-' + tabName).style.display = 'block';
+
+            const title = document.getElementById('top-title');
+            const desc = document.getElementById('top-desc');
+
+            if(tabName === 'books') {
+                title.innerText = 'My Workspace'; desc.innerText = 'Manage and edit your published flipbooks';
+            } else {
+                title.innerText = 'Analytics'; desc.innerText = 'Track your flipbook performance and views';
+                applyFilters(); // Re-render chart to fit container properly
+            }
+        }
+
+        // 5. Fetch Books & Render
+        window.fetchMyBooks = async function(userId) {
+            const grid = document.getElementById('books-grid');
+            grid.innerHTML = '<div id="empty-msg"><i class="fas fa-spinner fa-spin fa-3x" style="color:var(--primary);"></i></div>';
+
+            try {
+                const snapshot = await db.collection("books").where("userId", "==", userId).get();
+                allBooksData =[]; 
+                snapshot.forEach(doc => allBooksData.push({ id: doc.id, ...doc.data() }));
+                allBooksData.sort((a, b) => (b.createdAt?.toDate() || 0) - (a.createdAt?.toDate() || 0));
+                
+                renderGrid(allBooksData);
+                renderChart(allBooksData);
+
+            } catch (error) {
+                grid.innerHTML = '<div id="empty-msg"><i class="fas fa-exclamation-triangle fa-2x" style="color:#ef4444;"></i><p>Error loading workspace</p></div>';
+            }
+        }
+
+        // Analytics Filter
+        window.applyFilters = function() {
+            const daysFilter = document.getElementById('time-filter').value;
+            let filteredBooks = allBooksData;
+
+            if (daysFilter !== 'all') {
+                const cutoffDate = new Date();
+                cutoffDate.setDate(cutoffDate.getDate() - parseInt(daysFilter));
+                filteredBooks = allBooksData.filter(book => {
+                    if(!book.createdAt) return false;
+                    return book.createdAt.toDate() >= cutoffDate;
+                });
+            }
+            renderChart(filteredBooks);
+        }
+
+        function renderChart(books) {
+            const ctx = document.getElementById('viewsChart').getContext('2d');
+            if(analyticsChart) analyticsChart.destroy(); 
+
+            if(books.length === 0) {
+                analyticsChart = new Chart(ctx, { type: 'bar', data: { labels: ['No Data'], datasets: [{ data: [0] }] }, options: { responsive: true, maintainAspectRatio: false } });
+                return;
+            }
+
+            const topBooks = [...books].sort((a, b) => (b.views || 0) - (a.views || 0)).slice(0, 10);
+            const labels = topBooks.map(b => b.settings?.title ? (b.settings.title.length > 15 ? b.settings.title.substring(0, 15) + "..." : b.settings.title) : "Untitled");
+            const viewsData = topBooks.map(b => b.views || 0);
+
+            analyticsChart = new Chart(ctx, {
+                type: 'bar',
+                data: { labels: labels, datasets:[{ label: 'Total Views', data: viewsData, backgroundColor: '#4f46e5', borderRadius: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } }, x: { grid: { display: false } } } }
+            });
+        }
+
+        function renderGrid(books) {
+            const gridElement = document.getElementById('books-grid');
+            if (books.length === 0) {
+                gridElement.innerHTML = '<div id="empty-msg"><i class="fas fa-folder-open fa-3x" style="color:#cbd5e1; margin-bottom:10px;"></i><p>You have not created any books yet.</p></div>';
+                return;
+            }
+
+            let html = '';
+            books.forEach(dataObj => {
+                const docId = dataObj.id;
+                const bookTitle = dataObj.settings?.title || "Untitled Book";
+                const viewsCount = dataObj.views || 0;
+                let dateText = dataObj.createdAt ? dataObj.createdAt.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : "Just now";
+                
+                let coverImg = `<i class="fas fa-book-open" style="font-size: 40px; color: rgba(255,255,255,0.2);"></i>`;
+                if (dataObj.settings?.coverUrl) coverImg = `<img src="${dataObj.settings.coverUrl}" alt="Cover" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\\'fas fa-book-open\\'></i>';">`;
+
+                html += `
+                    <div class="book-card">
+                        <div class="book-cover">${coverImg}</div>
+                        <div class="book-info">
+                            <h4 class="book-title" title="${bookTitle}">${bookTitle}</h4>
+                            <div class="book-meta">
+                                <div><i class="far fa-clock"></i> ${dateText}</div>
+                                <div class="book-views"><i class="fas fa-eye"></i> ${viewsCount}</div>
+                            </div>
+                            <div class="book-actions">
+                                <a href="viewer/index.html?book=${docId}" target="_blank" class="action-btn btn-view"><i class="fas fa-eye"></i></a>
+                                <a href="editor/index.html?edit=${docId}" class="action-btn btn-edit"><i class="fas fa-edit"></i></a>
+                                <button class="action-btn btn-embed" onclick="copyEmbedCode('${docId}')"><i class="fas fa-code"></i></button>
+                                <button class="action-btn btn-delete" onclick="removeBook('${docId}')"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+            gridElement.innerHTML = html;
+        }
+
+        // Actions
+// 7. Embed Action (Fixed for Sub-directory structure)
+        window.copyEmbedCode = function(targetId) {
+            // Get current URL (e.g. https://chimpjar.com/flipbook-pro/dashboard.html)
+            let currentUrl = window.location.href;
+            
+            // Remove 'dashboard.html' to get the base path of the product
+            let basePath = currentUrl.split('?')[0].replace('dashboard.html', '');
+            
+            // Generate the final embed URL
+            const liveUrl = basePath + `viewer/index.html?book=${targetId}`;
+            
+            const iframeTag = `<iframe src="${liveUrl}" width="100%" height="600px" style="border:none;" allowfullscreen></iframe>`;
+            
+            navigator.clipboard.writeText(iframeTag).then(() => {
+                Swal.fire({ title: 'Copied!', text: 'Embed code copied to clipboard.', icon: 'success', timer: 1500, showConfirmButton: false });
+            }).catch(() => {
+                Swal.fire('Error', 'Failed to copy text.', 'error');
+            });
+        }
+
+        window.removeBook = function(targetId) {
+            Swal.fire({ title: 'Delete this flipbook?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Yes, delete it!' })
+            .then(async (result) => {
+                if (result.isConfirmed) {
+                    try { await db.collection("books").doc(targetId).delete(); Swal.fire({ title: 'Deleted!', icon: 'success', timer: 1500, showConfirmButton: false }); fetchMyBooks(auth.currentUser.uid); } 
+                    catch(e) {}
+                }
+            });
+        }
+    </script>
+</body>
+</html>

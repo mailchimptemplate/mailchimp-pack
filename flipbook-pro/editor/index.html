@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipBook Editor Pro</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/editor.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';</script>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/firebase-config.js"></script>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../dashboard.html" class="btn-primary" style="background: #e74c3c; text-decoration: none; margin-right: 15px;">
+            <i class="fas fa-arrow-left"></i> Dashboard
+        </a>
+        <i class="fas fa-link" style="color:#555;"></i>
+        <input type="text" id="pdf-url-input" value="https://flipbook-pr.github.io/flipbook/Furniture.pdf" placeholder="Enter PDF URL">
+        <button class="btn-primary" onclick="handleManualPDFLoad()"><i class="fas fa-cloud-download-alt"></i> Load PDF</button>
+        <button id="publish-btn" class="btn-primary bg-green" onclick="publishBook()" style="margin-left: auto; padding: 10px 30px; font-size: 16px;">
+            <i class="fas fa-rocket"></i> Publish Book
+        </button>
+    </div>
+
+    <div class="main-layout">
+        <div class="toolbar">
+            <h3><i class="fas fa-tools"></i> Tools</h3>
+            <!-- 🔥 Updated Gating: Hotspot is now PRO -->
+            <button class="tool-btn active" id="btn-hotspot" onclick="selectTool('hotspot')">
+                <i class="fas fa-tag"></i> Hotspot <i class="fas fa-crown" style="color:#f59e0b; margin-left:auto;"></i>
+            </button>
+            <button class="tool-btn" id="btn-video" onclick="selectTool('video')">
+                <i class="fas fa-photo-video"></i> Media Box <i class="fas fa-crown" style="color:#f59e0b; margin-left:auto;"></i>
+            </button>
+        </div>
+
+        <div class="workspace-container">
+            <div class="workspace" id="workspace">
+                <div class="pdf-page" id="pdf-page"><canvas id="pdf-canvas"></canvas></div>
+                <div id="loader"><i class="fas fa-spinner fa-spin"></i> Loading PDF...</div>
+            </div>
+            <div class="pagination">
+                <button id="prev-page" onclick="onPrevPage()"><i class="fas fa-chevron-left"></i> Prev</button>
+                <span>Page: <strong id="page-num">0</strong> / <span id="page-count">0</span></span>
+                <button id="next-page" onclick="onNextPage()">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <div class="properties-panel">
+            <div class="panel-tabs">
+                <div class="tab-btn active" id="tab-btn-element" onclick="switchTab('element')">Element</div>
+                <div class="tab-btn" id="tab-btn-global" onclick="switchTab('global')">Global Settings</div>
+            </div>
+            
+            <div id="tab-content-element" class="tab-content active">
+                <div id="form-hotspot" class="hidden-form form-container">
+                    <div class="form-group"><label>Product Title</label><input type="text" id="prop-title"></div>
+                    <div class="form-group"><label>Price</label><input type="text" id="prop-price"></div>
+                    <div class="form-group"><label>Image URL</label><input type="text" id="prop-img"></div>
+                    <div class="form-group"><label>Buy Link</label><input type="text" id="prop-link"></div>
+                    <button class="btn-primary bg-green" onclick="saveProperties()"><i class="fas fa-save"></i> Save</button>
+                    <button class="btn-primary bg-red" onclick="deleteSelected()"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+                <div id="form-media" class="hidden-form form-container">
+                    <div class="form-group"><label>Media Type</label>
+                        <select id="prop-media-type"><option value="youtube">YouTube</option><option value="vimeo">Vimeo</option><option value="audio">Audio</option><option value="google_map">Google Map</option></select>
+                    </div>
+                    <div class="form-group"><label>Media URL</label><input type="text" id="prop-media-url"></div>
+                    <button class="btn-primary bg-green" onclick="saveProperties()"><i class="fas fa-save"></i> Save</button>
+                    <button class="btn-primary bg-red" onclick="deleteSelected()"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+                <div id="no-selection" class="no-selection-msg">Click an element to edit.</div>
+            </div>
+
+<!-- GLOBAL TAB -->
+            <div id="tab-content-global" class="tab-content form-container">
+                <div class="section-heading"><i class="fas fa-book"></i> Book Details</div>
+                <div class="form-group">
+                    <label>Book Title</label><input type="text" id="global-title" value="My Awesome Flipbook" onkeyup="updateGlobalSettings()">
+                </div>
+                <div class="form-group">
+                    <label>Cover Image URL</label><input type="text" id="global-cover" placeholder="https://image.jpg" onkeyup="updateGlobalSettings()">
+                </div>
+                
+                <hr>
+                
+<!-- 🔥 Theme & Colors (PRO) -->
+                <div class="section-heading"><i class="fas fa-palette"></i> Theme & Colors <i class="fas fa-crown" style="color:#f59e0b; margin-left:5px;"></i></div>
+                <div class="form-group pro-lock" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                    <label>Background Color</label><input type="color" id="global-bg-color" value="#1e272e" onchange="updateGlobalSettings()" style="width: 50px; height: 35px; padding: 0; border: none; border-radius: 4px; cursor: pointer;">
+                </div>
+                <div class="form-group pro-lock" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                    <label>Control Bar</label><input type="color" id="global-bar-color" value="#000000" onchange="updateGlobalSettings()" style="width: 50px; height: 35px; padding: 0; border: none; border-radius: 4px; cursor: pointer;">
+                </div>
+                <div class="form-group pro-lock" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                    <label>Icons & Text</label><input type="color" id="global-text-color" value="#ffffff" onchange="updateGlobalSettings()" style="width: 50px; height: 35px; padding: 0; border: none; border-radius: 4px; cursor: pointer;">
+                </div>
+
+<!-- 🔥 NEW: Hotspot Dot Color -->
+                <div class="form-group pro-lock" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                    <label>Hotspot Dot Color</label><input type="color" id="global-hotspot-color" value="#ef4444" onchange="updateGlobalSettings()" style="width: 50px; height: 35px; padding: 0; border: none; border-radius: 4px; cursor: pointer;">
+                </div>
+                
+                <!-- 🔥 NEW: Hotspot Icon Color -->
+                <div class="form-group pro-lock" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                    <label>Hotspot Icon Color</label><input type="color" id="global-hotspot-icon-color" value="#ffffff" onchange="updateGlobalSettings()" style="width: 50px; height: 35px; padding: 0; border: none; border-radius: 4px; cursor: pointer;">
+                </div>
+				
+<!-- 🔥 NEW: LeadGen Form Color -->
+                <div class="form-group pro-lock" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                    <label>LeadGen Button Color</label>
+                    <input type="color" id="global-lead-color" value="#4f46e5" onchange="updateGlobalSettings()" style="width: 50px; height: 35px; padding: 0; border: none; border-radius: 4px; cursor: pointer;">
+                </div>				
+				
+                <hr>
+
+                <!-- 🔥 NEW: Custom Watermark (PRO) -->
+                <div class="section-heading"><i class="fas fa-stamp"></i> Watermark <i class="fas fa-crown" style="color:#f59e0b; margin-left:5px;"></i></div>
+                <div class="form-group pro-lock" style="flex-direction: row; align-items: center; gap: 10px;">
+                    <!-- ডিফল্টভাবে অফ (checked সরানো হয়েছে) -->
+                    <input type="checkbox" id="global-wm-enable" onchange="updateGlobalSettings()" style="width: 18px; height: 18px; cursor: pointer;">
+                    <label style="cursor: pointer;" for="global-wm-enable">Enable Watermark</label>
+                </div>
+                <div class="form-group pro-lock">
+                    <label>Main Heading:</label>
+                    <input type="text" id="global-wm-heading" value="FlipBook Pro" onkeyup="updateGlobalSettings()">
+                </div>
+                <div class="form-group pro-lock">
+                    <label>Description:</label>
+                    <input type="text" id="global-wm-desc" value="Interactive PDF Viewer" onkeyup="updateGlobalSettings()">
+                </div>
+                <div class="form-group pro-lock">
+                    <label>Opacity: <span id="wm-op-val">0.3</span></label>
+                    <input type="range" id="global-wm-opacity" min="0.05" max="1.0" step="0.05" value="0.3" onchange="document.getElementById('wm-op-val').innerText=this.value; updateGlobalSettings();">
+                </div>
+
+                <hr>
+                
+                <!-- Lead Generation (PRO) -->
+                <div class="section-heading"><i class="fas fa-user-lock"></i> Lead Generation <i class="fas fa-crown" style="color:#f59e0b; margin-left:5px;"></i></div>
+                <div class="form-group pro-lock" style="flex-direction: row; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="global-lead-enable" onchange="updateGlobalSettings()" style="width: 18px; height: 18px; cursor: pointer;">
+                    <label style="cursor: pointer;" for="global-lead-enable">Enable Form Lock</label>
+                </div>
+                <div class="form-group pro-lock">
+                    <label>Lock on Page Number:</label><input type="number" id="global-lead-page" value="4" min="2" onchange="updateGlobalSettings()">
+                </div>
+                <div class="form-group pro-lock">
+                    <label>Google Script URL:</label><input type="text" id="global-lead-url" placeholder="https://script.google.com/..." onkeyup="updateGlobalSettings()">
+                </div>
+
+                <hr>
+
+                <!-- Audiobook TTS (FREE) -->
+                <div class="section-heading"><i class="fas fa-headphones-alt"></i> Audiobook (TTS) <span style="font-size: 10px; background: #e2e8f0; padding: 2px 6px; border-radius: 4px; margin-left:5px; color:#475569;">FREE</span></div>
+                <div class="form-group">
+                    <label>Reading Speed: <span id="speed-val">1.0</span>x</label>
+                    <input type="range" id="global-audio-rate" min="0.5" max="1.5" step="0.1" value="1.0" onchange="document.getElementById('speed-val').innerText=this.value; updateGlobalSettings();">
+                </div>
+                <div class="form-group">
+                    <label>Voice Pitch: <span id="pitch-val">1.0</span></label>
+                    <input type="range" id="global-audio-pitch" min="0.5" max="1.5" step="0.1" value="1.0" onchange="document.getElementById('pitch-val').innerText=this.value; updateGlobalSettings();">
+                </div>
+            </div>
+
+            <h3 style="margin-top: 20px; font-size: 14px;"><i class="fas fa-database"></i> JSON Export Data</h3>
+            <textarea class="json-output" id="json-output" readonly></textarea>
+        </div>
+    </div>
+
+    <script src="js/editor.js"></script>
+</body>
+</html>

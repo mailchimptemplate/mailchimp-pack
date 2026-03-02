@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipBook Reader Pro</title>
+		    <link rel="stylesheet" href="css/style.flipbook-proH.css">
+		    <link rel="stylesheet" href="css/style.flipbook-add-ons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- PageFlip & PDF.js -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+	
+    <!-- 🔥 NEW: Central Config File -->
+    <script src="../assets/js/firebase-config.js"></script>
+
+    <style>
+
+body { margin: 0; overflow: hidden; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        #fbpH-root { width: 100vw; height: 100vh; position: relative; }
+        
+        /* 🔥 FIXED: Loading Screen Centering */
+        .loading-screen { 
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+            width: 100vw; height: 100vh; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            z-index: 99999; 
+        }
+        
+
+        #fbpH-btn-close, .fbpH-close-btn { display: none !important; }
+
+        /* =========================================================
+           🎨 DYNAMIC THEME COLORS (Default Dark Theme)
+        ========================================================= */
+/* =========================================================
+           🎨 DYNAMIC THEME COLORS (Default Dark Theme)
+        ========================================================= */
+        :root {
+            --fb-bg-color: #1e272e;  
+            --fb-bar-color: #000000; 
+            --fb-text-color: #ffffff; 
+        }
+        
+        body, .fbpH-overlay, .loading-screen { background-color: var(--fb-bg-color) !important; color: var(--fb-text-color) !important; }
+        
+        .fbpH-controls, .fbpH-more-menu { background-color: var(--fb-bar-color) !important; border-top: 1px solid rgba(255,255,255,0.1) !important; }
+        
+        /* 🔥 FIX: থ্রি-ডট মেনুর ভেতরের বাটনগুলোকে স্বচ্ছ (Transparent) করে দেওয়া হলো */
+        .fbpH-menu-item { background-color: transparent !important; }
+        
+
+        
+
+        
+		
+		
+		
+		
+/* =========================================================
+           🎨 UNIVERSAL HOVER & ACTIVE EFFECTS
+        ========================================================= */
+        
+        .fbpH-btn, .fbpH-page-info-mobile, .fbpH-page-info-mobile span, .fbpH-menu-item { 
+            color: var(--fb-text-color) !important; 
+            transition: all 0.3s ease !important; /* Smooth transition */
+        }
+        
+        /* 🔥 FIX: Universal Hover Effect (Works on any background color) */
+        .fbpH-btn:hover, .fbpH-menu-item:hover { 
+            /* White background with 15% opacity creates a beautiful light effect on dark themes 
+               and a subtle grey effect on light themes */
+            background-color: rgba(255, 255, 255, 0.15) !important; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-2px);
+            border-radius: 6px;
+        }
+
+        /* 🔥 FIX: Universal Active Effect (When AutoPlay/Audio is ON) */
+        .active-btn {
+            background-color: rgba(255, 255, 255, 0.25) !important; /* Slightly brighter than hover */
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            border-radius: 6px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+            transform: translateY(0) !important;
+        }		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        #loading-text { color: var(--fb-text-color) !important; margin-top: 15px; }	
+		
+/* 🔥 FIX: Center the Arrow Icons and add spacing */
+        .fbpH-arrow {
+            color: #ffffff !important; 
+            background-color: rgba(0, 0, 0, 0.3) !important; 
+            border-radius: 50% !important; 
+            width: 45px !important; 
+            height: 45px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            backdrop-filter: blur(4px) !important; 
+            transition: 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+            z-index: 50 !important; /* বইয়ের ওপরে থাকার জন্য */
+        }
+
+        /* আইকনের চারপাশে ফাঁকা জায়গা এবং সাইজ ঠিক করা */
+        .fbpH-arrow i {
+            font-size: 20px !important; 
+            line-height: 1 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+        }
+
+        /* ডান দিকের বাটনটি যেন স্ক্রিনের বর্ডারে লেগে না থাকে */
+        .fbpH-next { right: 20px !important; }
+        /* বাম দিকের বাটনটি যেন স্ক্রিনের বর্ডারে লেগে না থাকে */
+        .fbpH-prev { left: 20px !important; }
+
+        .fbpH-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="initial-loader" class="loading-screen">
+        <i class="fas fa-circle-notch fa-spin fa-3x" style="color: #3498db; margin-bottom: 20px;"></i>
+        <h2 id="loading-text">Fetching Book Data...</h2>
+    </div>
+
+    <!-- 🛠️ ANTI-CRASH ELEMENTS: main.js যেন এরর না দেয়, তাই এই লুকানো ট্যাগগুলো দেওয়া হলো -->
+    <div style="display: none !important;">
+        <div id="fbpH-library-container"></div>
+        <input type="file" id="fbpH-file-upload">
+    </div>
+    
+    <!-- Root Container -->
+    <div id="fbpH-root"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/viewer.js"></script>
+
+</body>
+</html>

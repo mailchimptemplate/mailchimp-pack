@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - ChimpJar FlipBook Pro</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --text-heading: #0f172a;
+            --bg-body: #f8fafc;
+            --bg-sidebar: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg-body); color: var(--text-main); display: flex; flex-direction: column; line-height: 1.7; scroll-behavior: smooth; }
+
+        /* 🔥 NEW: Global Top Header */
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 100%; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-heading); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo i { color: var(--primary); }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 14px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn-dash { background: var(--primary); color: #fff !important; padding: 8px 20px; border-radius: 6px; font-weight: 600; box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2); }
+        .btn-dash:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3); }
+
+        /* Layout */
+        .main-wrapper { display: flex; flex: 1; }
+
+        /* Sidebar */
+        .sidebar { width: 300px; height: calc(100vh - 70px); background: var(--bg-sidebar); border-right: 1px solid var(--border); position: sticky; top: 70px; overflow-y: auto; padding: 30px 20px; }
+        .sidebar-title { font-size: 13px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; padding-left: 10px; }
+        .nav-list { list-style: none; }
+        .nav-list li { margin-bottom: 5px; }
+        .nav-list a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 14px; display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-radius: 8px; transition: 0.3s; }
+        .nav-list a:hover, .nav-list a.active { background: #eff6ff; color: var(--primary); font-weight: 600; }
+        .nav-list a i { width: 20px; text-align: center; font-size: 14px; color: var(--primary); opacity: 0.7; }
+        .nav-list a.active i { opacity: 1; }
+
+        /* Main Content */
+        .content { flex: 1; padding: 50px 60px; max-width: 1000px; margin: 0 auto; }
+        
+        .header-title { border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-bottom: 50px; }
+        .header-title h1 { font-family: 'Poppins', sans-serif; font-size: 38px; color: var(--text-heading); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; }
+        .header-title p { color: var(--text-light); font-size: 16px; font-weight: 400; }
+        .version-badge { background: #f59e0b; color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; vertical-align: middle; margin-left: 10px; }
+
+        section { background: #fff; padding: 40px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+        section h2 { font-family: 'Poppins', sans-serif; font-size: 24px; color: var(--text-heading); border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        section h3 { font-size: 18px; color: var(--text-heading); margin: 30px 0 15px 0; font-weight: 600; }
+        
+        p { margin-bottom: 15px; font-size: 15px; }
+        ul, ol { margin-left: 20px; margin-bottom: 20px; }
+        li { margin-bottom: 10px; font-size: 15px; }
+        li strong { color: var(--text-heading); }
+
+        /* Code Blocks */
+        pre { background: #0f172a; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 13px; margin: 20px 0; border: 1px solid #334155; line-height: 1.5; }
+
+        /* Alerts/Notes */
+        .alert { padding: 15px 20px; border-radius: 8px; margin: 20px 0; display: flex; gap: 15px; align-items: flex-start; line-height: 1.5; font-size: 14px; }
+        .alert-info { background: #eff6ff; border-left: 4px solid #3b82f6; color: #1e3a8a; }
+        .alert-success { background: #f0fdf4; border-left: 4px solid #22c55e; color: #14532d; }
+        .alert i { font-size: 20px; margin-top: 2px; }
+
+        .step-badge { display: inline-block; width: 22px; height: 22px; background: var(--primary); color: #fff; text-align: center; border-radius: 50%; font-weight: bold; line-height: 22px; margin-right: 8px; font-size: 12px; }
+        
+        .doc-footer { text-align: center; margin-top: 50px; padding: 30px; border-top: 1px solid var(--border); color: var(--text-light); font-size: 14px; }
+
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            .content { padding: 30px 20px; }
+            section { padding: 30px 20px; }
+            .nav-container { padding: 15px 20px; }
+            .nav-links a:not(.btn-dash) { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔥 Global Header -->
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo"><i class="fas fa-layer-group"></i> ChimpJar</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Support</a>
+                <a href="dashboard.html" class="btn-dash"><i class="fas fa-th-large"></i> Go to Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-title">Help Topics</div>
+            <ul class="nav-list">
+                <li><a href="#getting-started" class="active"><i class="fas fa-rocket"></i> Getting Started</a></li>
+                <li><a href="#redeem-code"><i class="fas fa-gift"></i> Redeem AppSumo Code</a></li>
+                <li><a href="#editor-guide"><i class="fas fa-magic"></i> Visual Editor Guide</a></li>
+                <li><a href="#leadgen-setup"><i class="fas fa-envelope-open-text"></i> Google Sheet LeadGen</a></li>
+                <li><a href="#support"><i class="fas fa-life-ring"></i> Support</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            
+            <div class="header-title">
+                <h1>User Guide & Help Center <span class="version-badge">AppSumo Edition</span></h1>
+                <p>Learn how to transform your static PDFs into interactive 3D Flipbooks.</p>
+            </div>
+
+            <!-- 1. Getting Started -->
+            <section id="getting-started">
+                <h2><i class="fas fa-rocket" style="color:var(--primary);"></i> Getting Started</h2>
+                <p>Welcome to <strong>ChimpJar FlipBook Pro</strong>! This cloud-based software allows you to build interactive catalogs, presentations, and lead-generating e-books in minutes without writing a single line of code.</p>
+                
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Cloud Hosted:</strong> You don't need to install anything on your computer. Just log in from your browser, create your flipbook, and embed it anywhere!
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Redeem Code -->
+            <section id="redeem-code">
+                <h2><i class="fas fa-gift" style="color:var(--primary);"></i> How to Redeem AppSumo Code</h2>
+                <p>If you purchased FlipBook Pro from AppSumo, follow these steps to unlock your lifetime PRO features:</p>
+                <ol>
+                    <li>Create a free account on our homepage and log in to your Dashboard.</li>
+                    <li>On the left sidebar of the Dashboard, click on the <strong style="color: #f59e0b;"><i class="fas fa-gift"></i> Redeem AppSumo</strong> button.</li>
+                    <li>A popup will appear. Paste your unique AppSumo code (e.g., <code>SUMO-ABCD-1234</code>) and click "Redeem Now".</li>
+                    <li>Your account will instantly be upgraded to <strong>PRO Lifetime</strong>, unlocking Shoppable Hotspots, Custom Colors, Watermarks, Media Embeds, and LeadGen Forms!</li>
+                </ol>
+            </section>
+
+            <!-- 3. Editor Guide -->
+            <section id="editor-guide">
+                <h2><i class="fas fa-magic" style="color:var(--primary);"></i> Using The Visual Editor</h2>
+                <p>Creating an interactive flipbook is incredibly easy.</p>
+
+                <h3>Step 1: Load your PDF</h3>
+                <ul>
+                    <li>From the Dashboard, click <strong>"Create New Book"</strong>.</li>
+                    <li>In the top bar, paste a valid link to your PDF file (e.g., <code>https://yoursite.com/catalog.pdf</code>) and click <strong>Load PDF</strong>.</li>
+                    <li><em>Tip: Hosting your PDF on your own server or Google Drive/AWS makes loading lightning fast!</em></li>
+                </ul>
+
+                <h3>Step 2: Add Interactions (Pro Feature)</h3>
+                <ul>
+                    <li><strong>Shoppable Hotspots:</strong> Select the Hotspot tool, click anywhere on the page, and add your product details (Images, Price, Checkout Link) on the right panel.</li>
+                    <li><strong>Media Embeds:</strong> Select the Media Box tool, click and drag to draw a box on the page, and paste your YouTube, Vimeo, Audio MP3s or Google Maps link.</li>
+                    <li><strong>Moving & Resizing:</strong> Click and drag a hotspot to move it. Click a media box and drag its yellow handle to resize it.</li>
+                </ul>
+
+                <h3>Step 3: Global Settings & Publishing</h3>
+                <ul>
+                    <li><strong>Branding:</strong> Go to the Global Settings tab and change the background, buttons, and hotspot icon colors to match your brand.</li>
+                    <li><strong>Watermark:</strong> Add a custom diagonal watermark text to protect your document.</li>
+                    <li><strong>Publish:</strong> Click the green <strong>Publish Book</strong> button at the top right to save everything. Go back to your Dashboard to grab the Iframe Embed Code!</li>
+                </ul>
+            </section>
+
+            <!-- 4. LeadGen Setup -->
+            <section id="leadgen-setup">
+                <h2><i class="fas fa-envelope-open-text" style="color:var(--primary);"></i> Google Sheet LeadGen Setup (Pro)</h2>		
+
+                <p>Our powerful Lead Generation feature locks your flipbook on a specific page and asks readers for their email. Follow these steps to save those emails directly to your Google Sheet:</p>
+
+                <h3><span class="step-badge">1</span> Create a Google Sheet</h3>
+                <ol>
+                    <li>Go to <a href="https://sheets.google.com" target="_blank" style="color: var(--primary); font-weight: bold;">Google Sheets</a> and create a new blank spreadsheet.</li>
+                    <li>Name the columns in the very first row exactly like this: <strong>Date, Name, Email, book_id</strong>.</li>
+                </ol>
+
+                <h3><span class="step-badge">2</span> Add the Apps Script</h3>
+                <ol>
+                    <li>In your Google Sheet menu, click on <strong>Extensions > Apps Script</strong>.</li>
+                    <li>Delete any existing code in the editor and paste the code below:</li>
+                </ol>
+
+<pre>
+var sheetName = 'Sheet1'
+var scriptProp = PropertiesService.getScriptProperties()
+
+function intialSetup () {
+  var activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+  scriptProp.setProperty('key', activeSpreadsheet.getId())
+}
+
+function doPost (e) {
+  var lock = LockService.getScriptLock()
+  lock.tryLock(10000)
+
+  try {
+    var doc = SpreadsheetApp.openById(scriptProp.getProperty('key'))
+    var sheet = doc.getSheetByName(sheetName)
+
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
+    var nextRow = sheet.getLastRow() + 1
+
+    var newRow = headers.map(function(header) {
+      if(header === 'Date'){ return new Date() }
+      return e.parameter[header]
+    })
+
+    sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow])
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+      .setMimeType(ContentService.MimeType.JSON)
+  }
+
+  catch (e) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+      .setMimeType(ContentService.MimeType.JSON)
+  }
+
+  finally {
+    lock.releaseLock()
+  }
+}
+</pre>
+
+                <h3><span class="step-badge">3</span> Deploy as Web App</h3>
+                <ol>
+                    <li>Click the blue <strong>Deploy</strong> button (top right) > <strong>New Deployment</strong>.</li>
+                    <li>Click the gear icon next to "Select type" and choose <strong>Web App</strong>.</li>
+                    <li>Fill in the details:
+                        <ul>
+                            <li><strong>Description:</strong> FlipBook LeadGen</li>
+                            <li><strong>Execute as:</strong> Me (your email)</li>
+                            <li><strong>Who has access:</strong> <strong style="color:#ef4444;">Anyone</strong> (This is very important!)</li>
+                        </ul>
+                    </li>
+                    <li>Click <strong>Deploy</strong>. You may need to grant permissions using your Google account.</li>
+                    <li><strong>Copy the "Web App URL"</strong> provided.</li>
+                </ol>
+
+                <h3><span class="step-badge">4</span> Connect to FlipBook</h3>
+                <ol>
+                    <li>Go to the FlipBook Editor > <strong>Global Settings</strong> tab > Lead Generation section.</li>
+                    <li>Check the <strong>"Enable Form Lock"</strong> box.</li>
+                    <li>Set the Page Number (e.g., 4) where the book should lock.</li>
+                    <li>Paste the copied Google Apps Script URL into the input box and click <strong>Update Book</strong>.</li>
+                </ol>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        That's it! When readers reach that specific page, they will see a beautiful lock screen. Once they submit the form, their details will instantly appear in your Google Sheet!
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Support -->
+            <section id="support">
+                <h2><i class="fas fa-life-ring" style="color:var(--primary);"></i> Need Support?</h2>
+                <p>If you encounter any issues or have questions regarding your AppSumo purchase, we are here to help!</p>
+                <ul>
+                    <li><strong>Support Email:</strong> support@chimpjar.com</li>
+                    <li><strong>Average Response Time:</strong> Within 24 to 48 hours.</li>
+                </ul>
+            </section>
+
+            <div class="doc-footer">
+                <p>&copy; 2026 ChimpJar FlipBook Pro. All rights reserved.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for sidebar links
+        const links = document.querySelectorAll('.nav-list a');
+        links.forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Intersection Observer to highlight active sidebar link on scroll
+        const sections = document.querySelectorAll('section');
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    links.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>

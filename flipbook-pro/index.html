@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChimpJar - Turn PDFs into Interactive Flipbooks</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #0ea5e9;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--white); color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- Navbar --- */
+        header { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--primary); }
+        .nav-links { display: flex; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 15px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn-login { background: var(--text-dark); color: var(--white) !important; padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+        .btn-login:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5); }
+
+        /* --- Hero Section --- */
+        .hero { padding: 160px 20px 100px; text-align: center; position: relative; background: radial-gradient(circle at top, #eef2ff 0%, var(--white) 100%); overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: var(--primary); filter: blur(150px); opacity: 0.1; z-index: 0; }
+        
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .badge-update { display: inline-block; background: #e0e7ff; color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 25px; border: 1px solid #c7d2fe; }
+        .hero h1 { font-family: 'Poppins', sans-serif; font-size: 56px; font-weight: 800; color: var(--text-dark); margin-bottom: 24px; line-height: 1.15; letter-spacing: -1.5px; }
+        .hero h1 span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 19px; color: var(--text-light); max-width: 650px; margin: 0 auto 40px; line-height: 1.6; }
+        
+        .hero-btns { display: flex; justify-content: center; gap: 15px; }
+        .btn-main { background: var(--primary); color: var(--white); text-decoration: none; padding: 16px 36px; border-radius: 50px; font-size: 16px; font-weight: 600; box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4); transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4); background: var(--primary-dark); }
+        .btn-demo { background: var(--white); color: var(--text-dark); text-decoration: none; padding: 16px 36px; border-radius: 50px; font-size: 16px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: 1px solid #cbd5e1; }
+        .btn-demo:hover { border-color: var(--text-dark); background: var(--bg-light); }
+
+        /* Mockup */
+        .hero-mockup { max-width: 1000px; margin: 60px auto 0; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); overflow: hidden; border: 1px solid var(--border); position: relative; z-index: 1;  }
+        .mockup-header { background: #1e293b; padding: 12px 20px; display: flex; gap: 8px; border-bottom: 1px solid #334155; }
+        .mockup-header div { width: 12px; height: 12px; border-radius: 50%; }
+        
+        /* --- Features --- */
+        .features { padding: 120px 20px; background: var(--white); }
+        .section-header { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+        .section-header h2 { font-family: 'Poppins', sans-serif; font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; letter-spacing: -0.5px; }
+        .section-header p { color: var(--text-light); font-size: 16px; line-height: 1.6; }
+        
+        .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .feature-card { padding: 40px; background: var(--bg-light); border-radius: 20px; transition: 0.3s; border: 1px solid transparent; }
+        .feature-card:hover { background: var(--white); border-color: #e0e7ff; box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.15); transform: translateY(-5px); }
+        .feature-icon { width: 50px; height: 50px; background: var(--primary); color: var(--white); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 25px; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3); }
+        .feature-card h3 { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--text-dark); }
+        .feature-card p { color: var(--text-light); line-height: 1.6; font-size: 15px; }
+
+        /* --- Pricing --- */
+        .pricing { padding: 100px 20px; background: var(--bg-light); }
+        .pricing-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .price-card { background: var(--white); padding: 50px 40px; border-radius: 24px; border: 1px solid var(--border); position: relative; }
+        .price-card.popular { border: 2px solid var(--primary); box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.15); transform: scale(1.02); }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 6px 15px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+        
+        .plan-name { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
+        .price { font-family: 'Poppins', sans-serif; font-size: 48px; font-weight: 800; color: var(--text-dark); margin-bottom: 30px; }
+        .price span { font-size: 16px; color: var(--text-light); font-weight: 500; }
+        
+        .feature-list { list-style: none; margin-bottom: 40px; }
+        .feature-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; color: var(--text-dark); font-size: 15px; }
+        .feature-list i { color: var(--primary); font-size: 16px; }
+        .feature-list .disabled { color: #94a3b8; text-decoration: line-through; }
+        .feature-list .disabled i { color: #cbd5e1; }
+        
+        .btn-price { display: block; width: 100%; text-align: center; padding: 15px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-price.outline { background: var(--bg-light); color: var(--text-dark); }
+        .btn-price.outline:hover { background: #e2e8f0; }
+        .btn-price.solid { background: var(--text-dark); color: var(--white); }
+        .btn-price.solid:hover { background: var(--primary); box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4); }
+
+        /* --- Footer --- */
+        footer { padding: 60px 20px 30px; background: var(--white); border-top: 1px solid var(--border); }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-logo { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px;}
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: 500;}
+        .footer-links a:hover { color: var(--primary); }
+        .copyright { width: 100%; text-align: center; margin-top: 40px; color: #94a3b8; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .hero-btns { flex-direction: column; }
+            .nav-links { display: none; }
+            .price-card.popular { transform: scale(1); }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fas fa-layer-group"></i> ChimpJar</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="contact.html">Support</a>
+                <a href="dashboard.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge-update">✨ Perfect for Marketers & Agencies</div>
+            <h1>Turn static PDFs into <span>Interactive Sales Machines.</span></h1>
+            <p>Upload a link, visually drag and drop videos, shopping tags, and email capture forms. Embed the 3D flipbook on any website in seconds without coding.</p>
+            
+            <div class="hero-btns">
+                <a href="dashboard.html" class="btn-main">Start Creating Free <i class="fas fa-arrow-right"></i></a>
+                <a href="#features" class="btn-demo"><i class="fas fa-play"></i> See How it Works</a>
+            </div>
+        </div>
+
+        <div class="hero-mockup">
+            <div class="mockup-header">
+                <div style="background: #ef4444;"></div><div style="background: #eab308;"></div><div style="background: #22c55e;"></div>
+            </div>
+						<img class="img1" src="./1.jpg" width="100%" height="100%">
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Everything you need to convert</h2>
+            <p>Designed for marketers, agencies, and store owners to keep readers engaged and drive massive sales directly from catalogs.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shopping-bag"></i></div>
+                <h3>Shoppable Hotspots</h3>
+                <p>Click anywhere on the page to place a shopping tag. Display product names, prices, and direct checkout links. Perfect for e-commerce lookbooks.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #ec4899;"><i class="fas fa-user-lock"></i></div>
+                <h3>Lead Generation Lock</h3>
+                <p>Lock specific pages of your ebook. Require readers to enter their Name and Email to continue reading. Connects directly to Google Sheets.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #f59e0b;"><i class="fab fa-youtube"></i></div>
+                <h3>Rich Media Embeds</h3>
+                <p>Draw a box on the PDF canvas to embed YouTube videos, Vimeo links, Audio MP3s, or interactive Google Maps. Keep readers glued to the page.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #10b981;"><i class="fas fa-headphones"></i></div>
+                <h3>AI Text-to-Speech</h3>
+                <p>Make your flipbooks accessible. Our smart TTS engine automatically extracts PDF text and reads it aloud with adjustable speed and pitch controls.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #8b5cf6;"><i class="fas fa-palette"></i></div>
+                <h3>Custom Branding</h3>
+                <p>Change the background color, control bar color, and hotspot icons to match your brand. Add custom watermarks to protect your digital assets.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: #14b8a6;"><i class="fas fa-chart-line"></i></div>
+                <h3>Analytics & Embedding</h3>
+                <p>Track how many times your books are viewed. Publish with one click and get a clean Iframe code to embed seamlessly into any website.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <h2>Simple, transparent pricing</h2>
+            <p>Start for free, upgrade when you need power features.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Free Plan -->
+            <div class="price-card">
+                <h3 class="plan-name">Basic Free</h3>
+                <div class="price">$0<span>/forever</span></div>
+                <p style="color: var(--text-light); margin-bottom: 25px;">Perfect for simple PDF viewing and basic catalogs.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Unlimited Flipbooks</li>
+                    <li><i class="fas fa-check"></i> Basic PDF Rendering</li>
+                    <li><i class="fas fa-check"></i> Dashboard Analytics</li>
+                    <li><i class="fas fa-check"></i> Text-to-Speech Reader</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Shoppable Hotspots</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Video & Map Embeds</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Lead Generation Forms</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Custom Colors & Watermarks</li>
+                </ul>
+                <a href="dashboard.html" class="btn-price outline">Start for Free</a>
+            </div>
+
+            <!-- AppSumo / Pro Plan -->
+            <div class="price-card popular">
+                <div class="popular-badge">APPSUMO EXCLUSIVE</div>
+                <h3 class="plan-name">Pro Lifetime</h3>
+                <div class="price">$49<span>/one-time</span></div>
+                <p style="color: var(--text-light); margin-bottom: 25px;">Everything you need to capture leads and drive sales.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> <strong>Everything in Free, plus:</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>Shoppable Hotspots</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>YouTube & Media Embeds</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>LeadGen Form & Google Sheets</strong></li>
+                    <li><i class="fas fa-check"></i> Custom Brand Colors</li>
+                    <li><i class="fas fa-check"></i> Custom Watermark Protection</li>
+                    <li><i class="fas fa-check"></i> Priority Email Support</li>
+                </ul>
+                <a href="#" class="btn-price solid" onclick="alert('Link to AppSumo will be updated once live.')">Get Lifetime Deal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo"><i class="fas fa-layer-group" style="color:var(--primary);"></i> ChimpJar</div>
+            <div class="footer-links">
+                <!-- 🔥 NEW: Documentation Link added -->
+                <a href="documentation.html">Help & Guides</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact Support</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 ChimpJar. All rights reserved. Designed for marketers and agencies.
+        </div>
+    </footer>
+
+</body>
+</html>
