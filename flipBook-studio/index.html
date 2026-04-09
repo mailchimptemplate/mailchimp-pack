@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipBook Studio by ChimpJar - Interactive PDF Viewer for WordPress</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS (CDN for instant styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'], },
+                    colors: { primary: '#2271b1', accent: '#f59e0b', dark: '#0f172a' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .gradient-text { background: linear-gradient(135deg, #f59e0b, #ea580c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-bg { background: radial-gradient(circle at top right, #1e293b, #0f172a); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 🌟 NAVBAR -->
+    <nav class="bg-white shadow-sm fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-book-open-reader text-3xl text-accent"></i>
+                    <span class="font-bold text-2xl text-dark tracking-tight">ChimpJar<span class="text-accent">.</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-gray-600 hover:text-primary font-medium transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-primary font-medium transition">How it Works</a>
+                    <!-- 💡 INSERT YOUR FIVERR GIG LINK HERE -->
+                    <a href="YOUR_FIVERR_GIG_LINK" target="_blank" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-semibold transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Get Full Version <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🌟 HERO SECTION -->
+    <div class="hero-bg text-white pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <div class="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6 text-sm font-medium text-accent backdrop-blur-sm">
+                    🚀 #1 Interactive WordPress FlipBook Plugin
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                    Turn Flat PDFs into <br><span class="gradient-text">FlipBook Studio</span> Catalogs
+                </h1>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+                    Boost engagement and sales by adding Shoppable Hotspots, YouTube Embeds, and Lead Generation forms directly inside your digital flipbooks using our powerful Visual Editor.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <!-- 💡 INSERT YOUR FIVERR GIG LINK HERE -->
+                    <a href="YOUR_FIVERR_GIG_LINK" target="_blank" class="bg-accent hover:bg-yellow-500 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg transition shadow-[0_0_20px_rgba(245,158,11,0.4)] transform hover:-translate-y-1">
+                        Hire Me to Install Full Setup <i class="fa-solid fa-bolt ml-2"></i>
+                    </a>
+                    
+                    <!-- 💡 INSERT YOUR WORDPRESS.ORG PLUGIN LINK HERE (For Try for Free) -->
+                    <a href="https://wordpress.org/plugins/flipbook-studio/" target="_blank" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition backdrop-blur-sm">
+                        Try for Free <i class="fa-solid fa-download ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Image / Mockup Placeholder -->
+            <div class="lg:w-1/2 relative w-full max-w-lg mx-auto">
+                <div class="absolute inset-0 bg-accent rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                <div class="relative bg-dark border-4 border-gray-800 rounded-xl shadow-2xl overflow-hidden aspect-[4/3] flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fa-solid fa-desktop text-6xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-500 font-medium">[ Place Your Visual Studio GIF/Image Here ]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🌟 FEATURES SECTION -->
+    <div id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Everything You Need to Convert Readers into Buyers</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Stop using boring, static PDF viewers. FlipBook Studio brings your content to life with powerful interactive modules.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition hover:border-primary/30 group">
+                    <div class="w-14 h-14 bg-blue-100 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Shoppable Hotspots</h3>
+                    <p class="text-gray-600">Add interactive tags over products. When clicked, a beautiful popup displays the product details, price, and a "Buy Now" button.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition hover:border-red-400/30 group">
+                    <div class="w-14 h-14 bg-red-100 text-red-500 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Video & Media Embeds</h3>
+                    <p class="text-gray-600">Embed YouTube, Vimeo, HTML5 Video, Audio players, and even Google Maps directly onto the pages of your flipbook.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition hover:border-green-400/30 group">
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Gate Lock (Lead Gen)</h3>
+                    <p class="text-gray-600">Lock the book at a specific page. Force users to enter their Name and Email to continue reading. Connects with Google Sheets!</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition hover:border-purple-400/30 group">
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Custom Branding</h3>
+                    <p class="text-gray-600">Change background colors, UI icons, and hotspot styling to perfectly match your company's brand identity.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition hover:border-accent/30 group">
+                    <div class="w-14 h-14 bg-yellow-100 text-accent rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">AI Text-to-Speech</h3>
+                    <p class="text-gray-600">Built-in audiobook functionality. Users can click the headphone icon to have the flipbook read out loud to them.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition hover:border-teal-400/30 group">
+                    <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">100% Responsive</h3>
+                    <p class="text-gray-600">Looks flawless on Desktop, Tablet, and Mobile. Supports touch gestures like pinch-to-zoom and swipe-to-flip.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🌟 HOW IT WORKS (FIVERR PUSH) -->
+    <div id="how-it-works" class="py-20 bg-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-12">How to Unlock All Studio Features?</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+                <div class="flex-1 max-w-xs">
+                    <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center text-2xl font-bold text-accent mx-auto mb-4 border border-white/20">1</div>
+                    <h4 class="text-xl font-bold mb-2">Order on Fiverr</h4>
+                    <p class="text-gray-400 text-sm">Choose a package on my official Fiverr Gig with 100% secure payment.</p>
+                </div>
+                <div class="hidden md:block text-gray-600"><i class="fa-solid fa-chevron-right text-3xl"></i></div>
+                <div class="flex-1 max-w-xs">
+                    <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center text-2xl font-bold text-accent mx-auto mb-4 border border-white/20">2</div>
+                    <h4 class="text-xl font-bold mb-2">I Install & Setup</h4>
+                    <p class="text-gray-400 text-sm">I will personally install the Full plugin on your WordPress and configure the settings.</p>
+                </div>
+                <div class="hidden md:block text-gray-600"><i class="fa-solid fa-chevron-right text-3xl"></i></div>
+                <div class="flex-1 max-w-xs">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-2xl font-bold text-dark mx-auto mb-4 shadow-[0_0_15px_rgba(245,158,11,0.5)]">3</div>
+                    <h4 class="text-xl font-bold mb-2">Ready to Go!</h4>
+                    <p class="text-gray-400 text-sm">Start creating unlimited interactive catalogs with zero restrictions.</p>
+                </div>
+            </div>
+            
+            <!-- 💡 INSERT YOUR FIVERR GIG LINK HERE -->
+            <a href="YOUR_FIVERR_GIG_LINK" target="_blank" class="inline-block mt-12 bg-white text-dark px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg transform hover:-translate-y-1">
+                View Fiverr Packages <i class="fa-solid fa-external-link-alt text-sm ml-1"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- 🌟 FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-2 mb-4 md:mb-0">
+                <i class="fa-solid fa-book-open-reader text-xl text-accent"></i>
+                <span class="font-bold text-white tracking-tight">ChimpJar<span class="text-accent">.</span></span>
+            </div>
+            <p class="text-sm">© 2024 ChimpJar. All rights reserved.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <!-- 💡 INSERT YOUR FIVERR GIG LINK HERE -->
+                <a href="YOUR_FIVERR_GIG_LINK" target="_blank" class="hover:text-white transition">Hire me on Fiverr</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

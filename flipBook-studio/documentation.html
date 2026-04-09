@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipBook Studio - Official Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'], },
+                    colors: { primary: '#2271b1', accent: '#f59e0b', dark: '#0f172a', light: '#f8fafc' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .sidebar-link { display: block; padding: 10px 15px; color: #475569; border-radius: 6px; transition: 0.2s; font-weight: 500; }
+        .sidebar-link:hover { background: #eff6ff; color: #2271b1; }
+        .sidebar-link.active { background: #2271b1; color: white; }
+        .content-section { display: none; animation: fadeIn 0.4s ease; }
+        .content-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .step-box { background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #f59e0b; color: white; border-radius: 50%; font-weight: bold; font-size: 14px; margin-right: 10px; }
+        
+        .pro-badge { background: linear-gradient(135deg, #f59e0b, #ea580c); color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; vertical-align: middle; margin-left: 8px; }
+        .img-placeholder { width: 100%; height: 250px; background: #e2e8f0; border: 2px dashed #cbd5e1; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; margin: 20px 0; }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- 🌟 HEADER -->
+    <header class="bg-dark text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3 text-xl font-bold">
+                <i class="fa-solid fa-book-open-reader text-accent"></i> FlipBook Studio <span class="text-gray-400 font-normal text-sm ml-2">Documentation</span>
+            </div>
+            <a href="https://chimpjar.com" target="_blank" class="text-sm font-semibold bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition">Get Support <i class="fa-solid fa-life-ring ml-1"></i></a>
+        </div>
+    </header>
+
+    <!-- 🌟 MAIN CONTENT WRAPPER -->
+    <div class="flex-grow max-w-7xl mx-auto w-full flex flex-col md:flex-row py-8 px-4 gap-8">
+        
+        <!-- 🌟 SIDEBAR NAVIGATION -->
+        <aside class="w-full md:w-64 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sticky top-24">
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-3">Getting Started</h3>
+                <nav class="space-y-1 mb-6">
+                    <a href="#" onclick="showSection('sec-create')" class="sidebar-link active" id="link-create"><i class="fa-solid fa-plus w-5"></i> Create a Flipbook</a>
+                    <a href="#" onclick="showSection('sec-cover')" class="sidebar-link" id="link-cover"><i class="fa-solid fa-image w-5"></i> Custom Cover <span class="pro-badge">PRO</span></a>
+                </nav>
+
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-3">Interactive Studio</h3>
+                <nav class="space-y-1 mb-6">
+                    <a href="#" onclick="showSection('sec-hotspot')" class="sidebar-link" id="link-hotspot"><i class="fa-solid fa-cart-arrow-down w-5"></i> Add Hotspots</a>
+                    <a href="#" onclick="showSection('sec-media')" class="sidebar-link" id="link-media"><i class="fa-solid fa-video w-5"></i> Embed Media</a>
+                </nav>
+
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-3">Advanced Features</h3>
+                <nav class="space-y-1">
+                    <a href="#" onclick="showSection('sec-leadgen')" class="sidebar-link" id="link-leadgen"><i class="fa-solid fa-lock w-5"></i> Lead Generation <span class="pro-badge">PRO</span></a>
+                    <a href="#" onclick="showSection('sec-branding')" class="sidebar-link" id="link-branding"><i class="fa-solid fa-palette w-5"></i> Custom Colors <span class="pro-badge">PRO</span></a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 🌟 CONTENT AREA -->
+        <main class="flex-grow bg-white rounded-xl shadow-sm border border-gray-200 p-8 min-h-[600px]">
+
+            <!-- 📖 1. CREATE FLIPBOOK -->
+            <section id="sec-create" class="content-section active">
+                <h1 class="text-3xl font-bold text-dark mb-2">How to Create Your First Flipbook</h1>
+                <p class="text-gray-600 mb-8 text-lg">Turn any PDF or image gallery into a realistic 3D flipbook in seconds.</p>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">1</span> Add a New Book</h3>
+                    <p class="text-gray-600">Go to your WordPress Dashboard. In the left menu, click on <strong>FlipBook Studio > Add New Book</strong>. Enter a title for your flipbook at the top of the page.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">2</span> Upload PDF or Images</h3>
+                    <p class="text-gray-600">Under the <strong>Source</strong> tab, click the <strong>Browse</strong> button. Select a PDF file from your Media Library. <br><br><em>Tip: You can also select multiple images by holding the SHIFT key to create an image-based flipbook!</em></p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">3</span> Save and Publish</h3>
+                    <p class="text-gray-600">Click the blue <strong>Publish / Save FlipBook</strong> button at the top right. Once saved, copy the generated shortcode (e.g., <code>[flipbook id="123"]</code>) and paste it into any post or page.</p>
+                </div>
+            </section>
+
+            <!-- 🖼️ 2. CUSTOM COVER -->
+            <section id="sec-cover" class="content-section">
+                <h1 class="text-3xl font-bold text-dark mb-2">Setting a Custom Cover Image</h1>
+                <p class="text-gray-600 mb-8 text-lg">Replace the default black cover with a high-quality image of your choice.</p>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md mb-6">
+                    <p class="text-blue-800 text-sm"><strong>Note:</strong> If your PDF is in Landscape mode (wide), the first page is automatically split into two. Using a custom Portrait (tall) cover image fixes the layout instantly.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">1</span> Enable Custom Cover</h3>
+                    <p class="text-gray-600">Go to the <strong>Source</strong> tab and toggle the <strong>Custom Cover</strong> switch to ON.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">2</span> Upload Cover Image</h3>
+                    <p class="text-gray-600">Click the <strong>Upload</strong> button and select an image (preferably a vertical/portrait image like a book cover). Save the flipbook, and your new cover will appear immediately on the live site.</p>
+                </div>
+            </section>
+
+            <!-- 🛒 3. ADD HOTSPOTS -->
+            <section id="sec-hotspot" class="content-section">
+                <h1 class="text-3xl font-bold text-dark mb-2">Adding Shoppable Hotspots</h1>
+                <p class="text-gray-600 mb-8 text-lg">Make your catalogs interactive by adding "Buy Now" tags directly over product images.</p>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">1</span> Open the Visual Editor</h3>
+                    <p class="text-gray-600">Click on the <strong>Interactive Studio</strong> tab. You will see a live preview of your book. Use the Next/Prev arrows to navigate to the page where you want to add the hotspot.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">2</span> Place the Pin</h3>
+                    <p class="text-gray-600">Click the red <strong><i class="fa-solid fa-cart-arrow-down"></i> Add Hotspot</strong> button at the top. Then, click anywhere on the book page to drop the pin. You can drag the pin around to adjust its exact location.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">3</span> Configure Product Details</h3>
+                    <p class="text-gray-600">A configuration form will appear. Enter the Product Title, Price, upload a Product Image, and paste the Link to your checkout/product page. Click <strong>Save Changes</strong>.</p>
+                </div>
+            </section>
+
+            <!-- 🎥 4. EMBED MEDIA -->
+            <section id="sec-media" class="content-section">
+                <h1 class="text-3xl font-bold text-dark mb-2">Embedding Video & Audio</h1>
+                <p class="text-gray-600 mb-8 text-lg">Bring pages to life by embedding YouTube, Vimeo, MP4, MP3, or Google Maps.</p>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">1</span> Select Add Media</h3>
+                    <p class="text-gray-600">In the <strong>Interactive Studio</strong> tab, go to your desired page. Click the green <strong><i class="fa-solid fa-video"></i> Add Media</strong> button and click on the page to drop the pin.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">2</span> Choose Media Type</h3>
+                    <p class="text-gray-600">In the configuration form, select the type of media from the dropdown menu (e.g., YouTube Video, Self-Hosted MP4, Audio MP3, Google Map).</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">3</span> Set Size & URL</h3>
+                    <p class="text-gray-600">Paste the URL of your media (e.g., `https://www.youtube.com/watch?v=...`). Adjust the <strong>Width (%)</strong> and <strong>Height (%)</strong> sliders to fit the video perfectly on your page. Click <strong>Save Changes</strong>.</p>
+                </div>
+            </section>
+
+            <!-- 🔒 5. LEAD GENERATION -->
+            <section id="sec-leadgen" class="content-section">
+                <h1 class="text-3xl font-bold text-dark mb-2">Setting Up Lead Generation (Gate Lock)</h1>
+                <p class="text-gray-600 mb-8 text-lg">Force users to submit their Name & Email before they can read the rest of the book.</p>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-md mb-6">
+                    <p class="text-yellow-800 text-sm"><strong>How it works:</strong> The user reads a few pages for free. Suddenly, a beautiful blur overlay appears asking for their email. Once submitted, the book unlocks instantly!</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">1</span> Enable Content Lock</h3>
+                    <p class="text-gray-600">Go to the <strong>Content Lock</strong> tab and turn the switch ON.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">2</span> Set the Lock Page</h3>
+                    <p class="text-gray-600">Enter the page number where the lock should appear (e.g., Page `4`).</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">3</span> Connect Google Sheets (Optional)</h3>
+                    <p class="text-gray-600">You can paste your Google Apps Script URL here to automatically send the collected emails to your spreadsheet. Leave it blank if you just want a demo/dummy unlock.</p>
+                </div>
+            </section>
+
+            <!-- 🎨 6. CUSTOM COLORS -->
+            <section id="sec-branding" class="content-section">
+                <h1 class="text-3xl font-bold text-dark mb-2">Custom Branding & Colors</h1>
+                <p class="text-gray-600 mb-8 text-lg">Make the flipbook match your website's exact theme and brand identity.</p>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">1</span> Open Appearance Tab</h3>
+                    <p class="text-gray-600">Go to the <strong>Appearance</strong> tab and toggle the <strong>Custom Branding Colors</strong> switch ON.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">2</span> Change Colors</h3>
+                    <p class="text-gray-600">Use the visual color pickers to change the Book Background, Control Bar background, Icon colors, and Hotspot Pulse colors. </p>
+                </div>
+
+                <div class="step-box">
+                    <h3 class="text-lg font-bold mb-2"><span class="step-num">3</span> Pulse Animation</h3>
+                    <p class="text-gray-600">You can turn ON or OFF the radar-like pulse animation that surrounds the shoppable hotspots from this tab.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 🌟 SCRIPT FOR TAB SWITCHING -->
+    <script>
+        function showSection(id) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            // Remove active class from all links
+            document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active'));
+            
+            // Show target section
+            document.getElementById(id).classList.add('active');
+            // Highlight target link
+            document.getElementById('link-' + id.split('-')[1]).classList.add('active');
+            
+            // Scroll to top on mobile
+            if(window.innerWidth < 768) { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        }
+    </script>
+</body>
+</html>
