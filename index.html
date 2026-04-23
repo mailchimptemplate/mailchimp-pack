@@ -1,255 +1,125 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="MailChimp Email Template">
-    <meta name="keywords" content="MailChimp, Email, mailchimp email template, html email template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ChimpJar | MailChimp Email Template</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
-        rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>ChimpJar | Premium WordPress Plugins</title>
+    <meta name="description" content="Home of the ChimpJar Flipbook Maker. We build interactive and powerful WordPress plugins for your website.">
+    <!-- Tailwind CSS for Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-indigo-500 selection:text-white">
 
-<body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center gap-2">
+                        <i class="fa-solid fa-cube text-indigo-600 text-3xl"></i>
+                        <span class="font-bold text-2xl tracking-tight text-slate-900">ChimpJar</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-slate-600 hover:text-indigo-600 font-medium transition">Home</a>
+                    <a href="#plugins" class="text-slate-600 hover:text-indigo-600 font-medium transition">Our Plugins</a>
+                    <a href="#contact" class="text-slate-600 hover:text-indigo-600 font-medium transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 text-center bg-gradient-to-b from-indigo-50 to-white">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
+                Elevate Your Digital Content with <span class="text-indigo-600">ChimpJar</span>
+            </h1>
+            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                We build powerful, lightweight, and interactive WordPress plugins to help you engage your audience and boost conversions.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#plugins" class="bg-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition-all transform hover:-translate-y-1">
+                    Explore Our Plugins
+                </a>
+                <a href="#contact" class="bg-white text-indigo-600 border border-indigo-200 px-8 py-4 rounded-full font-bold text-lg hover:bg-indigo-50 shadow-sm transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Featured Plugin Section -->
+    <section id="plugins" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Featured Product</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
 
+            <div class="bg-slate-50 rounded-3xl overflow-hidden shadow-xl border border-slate-100 flex flex-col md:flex-row">
+                <!-- Image Area -->
+                <div class="md:w-1/2 bg-indigo-100 flex items-center justify-center p-12 relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                    <i class="fa-solid fa-book-open text-9xl text-indigo-500 relative z-10 drop-shadow-lg transform -rotate-6 transition duration-500 hover:rotate-0 hover:scale-110"></i>
+                </div>
+                
+                <!-- Content Area -->
+                <div class="md:w-1/2 p-10 md:p-14 flex flex-col justify-center">
+                    <div class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 font-semibold rounded-full text-sm mb-4 w-max">WordPress Plugin</div>
+                    <h3 class="text-3xl font-bold text-slate-900 mb-4">ChimpJar Flipbook Maker</h3>
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
+                        Turn boring, static PDFs into interactive 3D Flipbooks! Enjoy a realistic reading experience on any device. No external API needed—100% privacy and lightning-fast rendering.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-slate-700">
+                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
+                            <span class="font-medium">Realistic 3D Page Flip Effect</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700">
+                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
+                            <span class="font-medium">Direct PDF & Image Support</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700">
+                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
+                            <span class="font-medium">100% Mobile Responsive</span>
+                        </li>
+                    </ul>
 
-    <!-- Header End -->
-
-    <!-- Hero Slider Begin -->
-    <section class="hero-slider">
-        <div class="hero-items owl-carousel">
-            <div class="single-slider-item set-bg" data-setbg="img/slider-3.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1>MailChimp</h1>
-                            <h2>Email Template Pack</h2>
-                            <a href="#" class="primary-btn">See More</a>
-                        </div>
+                    <div>
+                        <a href="#" class="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-800 transition">
+                            <i class="fab fa-wordpress"></i> View on WordPress.org
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Hero Slider End -->
 
-
-
-    <!-- Latest Product Begin -->
-    <section class="latest-products spad">
-        <div class="container">
-            <div class="product-filter">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="section-title">
-                            <h2>Latest Template</h2>
-                        </div>
-                        <ul class="product-controls">
-                            <li data-filter="*">All</li>
-                            <li data-filter=".mailchimp">MailChimp Email Template</li>
-                            <li data-filter=".html">HTML Email Template</li>
-                            <li data-filter=".shoes">Email Signature</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="product-list">
-                <div class="col-lg-3 col-sm-6 mix all mailchimp">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./demo-001.html" target="_blank" ><img src="img/products/img-1.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-001</h6>
-			<a href="#" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all mailchimp">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./demo-002.html" target="_blank" ><img src="img/products/img-2.jpg" alt=""></a>
-                            <div class="p-status sale">New</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-002</h6>
-							<a href="#" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all mailchimp">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./demo-003.html" target="_blank" ><img src="img/products/img-3.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-003</h6>
-							<a href="#" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all mailchimp">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./demo-004.html" target="_blank" ><img src="img/products/img-4.jpg" alt=""></a>
-                            <div class="p-status sale">New</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-004</h6>
-							<a href="#" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all mailchimp">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./demo-005.html" target="_blank" ><img src="img/products/img-5.jpg" alt=""></a>
-                            <div class="p-status">new</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-005</h6>
-							<a href="#" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all html">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./html001" target="_blank"><img src="img/products/html001.jpg" alt=""></a>
-                            <div class="p-status sale">sale</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>HTML Responsive Email Template V-001</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all html">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./html002" target="_blank"><img src="img/products/html002.jpg" alt=""></a>
-                        </figure>
-                        <div class="product-text">
-                            <h6>HTML Responsive Email Template V-002</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all html">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./html003" target="_blank"><img src="img/products/html003.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>HTML Responsive Email Template V-003</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all html">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="./html004" target="_blank"><img src="img/products/html004.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>HTML Responsive Email Template V-004</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags shoes">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="img/products/img-8.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-008</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags shoes dresses">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="img/products/img-8.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-008</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags shoes">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="img/products/img-8.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-008</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mix all accesories bags shoes dresses">
-                    <div class="single-product-item">
-                        <figure>
-                            <a href="#"><img src="img/products/img-8.jpg" alt=""></a>
-                            <div class="p-status popular">popular</div>
-                        </figure>
-                        <div class="product-text">
-                            <h6>MailChimp Email Template V-008</h6>
-							<a href="./001.html" target="_blank" class="primary-btn2">Download Now</a>
-                        </div>
-                    </div>
-                </div>				
-				
-				
-				
-            </div>
-			
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Need Support or Have Questions?</h2>
+            <p class="text-slate-400 text-lg mb-10">We're here to help. Reach out to us for premium support, custom requests, or general inquiries.</p>
+            <a href="mailto:support@chimpjar.com" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-indigo-500 transition shadow-lg shadow-indigo-900">
+                <i class="fa-regular fa-envelope"></i> support@chimpjar.com
+            </a>
         </div>
     </section>
-    <!-- Latest Product End -->
 
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>&copy; 2024 ChimpJar. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-wordpress text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
 
-
-
-
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/main.js"></script>
 </body>
-
 </html>
