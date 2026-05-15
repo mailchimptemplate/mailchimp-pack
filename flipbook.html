@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D Flipbook & Lead Generation Plugin | Chimpjar</title>
+    <meta name="description" content="Convert PDFs and images into 3D flipbooks. Add Shoppable Hotspots, Media, and capture leads directly inside your digital catalogs. Zero monthly fees.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans:['Inter', 'sans-serif'] },
+                    colors: { 
+                        brand: '#f43f5e', /* Rose 500 */
+                        'brand-dark': '#e11d48', 
+                        'brand-darker': '#be123c' 
+                    },
+                    boxShadow: { 'sleek': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'sleek-hover': '0 10px 40px -4px rgba(0, 0, 0, 0.1)' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
+                        <img src="./logo2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
+                    <a href="#demo" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Live Demo</a>
+                    <a href="#custom-setup" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Done-For-You</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="hidden sm:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
+                    <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-slate-50">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-400/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-bold mb-6 shadow-sm uppercase tracking-wide">
+                        <i class="fa-solid fa-filter text-brand"></i> Shoppable Catalogs & Lead Gen
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                        Turn boring files into <span class="text-brand">interactive</span> experiences.
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                        Upload PDFs or Images to create 3D flipbooks. Add Shoppable Hotspots to sell products directly, and lock pages with <b>Lead Capture Forms</b> to build your email list.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
+                        <a href="#pricing" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/30 flex items-center justify-center gap-2">
+                            Buy Lifetime Deal - $19
+                        </a>
+                        <p class="text-sm font-medium text-slate-500 flex flex-col gap-1">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> Supports PDF & Images</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> Built-in Email Gating</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Visual / Flipbook Mockup -->
+                <div class="relative mx-auto w-full max-w-lg lg:max-w-full">
+                    <!-- Decorative background ring -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand/20 to-orange-300/20 rounded-full blur-2xl transform scale-90"></div>
+                    
+                    <div class="relative transform transition-transform hover:-translate-y-2 duration-500">
+                        <!-- Book Mockup Wrapper -->
+                        <div class="relative w-full aspect-[4/3] flex items-center justify-center">
+                            
+                            <!-- Left Page -->
+                            <div class="absolute w-[45%] h-[80%] left-[5%] bg-white rounded-l-lg shadow-2xl border border-slate-200 overflow-hidden transform perspective-1000 rotate-y-12 origin-right z-10 hover:rotate-y-0 transition-all duration-500 cursor-pointer relative">
+                                <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=400&h=600" class="w-full h-full object-cover opacity-90">
+                                
+                                <!-- Hotspot Mockup -->
+                                <div class="absolute top-[40%] left-[30%] w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center shadow-lg animate-bounce border-2 border-white">
+                                    <i class="fa-solid fa-tag text-xs"></i>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent pointer-events-none"></div>
+                            </div>
+                            
+                            <!-- Right Page (Lead Gen Focus) -->
+                            <div class="absolute w-[45%] h-[80%] right-[5%] bg-white rounded-r-lg shadow-2xl border border-slate-200 overflow-hidden transform perspective-1000 -rotate-y-12 origin-left z-20 hover:rotate-y-0 transition-all duration-500 cursor-pointer">
+                                
+                                <!-- Gated Content Overlay Mockup -->
+                                <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-30 flex items-center justify-center p-4 text-center">
+                                    <div class="bg-white rounded-xl p-4 shadow-xl w-full">
+                                        <div class="w-10 h-10 bg-brand/10 text-brand rounded-full flex items-center justify-center mx-auto mb-2"><i class="fa-solid fa-lock"></i></div>
+                                        <h4 class="text-sm font-bold text-slate-900 mb-1">Unlock this catalog</h4>
+                                        <p class="text-[10px] text-slate-500 mb-3">Enter your email to read the rest.</p>
+                                        <input type="email" placeholder="Your Email" class="w-full border border-slate-200 rounded px-2 py-1 text-xs mb-2 bg-slate-50">
+                                        <button class="w-full bg-brand text-white text-xs font-bold py-1.5 rounded">Unlock Now</button>
+                                    </div>
+                                </div>
+
+                                <div class="p-6 h-full flex flex-col justify-center bg-slate-50 relative">
+                                    <h3 class="text-xl font-bold text-slate-900 mb-2">Summer Collection</h3>
+                                    <div class="space-y-2 mb-6">
+                                        <div class="h-2 bg-slate-200 rounded w-full"></div>
+                                        <div class="h-2 bg-slate-200 rounded w-3/4"></div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-l from-black/10 to-transparent pointer-events-none"></div>
+                            </div>
+                            
+                            <!-- Center Binding shadow -->
+                            <div class="absolute h-[80%] w-4 bg-gradient-to-r from-transparent via-black/20 to-transparent z-30 pointer-events-none"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <div class="border-y border-slate-100 bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 opacity-60">
+            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Ideal for creating:</span>
+            <div class="flex flex-wrap justify-center gap-8">
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-store text-xl"></i> Shoppable Catalogs</span>
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-book text-xl"></i> Gated eBooks</span>
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-utensils text-xl"></i> Restaurant Menus</span>
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-chart-pie text-xl"></i> Corporate Reports</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Features Section -->
+    <section id="features" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Modern Reading Experience</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Why stick to static documents?</h3>
+            </div>
+
+            <!-- 2x2 Feature Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-file-pdf"></i><i class="fa-solid fa-image ml-1 text-lg"></i></div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">PDF & Image Support</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Don't have a PDF? No problem. Select multiple JPG or PNG images from your media library and turn them into a flipbook instantly.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-tags"></i></div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Shoppable Hotspots & Links</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Add clickable hotspots directly on your pages. Link them to WooCommerce products so customers can shop directly from your digital catalog.</p>
+                </div>
+
+                <!-- Feature 3 (NEW): Lead Generation -->
+                <div class="bg-amber-50 border border-amber-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Lead Generation (Gated Content)</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Lock your flipbook or specific pages behind an email capture form. Perfect for building your subscriber list by offering free ebooks or exclusive reports.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-circle-play"></i></div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Rich Media Integration</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Make your flipbooks truly interactive. Embed videos and audio directly onto the pages to give your readers an immersive multimedia experience.</p>
+                </div>
+            </div>
+
+            <!-- Full Width Feature -->
+            <div class="mt-16 bg-slate-900 rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Easily embed anywhere via Shortcode</h3>
+                    <p class="text-slate-400 mb-6">Just upload your PDF or select your images in the WordPress Media Library, generate the shortcode, and paste it into Elementor, Gutenberg, or any page builder.</p>
+                    <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 flex justify-between items-center">
+                        <code class="text-brand text-sm">[chimpjar_flipbook id="123"]</code>
+                        <button class="text-slate-400 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <div class="grid grid-cols-2 gap-4 w-full">
+                        <div class="bg-slate-800 rounded-xl p-4 text-center border border-slate-700"><i class="fa-solid fa-magnifying-glass-plus text-2xl text-slate-400 mb-2"></i><div class="text-sm text-slate-300">Zoom In/Out</div></div>
+                        <div class="bg-slate-800 rounded-xl p-4 text-center border border-slate-700"><i class="fa-solid fa-envelope-open text-2xl text-brand mb-2"></i><div class="text-sm text-slate-300">Email Lead Capture</div></div>
+                        <!-- Updated Grid Items -->
+                        <div class="bg-slate-800 rounded-xl p-4 text-center border border-slate-700"><i class="fa-solid fa-bag-shopping text-2xl text-brand mb-2"></i><div class="text-sm text-slate-300">Shoppable Hotspots</div></div>
+                        <div class="bg-slate-800 rounded-xl p-4 text-center border border-slate-700"><i class="fa-solid fa-circle-play text-2xl text-slate-400 mb-2"></i><div class="text-sm text-slate-300">Video & Audio Media</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION (NEW) -->
+    <section id="custom-setup" class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+                <!-- Abstract Glow -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+                
+                <div class="w-full md:w-2/3 relative z-10 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold mb-4 uppercase tracking-wide">
+                        <i class="fa-solid fa-laptop-code text-brand"></i> Done-For-You Service
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Don't have time to set this up?</h3>
+                    <p class="text-slate-400 text-lg mb-0">
+                        Whether you need help configuring this plugin, designing your digital catalogs, or require a completely custom WordPress feature—our expert team is ready to build it for you.
+                    </p>
+                </div>
+                
+                <div class="w-full md:w-1/3 relative z-10 flex justify-center md:justify-end">
+                    <a href="mailto:hello@chimpjar.com" class="w-full text-center bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg">
+                        Hire Our Team &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Simple Pricing</h2>
+            <h3 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-slate-900">One tiny price. Lifetime value.</h3>
+
+            <div class="bg-white text-slate-900 rounded-3xl p-8 md:p-12 shadow-sleek max-w-xl mx-auto transform transition-transform hover:scale-[1.02] duration-300 border border-slate-200 mt-12">
+                
+                <div class="flex justify-center items-end gap-1 mb-6">
+                    <span class="text-6xl font-extrabold tracking-tight text-slate-900">$19</span>
+                    <span class="text-slate-500 font-medium mb-2">/one-time</span>
+                </div>
+                <p class="text-slate-600 mb-8 border-b border-slate-100 pb-8">Create unlimited beautiful flipbooks on your WordPress website.</p>
+                
+                <ul class="space-y-4 text-left mb-10 font-medium text-slate-700">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Built-in Lead Generation (Email Capture)</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Supports PDF, JPG, and PNG formats</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Add Shoppable Hotspots & Links</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Embed Video & Audio Media</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Lifetime Plugin Updates</li>
+                </ul>
+
+                <!-- LEMON SQUEEZY CHECKOUT LINK GOES HERE -->
+                <a href="#" class="block w-full bg-brand hover:bg-brand-dark text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-brand/30">
+                    Get Lifetime Deal Now
+                </a>
+                <p class="text-xs text-slate-400 mt-4"><i class="fa-solid fa-shield-halved"></i> 14-Day Money-Back Guarantee. Secure Checkout.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">How does the Lead Generation feature work?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">You can choose to lock the entire flipbook or specific pages. Visitors will see a popup asking for their email address to continue reading. Once submitted, the leads are saved in your WordPress database.</p>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Can I sell products directly from the flipbook?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Yes! Our Shoppable Hotspots feature allows you to add clickable links, tags, and product popups directly over any image or PDF page. You can easily link them to your WooCommerce checkout or product pages.</p>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Do you offer custom development or setup services?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Absolutely. If you don't have the time or technical skills to set this up, or if you need a completely custom feature added to your website, our expert developers can handle it for you. Just click the "Hire Our Team" button above.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium SaaS Footer -->
+    <footer class="bg-slate-950 text-slate-300 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+                
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="./logoW2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-md">
+                        Premium WordPress plugins and highly converting email templates designed to supercharge your online business. No monthly fees, ever.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Products</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="whatsapp-crm.html" class="hover:text-brand transition-colors">WhatsApp CRM</a></li>
+                        <li><a href="shoppable-video.html" class="hover:text-brand transition-colors">Shoppable Video</a></li>
+                        <li><a href="accessibility.html" class="hover:text-brand transition-colors">WP Accessibility</a></li>
+                        <li><a href="size-guide.html" class="hover:text-brand transition-colors">Size Guide</a></li>
+                        <li><a href="flipbook.html" class="hover:text-brand transition-colors text-brand">Flipbook Maker</a></li>						
+                        <li><a href="mailchimp-bundle.html" class="hover:text-brand transition-colors">Email Templates</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-brand transition-colors">About Us</a></li>					
+                        <li><a href="mailto:hello@chimpjar.com" class="hover:text-brand transition-colors">Contact Support</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Custom Development</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Affiliate Program</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="terms.html" class="hover:text-brand transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
+                        <li><a href="refund.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
+                        <li><a href="licenses.html" class="hover:text-brand transition-colors">License Details</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-sm text-slate-500">
+                    &copy; 2026 Chimpjar. All rights reserved.
+                </div>
+                
+                <div class="flex items-center gap-4 text-2xl text-slate-600">
+                    <i class="fa-brands fa-stripe hover:text-indigo-400 transition-colors" title="Powered by Stripe"></i>
+                    <i class="fa-brands fa-paypal hover:text-blue-400 transition-colors" title="PayPal Accepted"></i>
+                    <i class="fa-brands fa-cc-visa hover:text-blue-500 transition-colors"></i>
+                    <i class="fa-brands fa-cc-mastercard hover:text-orange-500 transition-colors"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
