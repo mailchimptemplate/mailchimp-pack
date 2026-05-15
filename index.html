@@ -1,122 +1,672 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChimpJar | Premium WordPress Plugins</title>
-    <meta name="description" content="Home of the ChimpJar Flipbook Maker. We build interactive and powerful WordPress plugins for your website.">
-    <!-- Tailwind CSS for Styling -->
+    <title>Chimpjar | Premium WordPress Plugins & Marketing Tools</title>
+    <meta name="description" content="Professional WordPress plugins and email templates to supercharge your sales and conversions. Zero monthly fees.">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-indigo-500 selection:text-white">
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm fixed w-full z-50 top-0 transition-all duration-300">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans:['Inter', 'sans-serif'] },
+                    colors: { brand: '#3b82f6', 'brand-dark': '#2563eb', 'brand-darker': '#1d4ed8' },
+                    boxShadow: { 'sleek': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'sleek-hover': '0 10px 40px -4px rgba(0, 0, 0, 0.1)' },
+                    animation: { 'float': 'float 6s ease-in-out infinite', 'float-delayed': 'float 6s ease-in-out 3s infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white overflow-x-hidden">
+
+    <!-- Professional Glass Navbar -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <a href="#" class="flex items-center gap-2">
-                        <i class="fa-solid fa-cube text-indigo-600 text-3xl"></i>
-                        <span class="font-bold text-2xl tracking-tight text-slate-900">ChimpJar</span>
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-slate-600 hover:text-indigo-600 font-medium transition">Home</a>
-                    <a href="#plugins" class="text-slate-600 hover:text-indigo-600 font-medium transition">Our Plugins</a>
-                    <a href="#contact" class="text-slate-600 hover:text-indigo-600 font-medium transition">Contact</a>
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="flex-shrink-0 flex items-center gap-2.5">
+                        <img src="./logo2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#plugins" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">WordPress plugins</a>
+                    <a href="#templates" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Templates</a>
+                    <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Why Chimpjar</a>
+                    <a href="#plugins" class="bg-slate-900 hover:bg-slate-800 text-white text-sm px-5 py-2.5 rounded-lg font-medium transition-colors shadow-sm">Browse Catalog</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 text-center bg-gradient-to-b from-indigo-50 to-white">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
-                Elevate Your Digital Content with <span class="text-indigo-600">ChimpJar</span>
+    <!-- Sleek Enterprise Hero Section WITH RICH BACKGROUND -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
+        
+        <!-- 1. Rich Mesh Gradient Background -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand/20 blur-[100px]"></div>
+            <div class="absolute top-[20%] right-[-10%] w-[40%] h-[60%] rounded-full bg-purple-400/20 blur-[100px]"></div>
+            <div class="absolute bottom-[-20%] left-[20%] w-[60%] h-[50%] rounded-full bg-emerald-300/10 blur-[100px]"></div>
+            
+            <!-- 2. Tech Grid Pattern -->
+            <svg class="absolute inset-0 w-full h-full opacity-[0.2]" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40V0H40" fill="none" stroke="#94a3b8" stroke-width="0.5"></path>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hero-grid)"></rect>
+            </svg>
+        </div>
+
+        <!-- 3. Floating Glass Cards (Background Visuals) -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none hidden md:block">
+            <!-- Left Card -->
+            <div class="absolute top-40 left-10 lg:left-20 w-48 h-32 bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-xl transform -rotate-6 animate-float opacity-70 flex items-center justify-center">
+                <div class="w-3/4 space-y-2">
+                    <div class="h-2 bg-slate-200 rounded w-1/2"></div>
+                    <div class="h-2 bg-slate-200 rounded w-full"></div>
+                    <div class="h-2 bg-slate-200 rounded w-3/4"></div>
+                </div>
+                <div class="absolute -right-3 -top-3 w-8 h-8 bg-brand rounded-full flex items-center justify-center text-white text-xs shadow-lg"><i class="fa-solid fa-check"></i></div>
+            </div>
+            
+            <!-- Right Card -->
+            <div class="absolute top-60 right-10 lg:right-20 w-56 h-40 bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-xl transform rotate-3 animate-float-delayed opacity-70 flex flex-col items-center justify-center p-4">
+                <div class="w-full flex justify-between items-end h-16 gap-2 mb-2">
+                    <div class="w-1/4 bg-brand/30 h-1/2 rounded-t"></div>
+                    <div class="w-1/4 bg-brand/50 h-3/4 rounded-t"></div>
+                    <div class="w-1/4 bg-brand h-full rounded-t"></div>
+                </div>
+                <div class="w-full h-2 bg-slate-200 rounded mt-2"></div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <!-- Trust Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200/60 text-slate-600 text-sm font-medium mb-8 shadow-sm">
+                <span class="flex gap-0.5 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </span>
+                <span class="pl-1 border-l border-slate-300">Trusted by modern agencies</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                Premium tools to grow your <span class="text-brand drop-shadow-sm">online business.</span>
             </h1>
-            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                We build powerful, lightweight, and interactive WordPress plugins to help you engage your audience and boost conversions.
+            
+            <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10">
+                High-performance WordPress plugins and highly converting email templates designed to boost sales, capture leads, and enhance user experience. 
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#plugins" class="bg-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition-all transform hover:-translate-y-1">
-                    Explore Our Plugins
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#plugins" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white px-8 py-3.5 rounded-xl font-semibold text-base transition-colors shadow-lg shadow-slate-900/20">
+                    Explore WP Plugins
                 </a>
-                <a href="#contact" class="bg-white text-indigo-600 border border-indigo-200 px-8 py-4 rounded-full font-bold text-lg hover:bg-indigo-50 shadow-sm transition-all">
-                    Contact Us
+                <a href="#templates" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-3.5 rounded-xl font-semibold text-base transition-colors shadow-sm flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-mailchimp text-slate-400"></i> View Templates
                 </a>
             </div>
         </div>
+
+        <!-- White Fade out at the bottom to blend with next section -->
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10"></div>
     </section>
 
-    <!-- Featured Plugin Section -->
-    <section id="plugins" class="py-20 bg-white">
+    <!-- Technology Stack Bar -->
+    <div class="bg-white pb-12 pt-4 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-6">Built to integrate perfectly with</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800"><i class="fa-brands fa-wordpress text-2xl"></i> WordPress</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800"><i class="fa-solid fa-cart-shopping text-2xl"></i> WooCommerce</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800"><i class="fa-brands fa-mailchimp text-2xl"></i> Mailchimp</div>
+                <div class="flex items-center gap-2 font-bold text-xl text-slate-800"><i class="fa-brands fa-elementor text-2xl"></i> Elementor</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 1: WordPress Plugins -->
+    <section id="plugins" class="py-24 bg-slate-50 relative border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Featured Product</h2>
-                <div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            <div class="mb-16 md:flex md:justify-between md:items-end">
+                <div class="max-w-2xl">
+                    <h2 class="text-brand font-semibold tracking-wide uppercase text-sm mb-2">WordPress Solutions</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Self-hosted plugins. Zero recurring fees.</h3>
+                </div>
             </div>
 
-            <div class="bg-slate-50 rounded-3xl overflow-hidden shadow-xl border border-slate-100 flex flex-col md:flex-row">
-                <!-- Image Area -->
-                <div class="md:w-1/2 bg-indigo-100 flex items-center justify-center p-12 relative overflow-hidden">
-                    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                    <i class="fa-solid fa-book-open text-9xl text-indigo-500 relative z-10 drop-shadow-lg transform -rotate-6 transition duration-500 hover:rotate-0 hover:scale-110"></i>
-                </div>
+            <!-- Sleek Grid with Actual Image Thumbnails -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Content Area -->
-                <div class="md:w-1/2 p-10 md:p-14 flex flex-col justify-center">
-                    <div class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 font-semibold rounded-full text-sm mb-4 w-max">WordPress Plugin</div>
-                    <h3 class="text-3xl font-bold text-slate-900 mb-4">ChimpJar Flipbook Maker</h3>
-                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
-                        Turn boring, static PDFs into interactive 3D Flipbooks! Enjoy a realistic reading experience on any device. No external API needed—100% privacy and lightning-fast rendering.
-                    </p>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-slate-700">
-                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                            <span class="font-medium">Realistic 3D Page Flip Effect</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-slate-700">
-                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                            <span class="font-medium">Direct PDF & Image Support</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-slate-700">
-                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                            <span class="font-medium">100% Mobile Responsive</span>
-                        </li>
-                    </ul>
-
-                    <div>
-                        <a href="#" class="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-800 transition">
-                            <i class="fab fa-wordpress"></i> View on WordPress.org
-                        </a>
+                <!-- 1. WhatsApp CRM -->
+                <div class="group bg-white border border-slate-200 hover:border-brand/30 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-slate-100 overflow-hidden border-b border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=800&q=80" alt="WhatsApp CRM Plugin" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold bg-emerald-500 text-white shadow-md uppercase tracking-wide">Popular</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fa-brands fa-whatsapp text-2xl text-emerald-500"></i>
+                            <h4 class="text-lg font-bold text-slate-900">WhatsApp CRM</h4>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Route support chats to multiple agents using a single number. Includes built-in lead generation forms.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-lg font-bold text-slate-900">$29</span>
+                            <a href="whatsapp-crm.html" class="text-sm font-semibold text-brand group-hover:text-brand-dark flex items-center gap-1 transition-colors">Details <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 2. Shoppable Video -->
+                <div class="group bg-white border border-slate-200 hover:border-brand/30 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-slate-100 overflow-hidden border-b border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1611558709798-e009c8fd7706?auto=format&fit=crop&w=800&q=80" alt="Shoppable Video Plugin" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/30 to-transparent"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold bg-purple-500 text-white shadow-md uppercase tracking-wide">Trending 🔥</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fa-solid fa-play text-xl text-purple-500 ml-1"></i>
+                            <h4 class="text-lg font-bold text-slate-900">Shoppable Video Player</h4>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Integrate TikTok-style short videos into WooCommerce. Enable instant 'Add to Cart' directly from the video UI.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-lg font-bold text-slate-900">$39</span>
+                            <a href="shoppable-video.html" class="text-sm font-semibold text-brand group-hover:text-brand-dark flex items-center gap-1 transition-colors">Details <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Accessibility -->
+                <div class="group bg-white border border-slate-200 hover:border-brand/30 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-slate-100 overflow-hidden border-b border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Accessibility Plugin" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fa-solid fa-universal-access text-xl text-blue-500"></i>
+                            <h4 class="text-lg font-bold text-slate-900">WP Accessibility Suite</h4>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Achieve ADA compliance with a lightweight widget. Protect your business from lawsuits seamlessly.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-lg font-bold text-slate-900">$29</span>
+                            <a href="accessibility.html" class="text-sm font-semibold text-brand group-hover:text-brand-dark flex items-center gap-1 transition-colors">Details <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Smart Size Guide -->
+                <div class="group bg-white border border-slate-200 hover:border-brand/30 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-slate-100 overflow-hidden border-b border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1558098329-a11cff621064?auto=format&fit=crop&w=800&q=80" alt="Size Guide Plugin" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-orange-900/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fa-solid fa-ruler-combined text-xl text-orange-500"></i>
+                            <h4 class="text-lg font-bold text-slate-900">Smart Size Guide</h4>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Minimize product returns by offering interactive, accurate sizing charts for your apparel customers.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-lg font-bold text-slate-900">$19</span>
+                            <a href="size-guide.html" class="text-sm font-semibold text-brand group-hover:text-brand-dark flex items-center gap-1 transition-colors">Details <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Flipbook -->
+                <div class="group bg-white border border-slate-200 hover:border-brand/30 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-slate-100 overflow-hidden border-b border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80" alt="Flipbook Plugin" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-rose-900/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fa-solid fa-book-open text-xl text-rose-500"></i>
+                            <h4 class="text-lg font-bold text-slate-900">Interactive Flipbook</h4>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Transform static PDF documents into modern, interactive 3D flipbooks natively in WordPress.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-lg font-bold text-slate-900">$19</span>
+                            <a href="flipbook.html" class="text-sm font-semibold text-brand group-hover:text-brand-dark flex items-center gap-1 transition-colors">Details <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Custom Service Callout -->
+                <div class="bg-white border border-slate-200 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-slate-50 transition duration-300 h-full min-h-[350px]">
+                    <div class="w-14 h-14 bg-slate-50 border border-slate-200 text-slate-400 rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-2">Custom Development</h4>
+                    <p class="text-sm text-slate-500 mb-6 px-4">Need a bespoke solution or a custom WordPress plugin for your business?</p>
+                    <a href="mailto:hello@chimpjar.com" class="bg-white border border-slate-200 text-slate-700 px-6 py-2.5 rounded-lg font-semibold text-sm hover:border-brand hover:text-brand shadow-sm transition-colors">Hire Us</a>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Need Support or Have Questions?</h2>
-            <p class="text-slate-400 text-lg mb-10">We're here to help. Reach out to us for premium support, custom requests, or general inquiries.</p>
-            <a href="mailto:support@chimpjar.com" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-indigo-500 transition shadow-lg shadow-indigo-900">
-                <i class="fa-regular fa-envelope"></i> support@chimpjar.com
-            </a>
+    <!-- Section 2: Email Templates -->
+    <section id="templates" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 md:flex md:justify-between md:items-end">
+                <div class="max-w-2xl">
+                    <h2 class="text-amber-500 font-semibold tracking-wide uppercase text-sm mb-2">Marketing Assets</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Professional Email Templates</h3>
+                </div>
+                <p class="text-slate-500 max-w-md mt-4 md:mt-0 text-sm md:text-right">Stunning, responsive HTML templates designed to increase your click-through rates and sales.</p>
+            </div>
+
+            <!-- Templates Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 1. Mailchimp Bundle (DealFuel Featured) -->
+                <div class="group bg-white border border-amber-200 hover:border-amber-400 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-amber-50 overflow-hidden border-b border-amber-100">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Mailchimp Templates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute top-4 right-4">
+                            <span class="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold bg-amber-500 text-white shadow-md uppercase tracking-wide">DealFuel Deal</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 w-10 h-10 bg-white rounded-lg shadow-md flex items-center justify-center z-10">
+                            <i class="fa-brands fa-mailchimp text-2xl text-[#FFE01B]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 mt-1">Mailchimp Templates Bundle</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">A massive collection of highly converting, fully responsive email templates for Mailchimp newsletters and promos.</p>
+                        
+                        <div class="mt-auto flex flex-col gap-3 pt-2">
+                            <a href="https://dealfuel.com/..." target="_blank" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold py-2.5 rounded-lg text-center transition-colors shadow-sm">
+                                Grab on DealFuel <i class="fa-solid fa-arrow-up-right-from-square ml-1 opacity-70"></i>
+                            </a>
+                            <a href="mailchimp-bundle.html" class="w-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-semibold py-2.5 rounded-lg text-center transition-colors">
+                                Preview Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. HubSpot Templates -->
+                <div class="group bg-white border border-slate-200 hover:border-orange-300 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-orange-50 overflow-hidden border-b border-orange-100">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="HubSpot Templates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute bottom-4 left-4 w-10 h-10 bg-white rounded-lg shadow-md flex items-center justify-center z-10">
+                            <i class="fa-brands fa-hubspot text-2xl text-[#ff7a59]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 mt-1">HubSpot B2B Pack</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Premium automated workflow templates designed specifically for B2B SaaS companies using HubSpot.</p>
+                        
+                        <div class="mt-auto flex flex-col gap-3 pt-2">
+                            <a href="#" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold py-2.5 rounded-lg text-center transition-colors shadow-sm">
+                                Buy Now - $19
+                            </a>
+                            <a href="#" class="w-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-semibold py-2.5 rounded-lg text-center transition-colors">
+                                Preview Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. HTML Transactional Emails -->
+                <div class="group bg-white border border-slate-200 hover:border-brand/30 rounded-2xl shadow-sleek hover:shadow-sleek-hover transition-all duration-300 flex flex-col overflow-hidden">
+                    <div class="relative w-full aspect-video bg-blue-50 overflow-hidden border-b border-blue-100">
+                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=800&q=80" alt="HTML Emails" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute bottom-4 left-4 w-10 h-10 bg-white rounded-lg shadow-md flex items-center justify-center z-10">
+                            <i class="fa-solid fa-code text-lg text-blue-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 mt-1">HTML Transactional Emails</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Clean, beautiful, and universally supported HTML templates for receipts, password resets, and welcome emails.</p>
+                        
+                        <div class="mt-auto flex flex-col gap-3 pt-2">
+                            <a href="#" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold py-2.5 rounded-lg text-center transition-colors shadow-sm">
+                                Buy Now - $15
+                            </a>
+                            <a href="#" class="w-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-semibold py-2.5 rounded-lg text-center transition-colors">
+                                Preview Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-8 text-center">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; 2024 ChimpJar. All rights reserved.</p>
-            <div class="flex gap-4">
-                <a href="#" class="hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-wordpress text-xl"></i></a>
+    <!-- Professional Value Proposition -->
+    <section id="features" class="py-24 bg-slate-900 text-white border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight mb-4">Why choose Chimpjar?</h2>
+                <p class="text-slate-400 text-lg">We build software that respects your performance, your wallet, and your users' privacy.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-left">
+                    <div class="w-12 h-12 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-brand text-xl mb-6"><i class="fa-solid fa-code"></i></div>
+                    <h4 class="text-xl font-bold mb-3">Engineered for Speed</h4>
+                    <p class="text-slate-400 leading-relaxed">Built with modern Vanilla JavaScript. Zero jQuery dependencies. Our tools are designed to never impact your Core Web Vitals.</p>
+                </div>
+                <div class="text-left">
+                    <div class="w-12 h-12 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-emerald-400 text-xl mb-6"><i class="fa-solid fa-unlock"></i></div>
+                    <h4 class="text-xl font-bold mb-3">Pay Once, Own Forever</h4>
+                    <p class="text-slate-400 leading-relaxed">Escape the subscription fatigue. Our transparent pricing means no hidden monthly fees and lifetime access to the version you purchase.</p>
+                </div>
+                <div class="text-left">
+                    <div class="w-12 h-12 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-purple-400 text-xl mb-6"><i class="fa-solid fa-database"></i></div>
+                    <h4 class="text-xl font-bold mb-3">Absolute Data Sovereignty</h4>
+                    <p class="text-slate-400 leading-relaxed">As self-hosted solutions, all your leads, configurations, and customer data remain strictly within your own WordPress database.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Swiper CSS (For Slider) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .swiper-pagination-bullet-active { background-color: #3b82f6 !important; }
+    </style>
+
+    <!-- Customer Reviews / Testimonials (Auto Slider) -->
+    <section class="py-24 bg-white border-t border-slate-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-brand font-semibold tracking-wide uppercase text-sm mb-2">Customer Reviews</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Loved by founders and agencies</h3>
+            </div>
+
+            <!-- Swiper Slider Container -->
+            <div class="swiper reviewSwiper !pb-14 cursor-grab active:cursor-grabbing">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Review 1 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                            <div class="flex gap-1 text-amber-400 text-sm mb-5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed mb-8 flex-grow">
+                                "The WhatsApp Multi-Agent plugin is an absolute game changer. We canceled our expensive $50/mo SaaS subscription and moved everything to Chimpjar. The lead capture form works flawlessly."
+                            </p>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80" alt="John Doe" class="w-12 h-12 rounded-full object-cover border border-slate-200">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">John Doe</h4>
+                                    <p class="text-xs text-slate-500 font-medium">E-commerce Store Owner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                            <div class="flex gap-1 text-amber-400 text-sm mb-5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed mb-8 flex-grow">
+                                "I purchased the Mailchimp template bundle from DealFuel and I'm blown away. The designs are incredibly modern, and our newsletter open and click rates have literally doubled this month."
+                            </p>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80" alt="Sarah Jenkins" class="w-12 h-12 rounded-full object-cover border border-slate-200">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">Sarah Jenkins</h4>
+                                    <p class="text-xs text-slate-500 font-medium">Marketing Director</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                            <div class="flex gap-1 text-amber-400 text-sm mb-5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed mb-8 flex-grow">
+                                "As an agency, we install the Shoppable Video and Accessibility plugins on almost all client sites. High quality code, zero bloat, and the no-monthly-fee model saves our clients thousands."
+                            </p>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80" alt="Mike Roberts" class="w-12 h-12 rounded-full object-cover border border-slate-200">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">Mike Roberts</h4>
+                                    <p class="text-xs text-slate-500 font-medium">Web Agency Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                            <div class="flex gap-1 text-amber-400 text-sm mb-5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed mb-8 flex-grow">
+                                "The Smart Size Guide plugin single-handedly reduced our clothing return rate by 30%. It's incredibly easy to set up for WooCommerce and looks native to our theme."
+                            </p>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="Amanda Lee" class="w-12 h-12 rounded-full object-cover border border-slate-200">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">Amanda Lee</h4>
+                                    <p class="text-xs text-slate-500 font-medium">Fashion Brand Owner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                            <div class="flex gap-1 text-amber-400 text-sm mb-5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed mb-8 flex-grow">
+                                "I was worried about ADA compliance lawsuits. Bought the WP Accessibility Suite from Chimpjar, installed it in 2 minutes, and all issues were resolved. Highly recommended!"
+                            </p>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="David Kim" class="w-12 h-12 rounded-full object-cover border border-slate-200">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">David Kim</h4>
+                                    <p class="text-xs text-slate-500 font-medium">Small Business Owner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Slider Pagination Dots -->
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <!-- Extra Trust Indicator -->
+            <div class="mt-8 text-center flex items-center justify-center gap-4 opacity-60">
+                <span class="h-px w-12 sm:w-24 bg-slate-300"></span>
+                <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-widest">Join 500+ happy businesses</p>
+                <span class="h-px w-12 sm:w-24 bg-slate-300"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper JS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper(".reviewSwiper", {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                loop: true,
+                autoplay: { delay: 4000, disableOnInteraction: false },
+                pagination: { el: ".swiper-pagination", clickable: true },
+                breakpoints: {
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 }
+                }
+            });
+        });
+    </script>
+    
+    <!-- FAQ Section -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-brand font-semibold tracking-wide uppercase text-sm mb-2">Got Questions?</h2>
+                <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-question text-brand mt-1"></i> Are there any monthly fees?
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed pl-8">
+                        No! All our plugins and templates are strictly one-time payments. You pay once and own the version forever without any recurring subscriptions.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-question text-brand mt-1"></i> Will these plugins slow down my site?
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed pl-8">
+                        Absolutely not. We write clean, Vanilla JavaScript code without heavy libraries like jQuery. Our plugins are highly optimized for Core Web Vitals.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-question text-brand mt-1"></i> Can I use them on client websites?
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed pl-8">
+                        Yes. Depending on the license you purchase (Single or Agency), you can install our plugins on your own websites as well as your clients' websites.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-question text-brand mt-1"></i> Do you offer refunds?
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed pl-8">
+                        Yes, we offer a 14-day money-back guarantee. If the plugin doesn't work as advertised and our support team can't fix it, we'll gladly refund your money.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action (CTA) Banner -->
+    <section class="py-20 relative overflow-hidden bg-brand-darker">
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand rounded-full blur-[100px] opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600 rounded-full blur-[100px] opacity-50 -translate-x-1/2 translate-y-1/2"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                Ready to supercharge your website?
+            </h2>
+            <p class="text-brand-100 text-lg mb-10 max-w-2xl mx-auto opacity-90">
+                Join hundreds of smart developers and marketers who use Chimpjar to increase sales, capture leads, and save money.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#plugins" class="bg-white text-brand-darker hover:bg-slate-50 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-black/10">
+                    Get Started Now
+                </a>
+                <a href="mailto:hello@chimpjar.com" class="bg-brand-darker border border-brand text-white hover:bg-brand px-8 py-4 rounded-xl font-semibold text-lg transition-colors">
+                    Contact Sales
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium SaaS Footer -->
+    <footer class="bg-slate-950 text-slate-300 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+                
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="./logoW2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-md">
+                        Premium WordPress plugins and highly converting email templates designed to supercharge your online business. No monthly fees, ever.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Products</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="whatsapp-crm.html" class="hover:text-brand transition-colors">WhatsApp CRM</a></li>
+                        <li><a href="shoppable-video.html" class="hover:text-brand transition-colors">Shoppable Video</a></li>
+                        <li><a href="accessibility.html" class="hover:text-brand transition-colors">WP Accessibility</a></li>
+                        <li><a href="size-guide.html" class="hover:text-brand transition-colors">Size Guide</a></li>
+                        <li><a href="flipbook.html" class="hover:text-brand transition-colors">Flipbook Maker</a></li>						
+                        <li><a href="mailchimp-bundle.html" class="hover:text-brand transition-colors">Email Templates</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-brand transition-colors">About Us</a></li>					
+                        <li><a href="mailto:hello@chimpjar.com" class="hover:text-brand transition-colors">Contact Support</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Custom Development</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Affiliate Program</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="terms.html" class="hover:text-brand transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
+                        <li><a href="refund.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
+                        <li><a href="licenses.html" class="hover:text-brand transition-colors">License Details</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-sm text-slate-500">
+                    &copy; 2026 Chimpjar. All rights reserved.
+                </div>
+                
+                <div class="flex items-center gap-4 text-2xl text-slate-600">
+                    <i class="fa-brands fa-stripe hover:text-indigo-400 transition-colors" title="Powered by Stripe"></i>
+                    <i class="fa-brands fa-paypal hover:text-blue-400 transition-colors" title="PayPal Accepted"></i>
+                    <i class="fa-brands fa-cc-visa hover:text-blue-500 transition-colors"></i>
+                    <i class="fa-brands fa-cc-mastercard hover:text-orange-500 transition-colors"></i>
+                </div>
             </div>
         </div>
     </footer>
