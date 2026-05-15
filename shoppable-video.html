@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoppable Video Plugin for WooCommerce | Chimpjar</title>
+    <meta name="description" content="Add TikTok-style shoppable short videos to your WooCommerce store. Instant Add-to-Cart. The best zero-monthly-fee alternative to Tolstoy and Videowise.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans:['Inter', 'sans-serif'] },
+                    colors: { 
+                        brand: '#8b5cf6', /* Vivid Purple for Video Theme */
+                        'brand-dark': '#7c3aed', 
+                        'brand-darker': '#6d28d9' 
+                    },
+                    boxShadow: { 'sleek': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'sleek-hover': '0 10px 40px -4px rgba(0, 0, 0, 0.1)' },
+                    animation: { 'float-slow': 'float 6s ease-in-out infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
+                        <img src="./logo2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
+                    <a href="#demo" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Live Demo</a>
+                    <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="hidden sm:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
+                    <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-slate-50">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/3"></div>
+            <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-fuchsia-400/10 rounded-full blur-[100px] translate-y-1/3 translate-x-1/3"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-bold mb-6 shadow-sm uppercase tracking-wide">
+                        <i class="fa-solid fa-fire text-orange-500"></i> The Ultimate Tolstoy Alternative
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                        Turn views into <span class="text-brand">sales</span> with Shoppable Videos.
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                        Bring the TikTok and Reels experience to your WooCommerce store. Add swipeable short videos and let customers instantly <b>"Add to Cart"</b> directly from the video player. 
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
+                        <a href="#pricing" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/30 flex items-center justify-center gap-2">
+                            Buy Lifetime Deal <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <p class="text-sm font-medium text-slate-500 flex flex-col gap-1">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> Save $299/month on SaaS fees</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> Works with WooCommerce</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Visual / Dynamic Mobile Mockup -->
+                <div class="relative mx-auto w-full max-w-sm lg:max-w-md h-[550px] flex justify-center items-center">
+                    <!-- Decorative glowing blob -->
+                    <div class="absolute inset-0 bg-brand/20 rounded-full blur-3xl transform scale-75 animate-pulse"></div>
+                    
+                    <!-- Mobile Phone Frame -->
+                    <div class="relative w-[280px] h-[550px] bg-slate-900 rounded-[40px] border-[8px] border-slate-900 shadow-2xl overflow-hidden z-10 animate-float-slow">
+                        <!-- Top Notch -->
+                        <div class="absolute top-0 inset-x-0 h-6 bg-slate-900 rounded-b-2xl w-32 mx-auto z-20"></div>
+                        
+                        <!-- Video Background (Placeholder) -->
+                        <img src="https://images.unsplash.com/photo-1611558709798-e009c8fd7706?auto=format&fit=crop&q=80&w=400&h=800" alt="Video playing" class="w-full h-full object-cover opacity-90">
+                        
+                        <!-- Video UI Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80 flex flex-col justify-between p-4 z-10">
+                            <!-- Top UI -->
+                            <div class="flex justify-between items-center mt-6">
+                                <span class="bg-black/50 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full"><i class="fa-solid fa-play mr-1 text-brand"></i> Reels</span>
+                                <i class="fa-solid fa-xmark text-white text-xl drop-shadow-md"></i>
+                            </div>
+                            
+                            <!-- Bottom Product Pop-up (The "Shoppable" part) -->
+                            <div class="mb-4 space-y-3">
+                                <!-- Engagement Icons -->
+                                <div class="absolute right-4 bottom-32 flex flex-col items-center gap-4 text-white drop-shadow-md">
+                                    <div class="flex flex-col items-center"><i class="fa-solid fa-heart text-2xl"></i><span class="text-xs mt-1">1.2k</span></div>
+                                    <div class="flex flex-col items-center"><i class="fa-solid fa-share text-2xl"></i><span class="text-xs mt-1">Share</span></div>
+                                </div>
+
+                                <!-- Product Card -->
+                                <div class="bg-white/95 backdrop-blur-md p-3 rounded-2xl w-[85%] shadow-2xl transform transition hover:scale-105 cursor-pointer border border-white/20">
+                                    <div class="flex gap-3">
+                                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=100&h=100" class="w-16 h-16 rounded-xl object-cover">
+                                        <div class="flex flex-col justify-between">
+                                            <h4 class="text-sm font-bold text-slate-900 leading-tight">Smart Watch Pro V2</h4>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-brand font-extrabold">$129.00</span>
+                                                <span class="text-xs text-slate-400 line-through">$199</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="w-full mt-3 bg-brand text-white font-bold py-2 rounded-xl text-sm flex items-center justify-center gap-2 shadow-md">
+                                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Tag -->
+                    <div class="absolute -left-8 top-1/3 bg-white p-3 rounded-2xl shadow-xl z-20 animate-float-slow" style="animation-delay: 1s;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-semibold">Conversion Rate</p>
+                                <p class="text-lg font-bold text-slate-900">+45%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <div class="border-y border-slate-100 bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 opacity-60">
+            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Perfect for modern brands:</span>
+            <div class="flex flex-wrap justify-center gap-8">
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-shirt text-xl"></i> Fashion</span>
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-spray-can text-xl"></i> Cosmetics</span>
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-mobile-screen text-xl"></i> Electronics</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Features Section -->
+    <section id="features" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Next-Gen E-commerce</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Why standard product images are dead.</h3>
+            </div>
+
+            <!-- Feature 1: Swipeable Feed -->
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-inner relative overflow-hidden">
+                        <!-- Mockup visual -->
+                        <div class="flex gap-4 transform rotate-[-5deg] scale-110 translate-x-4">
+                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=200&h=350" class="rounded-2xl shadow-lg opacity-60">
+                            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=200&h=350" class="rounded-2xl shadow-xl border-4 border-brand transform -translate-y-4">
+                            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=200&h=350" class="rounded-2xl shadow-lg opacity-60">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-fuchsia-100 text-fuchsia-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Swipeable TikTok-style Experience</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Modern shoppers don't want to read long descriptions. Give them an immersive, full-screen vertical video experience. They can swipe up or down to discover more products seamlessly.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 2: Instant Add to Cart -->
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
+                <div class="w-full md:w-1/2">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-cart-arrow-down"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">In-video "Add to Cart" capability</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        Remove the friction from buying. Customers can see the product in action and add it directly to their WooCommerce cart without ever pausing or leaving the video.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Auto-syncs with WooCommerce inventory</li>
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Supports variable products (Sizes/Colors)</li>
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Direct-to-Checkout option available</li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-3xl p-8 shadow-inner flex justify-center">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 w-full max-w-sm text-center">
+                            <div class="w-16 h-16 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce"><i class="fa-solid fa-check"></i></div>
+                            <h4 class="font-bold text-slate-900 text-xl mb-2">Added to Cart!</h4>
+                            <p class="text-slate-500 text-sm mb-6">Smart Watch Pro V2 has been added to your cart successfully.</p>
+                            <button class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition">Proceed to Checkout &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3: No Speed Penalty -->
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="bg-blue-50 border border-blue-100 rounded-3xl p-8 shadow-inner relative flex justify-center items-center h-full min-h-[300px]">
+                        <div class="text-center">
+                            <i class="fa-solid fa-gauge-high text-6xl text-brand mb-4"></i>
+                            <div class="bg-white px-6 py-3 rounded-xl shadow-md font-bold text-slate-700 text-lg">99/100 <span class="text-sm text-slate-400 font-normal ml-2">Core Web Vitals</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bolt"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Zero impact on page speed</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Worried that videos will slow down your site? Our lazy-load technology ensures that the video player only loads scripts and assets when the user interacts with the widget. 100% SEO friendly.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION (NEW) -->
+    <section id="custom-setup" class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+                <!-- Abstract Glow -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+                
+                <div class="w-full md:w-2/3 relative z-10 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold mb-4 uppercase tracking-wide">
+                        <i class="fa-solid fa-laptop-code text-brand"></i> Done-For-You Service
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Don't have time to set this up?</h3>
+                    <p class="text-slate-400 text-lg mb-0">
+                        Whether you need help configuring this plugin, designing your digital catalogs, or require a completely custom WordPress feature—our expert team is ready to build it for you.
+                    </p>
+                </div>
+                
+                <div class="w-full md:w-1/3 relative z-10 flex justify-center md:justify-end">
+                    <a href="mailto:hello@chimpjar.com" class="w-full text-center bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg">
+                        Hire Our Team &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Section (Focus for Ads) -->
+    <section id="pricing" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Abstract glowing circles -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand rounded-full blur-[120px] opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-fuchsia-600 rounded-full blur-[120px] opacity-20"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Ditch the Subscriptions</h2>
+            <h3 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Stop paying $99/month for SaaS.</h3>
+            <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">Get the exact same shoppable video features for your WooCommerce store with a single, one-time payment.</p>
+
+            <div class="bg-white text-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl max-w-xl mx-auto transform transition-transform hover:scale-[1.02] duration-300 border-4 border-brand/20 relative">
+                
+                <div class="absolute -top-4 right-10 bg-gradient-to-r from-orange-400 to-rose-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3">Save $1,188/year!</div>
+
+                <div class="flex justify-center items-end gap-1 mb-6 mt-4">
+                    <span class="text-6xl font-extrabold tracking-tight text-slate-900">$39</span>
+                    <span class="text-slate-500 font-medium mb-2">/one-time</span>
+                </div>
+                <p class="text-slate-600 mb-8 border-b border-slate-100 pb-8">Lifetime access to the ultimate Shoppable Video player for WordPress.</p>
+                
+                <ul class="space-y-4 text-left mb-10 font-medium text-slate-700">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Add to Cart directly from video</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Picture-in-Picture (PiP) Mode</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Swipeable TikTok-Style UI</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Self-hosted / Zero bandwidth limits</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Lifetime Updates & Support</li>
+                </ul>
+
+                <!-- LEMON SQUEEZY CHECKOUT LINK GOES HERE -->
+                <a href="#" class="block w-full bg-slate-900 hover:bg-black text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-slate-900/30">
+                    Get Lifetime Deal Now
+                </a>
+                <p class="text-xs text-slate-400 mt-4"><i class="fa-solid fa-shield-halved"></i> 14-Day Money-Back Guarantee. Secure Checkout.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Where are the videos hosted?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Unlike SaaS tools that charge for bandwidth, you can host videos directly in your WordPress Media Library, or use external links (like AWS S3, BunnyCDN, or direct MP4 links) to keep your hosting bill at zero.</p>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Does it work with Elementor or other builders?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Yes! You can display the video widget on any page using a simple shortcode, or set it to display globally as a floating widget on all product pages.</p>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Do you take a percentage of my sales?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Absolutely not. Some platforms take a 1-2% cut of the sales generated through their video players. We charge a flat one-time fee of $39. You keep 100% of your profits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium SaaS Footer -->
+    <footer class="bg-slate-950 text-slate-300 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+                
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="./logoW2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-md">
+                        Premium WordPress plugins and highly converting email templates designed to supercharge your online business. No monthly fees, ever.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Products</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="whatsapp-crm.html" class="hover:text-brand transition-colors">WhatsApp CRM</a></li>
+                        <li><a href="shoppable-video.html" class="hover:text-brand transition-colors text-brand">Shoppable Video</a></li>
+                        <li><a href="accessibility.html" class="hover:text-brand transition-colors">WP Accessibility</a></li>
+                        <li><a href="size-guide.html" class="hover:text-brand transition-colors">Size Guide</a></li>
+                        <li><a href="flipbook.html" class="hover:text-brand transition-colors">Flipbook Maker</a></li>						
+                        <li><a href="mailchimp-bundle.html" class="hover:text-brand transition-colors">Email Templates</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-brand transition-colors">About Us</a></li>					
+                        <li><a href="mailto:hello@chimpjar.com" class="hover:text-brand transition-colors">Contact Support</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Custom Development</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Affiliate Program</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="terms.html" class="hover:text-brand transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
+                        <li><a href="refund.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
+                        <li><a href="licenses.html" class="hover:text-brand transition-colors">License Details</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-sm text-slate-500">
+                    &copy; 2026 Chimpjar. All rights reserved.
+                </div>
+                
+                <div class="flex items-center gap-4 text-2xl text-slate-600">
+                    <i class="fa-brands fa-stripe hover:text-indigo-400 transition-colors" title="Powered by Stripe"></i>
+                    <i class="fa-brands fa-paypal hover:text-blue-400 transition-colors" title="PayPal Accepted"></i>
+                    <i class="fa-brands fa-cc-visa hover:text-blue-500 transition-colors"></i>
+                    <i class="fa-brands fa-cc-mastercard hover:text-orange-500 transition-colors"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
