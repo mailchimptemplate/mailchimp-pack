@@ -80,7 +80,7 @@
                     
                     <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
                         <a href="#pricing" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/30 flex items-center justify-center gap-2">
-                            Buy Lifetime Deal - $19
+                            Buy Lifetime Deal
                         </a>
                         <!-- Free Button -->
                         <a href="https://wordpress.org/plugins/chimpjar-flipbook-maker/" target="_blank" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-sm flex items-center justify-center gap-2">
@@ -265,66 +265,218 @@
             </div>
         </div>
     </section>
+<!-- Discount / Promo Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-gradient-to-br from-brand to-rose-600 rounded-[2rem] overflow-hidden shadow-2xl shadow-brand/20">
+                
+                <!-- Decorative Background Elements -->
+                <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-black/10 rounded-full blur-2xl"></div>
 
-    <!-- Pricing Section -->
+                <div class="relative z-10 px-8 py-12 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+                    
+                    <!-- Text Side -->
+                    <div class="text-center lg:text-left lg:max-w-xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold mb-6 uppercase tracking-widest backdrop-blur-md border border-white/30">
+                            <i class="fa-solid fa-bolt-lightning"></i> Special Launch Offer
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+                            Save 50% OFF <br class="hidden md:block"> on Pro Plans today!
+                        </h2>
+                        <p class="text-rose-100 text-lg mb-0 leading-relaxed">
+                            To celebrate our launch, we are offering a massive discount for the first <span class="font-bold text-white underline">100 customers</span>. Don't miss this one-time opportunity!
+                        </p>
+                    </div>
+
+                    <!-- Coupon Side -->
+                    <div class="w-full max-w-sm">
+                        <div class="bg-white rounded-3xl p-8 shadow-xl transform lg:rotate-3 transition-transform hover:rotate-0 duration-500">
+                            <p class="text-slate-500 text-center text-xs font-bold uppercase tracking-widest mb-4">Use this coupon at checkout</p>
+                            
+                            <!-- Coupon Box -->
+                            <div class="relative group cursor-pointer">
+                                <div class="absolute -inset-1 bg-gradient-to-r from-brand to-orange-400 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                                <div class="relative flex items-center justify-between bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl px-6 py-4">
+                                    <span class="text-2xl font-black text-slate-800 tracking-widest">LAUNCH60</span>
+                                    <i class="fa-regular fa-copy text-slate-400 group-hover:text-brand transition-colors"></i>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 space-y-3">
+                                <a href="#pricing" class="block w-full text-center bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand/30">
+                                    Claim My Discount Now
+                                </a>
+                                <p class="text-center text-[10px] text-slate-400 font-medium uppercase">
+                                    <i class="fa-regular fa-clock mr-1"></i> Offer expires once 100 licenses are sold
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Pricing Section -->
     <section id="pricing" class="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Simple Pricing</h2>
             <h3 class="text-4xl md:text-5xl font-extrabold mb-12 tracking-tight text-slate-900">Choose the perfect plan for you.</h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+            <!-- 4-Column Grid for Free + 3 Pro Plans -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
                 
-                <!-- Free Plan -->
-                <div class="bg-white text-slate-900 rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200 flex flex-col h-full">
-                    <h4 class="text-xl font-bold text-slate-900 mb-2">Basic (Free)</h4>
+                <!-- 1. Free Plan -->
+                <div class="bg-white text-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col h-full">
+                    <h4 class="text-lg font-bold text-slate-900 mb-1">Basic (Free)</h4>
                     <div class="flex items-end gap-1 mb-4">
-                        <span class="text-5xl font-extrabold tracking-tight text-slate-900">$0</span>
-                        <span class="text-slate-500 font-medium mb-1">/forever</span>
+                        <span class="text-4xl font-extrabold tracking-tight text-slate-900">$0</span>
+                        <span class="text-slate-500 text-xs font-medium mb-1">/forever</span>
                     </div>
-                    <p class="text-slate-600 mb-8 border-b border-slate-100 pb-8 text-sm">Perfect for basic digital catalogs and reading experiences.</p>
-                    
-                    <ul class="space-y-4 text-sm font-medium text-slate-700 mb-10 flex-grow">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-slate-400"></i> Turn PDFs & Images into Flipbooks</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-slate-400"></i> AI Text-to-Speech (Audiobook)</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-slate-400"></i> Custom Branding & Colors</li>
-                        <li class="flex items-center gap-3 opacity-50"><i class="fa-solid fa-xmark text-slate-400"></i> No Lead Generation</li>
-                        <li class="flex items-center gap-3 opacity-50"><i class="fa-solid fa-xmark text-slate-400"></i> No Shoppable Hotspots</li>
+                    <ul class="space-y-3 text-xs font-medium text-slate-600 mb-8 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-slate-400"></i> PDF & Image Flipbooks</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-slate-400"></i> AI Text-to-Speech</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-slate-400"></i> Custom Branding</li>
+                        <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Custom Cover</li>						
+                        <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Lead Generation (Email Lock)</li>
+                        <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Shoppable Hotspots</li>
+                        <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No YouTube, Vimeo, Audio & Maps</li>
+                        <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Shoppable Hotspots</li>						
                     </ul>
-
-                    <a href="https://wordpress.org/plugins/chimpjar-flipbook-maker/" target="_blank" class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 text-base font-bold py-3.5 rounded-xl transition-colors">
-                        Download from WP.org
+                    <a href="https://wordpress.org/plugins/chimpjar-flipbook-maker/" target="_blank" class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-bold py-3 rounded-lg transition-colors">
+                        Download Free
                     </a>
                 </div>
 
-                <!-- Pro Plan (Lifetime) -->
-                <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-10 shadow-sleek hover:shadow-sleek-hover transform transition-transform hover:-translate-y-1 duration-300 border border-slate-800 flex flex-col h-full relative">
-                    <div class="absolute top-0 right-8 transform -translate-y-1/2 bg-gradient-to-r from-brand to-orange-500 text-white text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow-lg">
-                        Most Popular
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-2">Lifetime Deal</h4>
+                <!-- 2. Starter Pro (Annual) -->
+                <div class="bg-white text-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col h-full border-t-4 border-t-rose-400">
+                    <h4 class="text-lg font-bold text-slate-900 mb-1">Starter Pro</h4>
                     <div class="flex items-end gap-1 mb-4">
-                        <span class="text-5xl font-extrabold tracking-tight text-white">$19</span>
-                        <span class="text-slate-400 font-medium mb-1">/one-time (1 Site)</span>
+                        <span class="text-4xl font-extrabold tracking-tight text-slate-900">$14.99</span>
+                        <span class="text-slate-500 text-xs font-medium mb-1">/year (1 Site)</span>
                     </div>
-                    <p class="text-slate-400 mb-8 border-b border-slate-800 pb-8 text-sm">Everything in Free, plus powerful sales & lead gen features.</p>
-                    
-                    <ul class="space-y-4 text-sm font-medium text-slate-300 mb-10 flex-grow">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-white">Single Site License (1 Website)</span></li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-white">Built-in Lead Generation</span></li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-white">Shoppable Hotspots & Links</span></li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Embed Video & Audio Media</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Priority Customer Support</li>
+                    <ul class="space-y-3 text-xs font-medium text-slate-600 mb-8 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-slate-900">1 Website License</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> PDF & Image Flipbooks</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> AI Text-to-Speech</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Custom Branding</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Custom Cover</li>
+						<li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Lead Generation (Email Lock)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Shoppable Hotspots</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> YouTube, Vimeo, Audio & Maps</li>
+						<li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Priority Email Support</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> 1 Year Updates & Support</li>
                     </ul>
+                    <a href="https://chimpjar.lemonsqueezy.com/checkout/buy/0d1680b6-0261-4eeb-9802-0e97cedbbb59" target="_blank" class="block w-full text-center border-2 border-brand text-brand hover:bg-brand hover:text-white text-sm font-bold py-3 rounded-lg transition-all">
+                        Buy Starter
+                    </a>
+                </div>
 
-                    <!-- LEMON SQUEEZY CHECKOUT LINK GOES HERE -->
-                    <a href="#" class="block w-full text-center bg-brand hover:bg-brand-dark text-white text-base font-bold py-3.5 rounded-xl transition-colors shadow-lg shadow-brand/30">
-                        Get Pro Lifetime Deal
+                <!-- 3. Agency Elite (Annual) - RECOMMENDED -->
+                <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-xl transform scale-105 z-10 flex flex-col h-full relative border border-slate-800">
+                    <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-brand text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full">
+                        Best Value
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-1">Agency Elite</h4>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-extrabold tracking-tight text-white">$29.99</span>
+                        <span class="text-slate-400 text-xs font-medium mb-1">/year (Unlimited)</span>
+                    </div>
+                    <ul class="space-y-3 text-xs font-medium text-slate-300 mb-8 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-white">Unlimited Websites</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> PDF & Image Flipbooks</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> AI Text-to-Speech</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Custom Branding</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Custom Cover</li>
+						<li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Lead Generation (Email Lock)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Shoppable Hotspots</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> YouTube, Vimeo, Audio & Maps</li>
+						<li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Priority Email Support</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> 1 Year Updates & Support</li>
+                    </ul>
+                    <a href="https://chimpjar.lemonsqueezy.com/checkout/buy/823a6432-56d7-48ae-b7b0-c52fb5885307" target="_blank" class="block w-full text-center bg-brand hover:bg-brand-dark text-white text-sm font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand/30">
+                        Get Agency Plan
+                    </a>
+                </div>
+
+                <!-- 4. Ultimate Lifetime (One-time) -->
+                <div class="bg-white text-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col h-full">
+                    <h4 class="text-lg font-bold text-slate-900 mb-1">Ultimate Lifetime</h4>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-extrabold tracking-tight text-slate-900">$49.99</span>
+                        <span class="text-slate-500 text-xs font-medium mb-1">/one-time (1 Site)</span>
+                    </div>
+                    <ul class="space-y-3 text-xs font-medium text-slate-600 mb-8 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-slate-900">1 Site Lifetime License</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> PDF & Image Flipbooks</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> AI Text-to-Speech</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Custom Branding</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Custom Cover</li>
+						<li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Lead Generation (Email Lock)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Shoppable Hotspots</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> YouTube, Vimeo, Audio & Maps</li>
+						<li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Priority Email Support</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> 5 Year Updates & Support</li>
+                    </ul>
+                    <a href="https://chimpjar.lemonsqueezy.com/checkout/buy/b78966d2-b1f7-4837-abd8-e93c569d2e97" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-black text-white text-sm font-bold py-3 rounded-lg transition-colors">
+                        Buy Lifetime Deal
                     </a>
                 </div>
 
             </div>
-            <p class="text-sm text-slate-500 mt-8"><i class="fa-solid fa-shield-halved text-brand"></i> 14-Day Money-Back Guarantee on Pro. Secure Checkout.</p>
+            <p class="text-xs text-slate-500 mt-10"><i class="fa-solid fa-shield-halved text-brand"></i> All Pro plans come with a 14-Day Money-Back Guarantee. Secure Checkout via LemonSqueezy.</p>
         </div>
+		
+<!-- All Pro Features Checklist -->
+            <div class="mt-20 max-w-4xl mx-auto border-t border-slate-200 pt-12">
+                <h4 class="text-xl font-bold text-slate-900 mb-8">All Pro Plans Include:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8 text-left">
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 w-5 h-5 rounded-full bg-rose-100 text-brand flex items-center justify-center flex-shrink-0 text-[10px]"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Shoppable Hotspots</p>
+                            <p class="text-slate-500 text-xs">Add "Buy Now" tags to your PDF.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 w-5 h-5 rounded-full bg-rose-100 text-brand flex items-center justify-center flex-shrink-0 text-[10px]"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Lead Generation</p>
+                            <p class="text-slate-500 text-xs">Lock pages to collect emails.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 w-5 h-5 rounded-full bg-rose-100 text-brand flex items-center justify-center flex-shrink-0 text-[10px]"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Multimedia Embeds</p>
+                            <p class="text-slate-500 text-xs">YouTube, Vimeo, Audio & Maps.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 w-5 h-5 rounded-full bg-rose-100 text-brand flex items-center justify-center flex-shrink-0 text-[10px]"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">AI Text-to-Speech</p>
+                            <p class="text-slate-500 text-xs">Built-in "Read Aloud" function.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 w-5 h-5 rounded-full bg-rose-100 text-brand flex items-center justify-center flex-shrink-0 text-[10px]"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Visual Studio Editor</p>
+                            <p class="text-slate-500 text-xs">Drag-and-drop elements visually.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 w-5 h-5 rounded-full bg-rose-100 text-brand flex items-center justify-center flex-shrink-0 text-[10px]"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Custom Branding</p>
+                            <p class="text-slate-500 text-xs">Remove logo & use your colors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>		
+		
     </section>
 
     <!-- FAQ Section -->
@@ -338,7 +490,7 @@
                 <!-- FAQ Item 1 (Free vs Pro) -->
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
                     <h4 class="text-lg font-bold text-slate-900 mb-2">What is the difference between the Free and Pro version?</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">The <a href="https://wordpress.org/plugins/chimpjar-flipbook-maker/" target="_blank" class="text-brand hover:underline font-medium">Free version on WordPress.org</a> allows you to create standard flipbooks, use the AI Audiobook reader, and change colors. The Pro version ($19 Lifetime for 1 Site) unlocks advanced marketing features like Lead Generation (email gating), Shoppable Hotspots, and Rich Media embedding.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">The <a href="https://wordpress.org/plugins/chimpjar-flipbook-maker/" target="_blank" class="text-brand hover:underline font-medium">Free version on WordPress.org</a> allows you to create standard flipbooks, use the AI Audiobook reader, and change colors. The Pro version unlocks advanced marketing features like Lead Generation (email gating), Shoppable Hotspots, and Rich Media embedding.</p>
                 </div>
                 <!-- FAQ Item 2 -->
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
