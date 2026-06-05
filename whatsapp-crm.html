@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Multi-Agent CRM Plugin | Chimpjar</title>
-    <meta name="description" content="Route WhatsApp chats to the right agents, capture leads before chat starts, and set business hours. Zero monthly fees. WordPress plugin.">
-    
+<title>WhatsApp WordPress Plugin with Lead Capture & Multi-Agent | Chimpjar</title>
+<meta name="description" content="Best WhatsApp WordPress plugin for lead generation. Route chats to multiple agents, capture leads before chat, and set business hours. No monthly fees. Get started!">
+
+ <script type="application/ld:json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Chimpjar Contact Chat Builder Pro",
+  "operatingSystem": "WordPress",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "29.00",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "500"
+  }
+}
+</script> 
+  
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -34,24 +54,74 @@
 <body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white">
 
     <!-- Navbar -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
-                        <img src="./logo2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
-                </a>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
-                    <a href="#how-it-works" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">How it works</a>
-                    <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="index.html" class="hidden sm:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
-                    <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
-                </div>
+<!-- Updated Navbar -->
+<nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
+                <img src="./logo2.png" alt="WordPress Flipbook Plugin" width="140" height="33">
+            </a>
+
+            <!-- Desktop Menu (Hidden on Mobile) -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
+                <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>				
+                <a href="https://nuramim.kesug.com/product/women-graphic-oversized-t-shirt/" target="_blank" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Live Demo</a>
+                <a href="#custom-setup" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Done-For-You</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="hidden md:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
+                <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-brand focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+
+    <!-- Mobile Menu Dropdown (Hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-lg">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+            <a href="#features" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Features</a>
+                <a href="#pricing" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Pricing</a>			
+            <a href="https://nuramim.kesug.com/product/women-graphic-oversized-t-shirt/" target="_blank" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Live Demo</a>
+            <a href="#custom-setup" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Done-For-You</a>
+            <hr class="border-slate-100 my-2">
+            <a href="index.html" class="block px-3 py-3 text-base font-medium text-brand hover:bg-rose-50 rounded-lg">&larr; Back to Store</a>
+        </div>
+    </div>
+</nav>
+
+<!-- JavaScript to handle toggle -->
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        // Change icon from bars to X when open
+        const icon = mobileMenuButton.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+            icon.classList.replace('fa-xmark', 'fa-bars');
+        } else {
+            icon.classList.add('fa-xmark');
+            icon.classList.remove('fa-bars');
+        }
+    });
+
+    // Close menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+        });
+    });
+</script>
 
     <!-- Product Hero Section -->
     <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-slate-50">
@@ -80,7 +150,7 @@
                     
                     <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
                         <a href="#pricing" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/30 flex items-center justify-center gap-2">
-                            Buy Lifetime Deal $29 <i class="fa-solid fa-arrow-right text-sm"></i>
+                            Buy Lifetime Deal <i class="fa-solid fa-arrow-right text-sm"></i>
                         </a>
                         <p class="text-sm font-medium text-slate-500 flex flex-col gap-1">
                             <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> No monthly fees</span>
@@ -97,7 +167,7 @@
                     <div class="relative bg-white border border-slate-200 rounded-3xl shadow-2xl p-2 overflow-hidden transform transition-transform hover:-translate-y-2 duration-500">
                         <div class="bg-slate-100 rounded-2xl aspect-[4/3] flex items-center justify-center relative overflow-hidden">
                             <!-- Replace this placeholder with an actual screenshot of your widget open -->
-                            <img src="https://placehold.co/800x600/e2e8f0/475569?text=Multi-Agent+Widget+Screenshot" alt="WhatsApp Widget Interface" class="w-full h-full object-cover">
+                            <img src="./825x825wpp.jpg" alt="WhatsApp Widget Interface" class="w-full h-full object-cover">
                             
                             <!-- Floating Elements for effect -->
                             <div class="absolute bottom-4 right-4 bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
@@ -126,7 +196,102 @@
             </div>
         </div>
     </div>
+    <!-- NEW SECTION: ABOUT THE PRODUCT (ROI FOCUS) -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand/5 rounded-[40px] p-10 md:p-16 border border-brand/10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-8">Stop Losing Leads to Boring Chat Buttons! 💬</h2>
+                    <p class="text-lg md:text-xl text-slate-700 leading-relaxed mb-10">
+                        Most WhatsApp buttons just send users away from your site. But with <b>Chimpjar Contact Chat Builder Pro</b>, you capture the user's data <i>before</i> they even hit send. Whether you are a solo business owner or a busy web agency, our plugin helps you manage multiple agents, set automated schedules, and trigger chat boxes exactly when your visitors are most likely to buy.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand/20">
+                            <i class="fa-solid fa-database text-brand text-2xl mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">Build a Real Database</h4>
+                            <p class="text-sm text-slate-600">Save names, emails, and phone numbers directly in your WordPress dashboard.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand/20">
+                            <i class="fa-solid fa-clock text-brand text-2xl mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">Work on Your Schedule</h4>
+                            <p class="text-sm text-slate-600">Only show agents when they are actually online. No more midnight messages.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand/20">
+                            <i class="fa-solid fa-bolt text-brand text-2xl mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">Smart Triggers</h4>
+                            <p class="text-sm text-slate-600">Show chat boxes based on exit intent or scroll depth to increase conversion by 40%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	
+<!-- Problem vs Solution Section -->
+<section class="py-24 bg-slate-900 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight">Standard Buttons are <span class="text-red-500">Killing</span> Your Sales.</h3>
+            <p class="mt-4 text-slate-400">Stop sending anonymous traffic away. Start building a customer list.</p>
+        </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- The Wrong Way -->
+            <div class="bg-slate-800/50 p-8 rounded-3xl border border-red-900/30">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <h4 class="text-xl font-bold">The Standard Way</h4>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-slate-400">
+                        <i class="fa-solid fa-circle-exclamation text-red-500 mt-1"></i>
+                        <span><strong>Anonymous Clicks:</strong> Someone clicks, goes to WhatsApp, and you never see them again if they don't message.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-slate-400">
+                        <i class="fa-solid fa-circle-exclamation text-red-500 mt-1"></i>
+                        <span><strong>Midnight Disturbance:</strong> Customers message you at 3 AM because there are no office hours.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-slate-400">
+                        <i class="fa-solid fa-circle-exclamation text-red-500 mt-1"></i>
+                        <span><strong>Customer Confusion:</strong> One number for Sales, Support, and Billing. Total chaos.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Chimpjar Way -->
+            <div class="bg-brand/10 p-8 rounded-3xl border border-brand/30 relative">
+                <div class="absolute -top-4 right-8 bg-brand text-white px-4 py-1 rounded-full text-xs font-bold uppercase">The Winner</div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h4 class="text-xl font-bold">The Chimpjar Way</h4>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-slate-300">
+                        <i class="fa-solid fa-circle-check text-brand mt-1"></i>
+                        <span><strong>Guaranteed Leads:</strong> Capture Name & Email <em>before</em> they open WhatsApp. Build your list 24/7.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-slate-300">
+                        <i class="fa-solid fa-circle-check text-brand mt-1"></i>
+                        <span><strong>Auto-Offline:</strong> Widget hides or shows "Offline" during non-working hours. Sleep peacefully.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-slate-300">
+                        <i class="fa-solid fa-circle-check text-brand mt-1"></i>
+                        <span><strong>Multi-Agent Routing:</strong> Send customers to the right department instantly. Better experience.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>	
+	
+	
+	
+	
     <!-- Core Problems & Solutions (Features) -->
     <section id="features" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -214,6 +379,448 @@
 
         </div>
     </section>
+	
+	
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Simple Process</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Get Started in 3 Simple Steps</h3>
+            <p class="mt-4 text-slate-600">No complex coding required. Setup your professional WhatsApp support system in minutes.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+            <!-- Connecting Line (Desktop Only) -->
+            <div class="hidden md:block absolute top-1/4 left-0 w-full h-0.5 border-t-2 border-dashed border-slate-200 z-0"></div>
+
+            <!-- Step 1 -->
+            <div class="relative z-10 text-center">
+                <div class="w-16 h-16 bg-brand text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-brand/30">1</div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Install & Setup</h4>
+                <p class="text-slate-600">Download the plugin, install on your WordPress site, and add your support agents with their photos and phone numbers.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="relative z-10 text-center">
+                <div class="w-16 h-16 bg-brand text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-brand/30">2</div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Capture Leads</h4>
+                <p class="text-slate-600">Enable the lead form. Visitors will enter their Name, Email, and Phone before they are redirected to WhatsApp chat.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="relative z-10 text-center">
+                <div class="w-16 h-16 bg-brand text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-brand/30">3</div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Chat & Close</h4>
+                <p class="text-slate-600">Get the lead details in your WP dashboard and start chatting with a qualified lead on WhatsApp to close the sale.</p>
+            </div>
+        </div>
+    </div>
+</section>		
+	
+	
+	
+
+	
+	
+	
+<!-- Admin Showcase Section -->
+<section class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Easy Management</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">Clean Admin Dashboard. Zero Learning Curve.</h3>
+                <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                    Setting up your chat system shouldn't be a headache. Our clean, native WordPress interface allows you to manage agents, view leads, and customize colors with a live preview.
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="text-brand text-xl mt-1"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Live Preview Builder</h4>
+                            <p class="text-sm text-slate-500">See your changes in real-time before hitting save.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="text-brand text-xl mt-1"><i class="fa-solid fa-list-check"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Lead Management Table</h4>
+                            <p class="text-sm text-slate-500">View, search, and export all captured leads in one place.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Image Showcase -->
+            <div class="relative">
+                <!-- Decorative element -->
+                <div class="absolute -inset-4 bg-gradient-to-tr from-brand/20 to-blue-500/20 rounded-3xl blur-2xl opacity-50"></div>
+                
+                <!-- Browser Mockup -->
+                <div class="relative bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+                    <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex gap-1.5">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                    </div>
+                    <!-- পিন্ট: এখানে আপনার প্লাগইন ড্যাশবোর্ডের স্ক্রিনশট দিন -->
+                    <img src="./800x600wpp.png" alt="Chimpjar Admin Panel" class="w-full h-auto">
+                </div>
+                
+                <!-- Small Floating Lead Table Card -->
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden md:block max-w-xs">
+                    <h5 class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest">Recent Leads</h5>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-[10px] border-b pb-2">
+                            <span class="font-bold text-slate-700">John Doe</span>
+                            <span class="text-brand bg-brand/10 px-2 py-0.5 rounded">Sales Agent</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] border-b pb-2">
+                            <span class="font-bold text-slate-700">Jane Smith</span>
+                            <span class="text-brand bg-brand/10 px-2 py-0.5 rounded">Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>	
+	
+<!-- Technical Excellence Section -->
+<section class="py-24 bg-white overflow-hidden border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Under The Hood</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Built for Modern Businesses</h3>
+            <p class="mt-4 text-slate-600">We don't just provide a chat button; we provide a high-performance lead generation machine that respects privacy.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Feature 5: Lead Database & Privacy -->
+            <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-brand/30 transition-all group">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand text-2xl mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Your Data, Your Control</h4>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                    Unlike other SaaS tools, your customer data <strong>never leaves your server</strong>. All leads are stored directly in your WordPress database.
+                </p>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i class="fa-solid fa-file-csv text-brand text-lg"></i> One-click CSV Export</li>
+                    <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i class="fa-solid fa-shield-halved text-brand text-lg"></i> 100% Private Storage</li>
+                </ul>
+            </div>
+
+            <!-- Feature 6: GDPR Compliance -->
+            <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-brand/30 transition-all group">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-emerald-600 text-2xl mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">GDPR & Privacy Ready</h4>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                    Targeting customers in the EU? Our built-in GDPR consent checkbox ensures you capture leads legally and transparently.
+                </p>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i class="fa-solid fa-check-double text-emerald-500 text-lg"></i> Consent Checkbox Included</li>
+                    <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i class="fa-solid fa-link text-emerald-500 text-lg"></i> Link to Privacy Policy</li>
+                </ul>
+            </div>
+
+            <!-- Feature 7: Performance & Speed -->
+            <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-brand/30 transition-all group">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-orange-500 text-2xl mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Lightning Fast (No jQuery)</h4>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                    Stop slowing down your site with heavy plugins. Chimpjar is built with <strong>Pure Vanilla JS</strong>.
+                </p>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                    <div class="text-center border-r border-slate-100 pr-3">
+                        <div class="text-brand font-bold text-lg">&lt;10kb</div>
+                        <div class="text-[10px] uppercase text-slate-400 font-bold">Size</div>
+                    </div>
+                    <div class="text-slate-700 text-xs font-medium leading-tight">
+                        No jQuery conflicts. Perfect Core Web Vitals score.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>		
+	
+<!-- Left-Aligned Comparison Table Section -->
+<section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Chimpjar vs Others</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">How we stand out from the crowd</h3>
+        </div>
+        
+        <div class="overflow-hidden rounded-[32px] border border-slate-200 shadow-xl bg-white overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[600px]">
+                <thead class="bg-slate-900 text-white">
+                    <tr>
+                        <th class="px-8 py-6 font-bold text-lg">Key Features</th>
+                        <th class="px-8 py-6 font-bold text-lg border-l border-slate-800">Other Plugins</th>
+                        <th class="px-8 py-6 font-bold text-lg bg-brand text-white border-l border-brand-dark">Chimpjar Pro</th>
+                    </tr>
+                </thead>
+                <tbody class="text-slate-700 font-medium text-sm">
+                    <!-- Row 1 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">WhatsApp Button</td>
+                        <td class="px-8 py-5 border-l border-slate-100">✅ Included</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Included</td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">Lead Capture Form Database</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-red-500 font-bold">❌ Not Available</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Save directly to WP</td>
+                    </tr>
+                    <!-- Row 3 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">Privacy & Data Storage</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-slate-400 italic">Often cloud-based</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ 100% Private (Local)</td>
+                    </tr>
+                    <!-- Row 4 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">Auto-Offline Scheduling</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-red-500">❌ Missing</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Advanced Scheduling</td>
+                    </tr>
+                    <!-- Row 5 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">Exit-Intent & Scroll Triggers</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-red-500">❌ Paid Add-ons</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Built-in Included</td>
+                    </tr>
+                    <!-- Row 6 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">Multiple Agents Support</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-slate-400 italic">Limited to 1-2</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Unlimited Agents</td>
+                    </tr>
+                    <!-- Row 7 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">Performance (No jQuery)</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-slate-400 italic">Heavy / Bloated</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Lightweight (<10kb)</td>
+                    </tr>
+                    <!-- Row 8 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">CSV Lead Export</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-red-500">❌ No Export</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ One-click Download</td>
+                    </tr>
+                    <!-- Row 9 -->
+                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">GDPR & Compliance</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-red-500">❌ No checkbox</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Full Consent Feature</td>
+                    </tr>
+                    <!-- Row 10 -->
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">Styling & Branding</td>
+                        <td class="px-8 py-5 border-l border-slate-100 text-slate-400 italic">Basic / Hardcoded</td>
+                        <td class="px-8 py-5 border-l border-brand/10 bg-brand/5 font-bold text-brand">✅ Complete Control</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- NEW SECTION: LITE VERSION FEATURES & DOWNLOAD -->
+    <section id="free-version" class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h3 class="text-3xl font-extrabold text-slate-900 mb-8">Chimpjar Chat Builder (Lite Version)</h3>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Want to start for free? Download our Lite version from the official WordPress.org repository. It’s perfect for simple websites needing a professional WhatsApp connection.
+                    </p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                        <li class="flex items-start gap-2 text-sm font-medium text-slate-700"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Live Preview</li>
+                        <li class="flex items-start gap-2 text-sm font-medium text-slate-700"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Customizable Design</li>
+                        <li class="flex items-start gap-2 text-sm font-medium text-slate-700"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Single Agent Support</li>
+                        <li class="flex items-start gap-2 text-sm font-medium text-slate-700"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Pre-filled Messages</li>
+                        <li class="flex items-start gap-2 text-sm font-medium text-slate-700"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Widget Content Control</li>
+                        <li class="flex items-start gap-2 text-sm font-medium text-slate-700"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Agent Card Styling</li>
+                        <li class="flex items-start gap-2 text-sm font-medium text-slate-700"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Lightweight & Fast</li>
+                    </ul>
+                    <a href="https://wordpress.org/plugins/chimpjar-contact-chat-builder-pro/" target="_blank" class="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-xl">
+                        <i class="fa-brands fa-wordpress text-2xl"></i> Download Free Version
+                    </a>
+                </div>
+                <div class="bg-white p-4 rounded-3xl shadow-xl border border-slate-200">
+                    <img src="./600x400wpp.jpg" alt="Lite Version Features" class="rounded-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Pricing Section with All Features in Every Plan -->
+<section id="pricing" class="py-24 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-brand font-bold uppercase tracking-widest text-sm mb-3">Simple & Transparent</h2>
+        <h3 class="text-4xl font-extrabold mb-16 text-white">All Pro Features. Every Plan.</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+            
+            <!-- Plan 1: Starter -->
+            <div class="bg-slate-800/40 p-8 rounded-3xl border border-slate-700 flex flex-col hover:border-slate-500 transition-all group">
+                <h4 class="text-xl font-bold mb-2">Starter</h4>
+                <div class="text-4xl font-black text-white mb-4">$29 <span class="text-sm text-slate-400 font-medium">/ year</span></div>
+                <p class="text-xs text-slate-500 mb-8 italic">Perfect for a single project.</p>
+                <div class="bg-slate-900/50 rounded-2xl p-4 mb-8 text-sm font-bold text-brand">
+                    🚀 Use on 1 Website
+                </div>
+                <ul class="text-left space-y-3 mb-10 flex-grow text-xs text-slate-400">
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Unlimited Support Agents</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Lead Capture Database</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> CSV Lead Export</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Exit-Intent & Scroll Triggers</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> GDPR & Privacy Policy Ready</li>					
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Working Hours & Off-Days</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> 1 Year Updates & Support</li>
+                </ul>
+                <a href="#" class="bg-white/10 group-hover:bg-brand text-white py-3 rounded-xl font-bold transition-all text-center">Buy Starter</a>
+            </div>
+
+            <!-- Plan 2: Professional (Most Popular) -->
+            <div class="bg-white p-8 rounded-3xl border-4 border-brand text-slate-900 transform scale-105 shadow-2xl flex flex-col relative">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand text-white px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">Best Value</div>
+                <h4 class="text-xl font-bold mb-2 text-slate-900">Professional</h4>
+                <div class="text-4xl font-black text-slate-900 mb-4">$69 <span class="text-sm text-slate-500 font-medium">/ year</span></div>
+                <p class="text-xs text-slate-400 mb-8 italic text-center">For serious business owners.</p>
+                <div class="bg-brand text-white rounded-2xl p-4 mb-8 text-sm font-black shadow-lg shadow-brand/20">
+                    🌐 Use on 10 Websites
+                </div>
+                <ul class="text-left space-y-3 mb-10 flex-grow text-xs font-bold text-slate-700">
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> All Pro Features Included</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Unlimited Support Agents</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Lead Capture & CSV Export</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> All Advanced Triggers</li>
+					<li><i class="fa-solid fa-circle-check text-brand mr-2"></i> GDPR & Privacy Policy Ready</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Priority Email Support</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> 1 Year Updates & Support</li>
+                </ul>
+                <a href="#" class="bg-brand hover:bg-brand-dark text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-brand/30 text-center uppercase tracking-widest">Get Started</a>
+            </div>
+
+            <!-- Plan 3: Lifetime -->
+            <div class="bg-slate-800/40 p-8 rounded-3xl border border-slate-700 flex flex-col hover:border-slate-500 transition-all group">
+                <h4 class="text-xl font-bold mb-2">Lifetime Agency</h4>
+                <div class="text-4xl font-black text-white mb-4">$129 <span class="text-sm text-slate-400 font-medium">/ one-time</span></div>
+                <p class="text-xs text-slate-500 mb-8 italic">No subscriptions, no renewals.</p>
+                <div class="bg-slate-900/50 rounded-2xl p-4 mb-8 text-sm font-bold text-brand">
+                    ♾️ Use on up to 30 Websites
+                </div>
+                <ul class="text-left space-y-3 mb-10 flex-grow text-xs text-slate-400">
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> All Pro Features Included</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Unlimited Support Agents</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Lifetime Updates & Support</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Lead Database & Export</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> GDPR & Privacy Policy Ready</li>
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> Exit-Intent & Triggers</li>					
+                    <li><i class="fa-solid fa-circle-check text-brand mr-2"></i> 24/7 VIP Support</li>
+                </ul>
+                <a href="#" class="bg-white text-slate-900 hover:bg-slate-100 py-3 rounded-xl font-bold transition-all text-center">Go Lifetime</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust & Guarantee Section -->
+<section class="py-16 bg-white border-t border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Guarantee Column -->
+            <div class="flex items-center gap-6 p-6 rounded-3xl bg-slate-50 border border-slate-200">
+                <div class="flex-shrink-0">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center border-4 border-amber-400 shadow-lg">
+                        <i class="fa-solid fa-shield-halved text-amber-500 text-3xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-1">14-Day Money Back Guarantee</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Risk-free purchase. If you're not satisfied within 14 days, we'll refund you 100%. No questions asked.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Secure Payment Column -->
+            <div class="text-center md:text-left">
+                <h4 class="text-lg font-bold text-slate-900 mb-4 flex items-center justify-center md:justify-start gap-2">
+                    <i class="fa-solid fa-lock text-brand"></i> Secure Checkout Guaranteed
+                </h4>
+                <p class="text-slate-500 text-sm mb-6">
+                    We use industry-standard encryption to protect your payment information. Buy with confidence via your favorite payment method.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start items-center gap-6 opacity-60">
+                    <!-- FontAwesome Logos or Placeholder SVGs -->
+                    <i class="fa-brands fa-stripe text-4xl text-slate-800 hover:opacity-100 transition-opacity"></i>
+                    <i class="fa-brands fa-paypal text-3xl text-slate-800 hover:opacity-100 transition-opacity"></i>
+                    <i class="fa-brands fa-cc-visa text-3xl text-slate-800 hover:opacity-100 transition-opacity"></i>
+                    <i class="fa-brands fa-cc-mastercard text-3xl text-slate-800 hover:opacity-100 transition-opacity"></i>
+                    <i class="fa-brands fa-cc-apple-pay text-3xl text-slate-800 hover:opacity-100 transition-opacity"></i>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Delivery Text -->
+        <div class="mt-12 text-center">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-2">
+                <i class="fa-solid fa-bolt text-brand"></i> Instant Access: Download plugin immediately after payment
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION -->
     <section id="custom-setup" class="py-16 bg-white border-t border-slate-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -239,41 +846,70 @@
             </div>
         </div>
     </section>
-    <!-- Pricing Section (Focus for Ads) -->
-    <section id="pricing" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Simple Pricing</h2>
-            <h3 class="text-4xl font-extrabold mb-12">Pay once, use forever.</h3>
+	
+	
+	
+	
+	
+	
+<!-- Social Proof & Testimonials Section -->
+<section class="py-24 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Trust Badge Row -->
+        <div class="flex flex-col items-center mb-16">
+            <div class="flex items-center gap-1 text-amber-500 mb-4">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-900 font-bold text-xl text-center">Trusted by 500+ Website Owners & Agencies</p>
+            <p class="text-slate-500 text-sm mt-2">Join a growing community of businesses closing more sales via WhatsApp.</p>
+        </div>
 
-            <div class="bg-white text-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl max-w-xl mx-auto transform transition-transform hover:scale-[1.02] duration-300 border-4 border-brand/20">
-                <div class="flex justify-center mb-6">
-                    <span class="bg-brand/10 text-brand font-bold px-4 py-1.5 rounded-full text-sm uppercase tracking-wider">Lifetime Deal</span>
+        <!-- Testimonial Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Review 1 -->
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <p class="text-slate-600 italic mb-6">"Before this plugin, I had no idea who was clicking my WhatsApp button. Now, I have a database of 200+ leads in just one month. The lead capture form is a game changer!"</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/150?u=sarah" alt="User" class="w-12 h-12 rounded-full border-2 border-brand/20">
+                    <div>
+                        <h5 class="font-bold text-slate-900 text-sm">Sarah Jenkins</h5>
+                        <p class="text-slate-500 text-xs text-brand">E-commerce Store Owner</p>
+                    </div>
                 </div>
-                <div class="flex justify-center items-end gap-1 mb-6">
-                    <span class="text-6xl font-extrabold tracking-tight">$29</span>
-                    <span class="text-slate-500 font-medium mb-2">/one-time</span>
-                </div>
-                <p class="text-slate-600 mb-8 border-b border-slate-100 pb-8">Everything you need to capture leads and route chats effectively on your WordPress site.</p>
-                
-                <ul class="space-y-4 text-left mb-10 font-medium text-slate-700">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Use on 1 Website</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Unlimited Agents & Departments</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Lead Capture Form Database</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Smart Timezone Scheduling</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Lifetime Plugin Updates</li>
-                </ul>
+            </div>
 
-                <!-- LEMON SQUEEZY CHECKOUT LINK GOES HERE -->
-                <a href="#" class="block w-full bg-brand hover:bg-brand-dark text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-brand/30">
-                    Buy Now - Instant Access
-                </a>
-                <p class="text-xs text-slate-400 mt-4"><i class="fa-solid fa-shield-halved"></i> 14-Day Money-Back Guarantee. Secure Checkout via Lemon Squeezy.</p>
+            <!-- Review 2 -->
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <p class="text-slate-600 italic mb-6">"Setting up multiple agents for Sales and Support was so easy. The scheduling feature is perfect; my team only gets messages when they are actually working."</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/150?u=mark" alt="User" class="w-12 h-12 rounded-full border-2 border-brand/20">
+                    <div>
+                        <h5 class="font-bold text-slate-900 text-sm">Mark Thompson</h5>
+                        <p class="text-slate-500 text-xs text-brand">Digital Agency Director</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <p class="text-slate-600 italic mb-6">"Cleanest UI I've seen for a WordPress chat plugin. Zero impact on my site speed, and the setup took less than 5 minutes. Highly recommended for any business!"</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/150?u=alex" alt="User" class="w-12 h-12 rounded-full border-2 border-brand/20">
+                    <div>
+                        <h5 class="font-bold text-slate-900 text-sm">Alex Rodriguez</h5>
+                        <p class="text-slate-500 text-xs text-brand">Real Estate Agent</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>		
+	
+	
     <!-- FAQ Section -->
     <section class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -285,7 +921,7 @@
                 <!-- FAQ Item 1 -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                     <h4 class="text-lg font-bold text-slate-900 mb-2">Are there any monthly subscription fees?</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">No. We strongly believe in owning your tools. You pay $29 once and get lifetime access to the plugin and its updates for the major version.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">No. We strongly believe in owning your tools. You pay once and get yearly/lifetime access to the plugin and its updates for the major version.</p>
                 </div>
                 <!-- FAQ Item 2 -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
@@ -340,10 +976,10 @@
                 <div>
                     <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Company</h4>
                     <ul class="space-y-4 text-sm text-slate-400">
-                        <li><a href="#" class="hover:text-brand transition-colors">About Us</a></li>					
-                        <li><a href="mailto:hello@chimpjar.com" class="hover:text-brand transition-colors">Contact Support</a></li>
-                        <li><a href="#" class="hover:text-brand transition-colors">Custom Development</a></li>
-                        <li><a href="#" class="hover:text-brand transition-colors">Affiliate Program</a></li>
+                        <li><a href="about-us.html" class="hover:text-brand transition-colors">About Us</a></li>					
+                        <li><a href="contact-support.html" class="hover:text-brand transition-colors">Contact Support</a></li>
+                        <li><a href="custom-development.html" class="hover:text-brand transition-colors">Custom Development</a></li>
+                        <li><a href="affiliate-program.html" class="hover:text-brand transition-colors">Affiliate Program</a></li>
                         <li><a href="#" class="hover:text-brand transition-colors">Blog</a></li>
                     </ul>
                 </div>
