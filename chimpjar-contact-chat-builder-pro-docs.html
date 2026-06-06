@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Chimpjar Contact Chat Builder Pro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: '#10b981', 'brand-dark': '#059669' }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .sidebar-link.active { color: #10b981; border-left-color: #10b981; background-color: #f0fdf4; font-weight: 700; }
+        code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #e11d48; font-family: monospace; }
+        pre code { background: none; color: #10b981; padding: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-700 antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand/30">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-slate-900 text-xl font-black tracking-tight block leading-none">Chimpjar Pro</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Documentation v1.0.3</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="mailto:hello@chimpjar.com" class="text-sm font-bold text-slate-500 hover:text-brand transition-colors italic">Need help? Support is 24/7</a>
+                    <a href="https://chimpjar.com" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-brand transition-all shadow-xl shadow-slate-200">Visit Store</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-12 py-12">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="lg:w-72 flex-shrink-0">
+                <nav class="sticky top-32 space-y-1">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 mb-4">Start Here</p>
+                    <a href="#intro" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Introduction</a>
+                    <a href="#installation" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Installation Guide</a>
+                    
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 mt-10 mb-4">Core Setup</p>
+                    <a href="#global-settings" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Global Appearance</a>
+                    <a href="#agent-management" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Agent Management</a>
+                    <a href="#scheduling" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Business Hours</a>
+                    
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 mt-10 mb-4">Lead Generation</p>
+                    <a href="#lead-management" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Database & CSV</a>
+                    <a href="#smart-triggers" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Display Triggers</a>
+                    <a href="#display-rules" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-4 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Targeting Rules</a>
+
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 mt-10 mb-4">Usage</p>
+                    <a href="#shortcodes" class="sidebar-link block px-4 py-3 text-sm font-medium border-l-2 border-transparent hover:bg-slate-100 transition-all rounded-r-lg">Shortcode Mastery</a>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 bg-white p-8 md:p-16 rounded-[40px] border border-slate-200 shadow-sm min-w-0">
+                
+                <!-- 1. Introduction -->
+                <section id="intro" class="mb-20 scroll-mt-32">
+                    <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tight leading-tight">Introduction</h1>
+                    <p class="text-xl text-slate-600 leading-relaxed mb-8">
+                        <strong>Chimpjar Contact Chat Builder Pro</strong> is a conversion-focused WhatsApp widget for WordPress. It doesn't just show a button; it captures <strong>qualified leads</strong> by requiring users to fill out a custom form before they start a conversation on WhatsApp.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-brand/5 border border-brand/10 p-6 rounded-3xl">
+                            <h4 class="font-bold text-brand-dark mb-2">No API Required</h4>
+                            <p class="text-sm text-slate-600">Works with standard WhatsApp or WhatsApp Business accounts without any monthly API costs.</p>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-100 p-6 rounded-3xl">
+                            <h4 class="font-bold text-blue-700 mb-2">Lead Database</h4>
+                            <p class="text-sm text-slate-600">Every click is a lead. Save names, emails, and phone numbers directly into your own WordPress database.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-slate-100 my-16">
+
+                <!-- 2. Installation -->
+                <section id="installation" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Installation Guide</h2>
+                    <div class="space-y-6">
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center flex-shrink-0 font-black shadow-lg">1</div>
+                            <div>
+                                <h4 class="font-bold text-lg text-slate-900 mb-2">Upload the Plugin</h4>
+                                <p class="text-slate-600 leading-relaxed">Download the <code>chimpjar-contact-chat-builder-pro.zip</code> from your dashboard. In your WordPress admin, navigate to <strong>Plugins > Add New > Upload</strong> and choose the file.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center flex-shrink-0 font-black shadow-lg">2</div>
+                            <div>
+                                <h4 class="font-bold text-lg text-slate-900 mb-2">Activation</h4>
+                                <p class="text-slate-600 leading-relaxed">After uploading, click <strong>Activate</strong>. Upon activation, the plugin will automatically create a secure <code>wawb_leads</code> table in your database to store customer data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Global Settings -->
+                <section id="global-settings" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Global Appearance Settings</h2>
+                    <p class="text-slate-600 mb-8">Located at <strong>Chimpjar Chat Builder > Settings > Global Settings</strong>.</p>
+                    <div class="bg-slate-50 border border-slate-200 p-8 rounded-[32px] space-y-6">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-palette text-brand text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Theme Color & Position</h4>
+                                <p class="text-sm text-slate-500">Pick your brand color and set the widget to appear on the bottom-right or bottom-left of the screen.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-heartbeat text-brand text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Pulse Effect</h4>
+                                <p class="text-sm text-slate-500">Enable the animated pulse to draw attention to the chat icon. Highly recommended for higher conversion.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-i-cursor text-brand text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Live Preview</h4>
+                                <p class="text-sm text-slate-500">The panel on the right allows you to see every change (color, text, size) in real-time before you hit the save button.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Agent Management -->
+                <section id="agent-management" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Agent Management</h2>
+                    <p class="text-slate-600 mb-8">This is where you build your support team. You can add unlimited agents for different departments.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="border-l-4 border-brand pl-8 py-2">
+                            <h4 class="font-bold text-xl text-slate-900 mb-2 underline decoration-brand/30">WhatsApp Number Format</h4>
+                            <p class="text-slate-600 leading-relaxed italic">
+                                Always use the international format <strong>without</strong> <code>+</code> or <code>00</code>. <br>
+                                <span class="text-emerald-600 font-bold">CORRECT: 12125550123</span> | <span class="text-red-500 font-bold">INCORRECT: +1 212...</span>
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-6 bg-white border border-slate-200 rounded-3xl shadow-sm">
+                                <h4 class="font-black text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-id-card text-brand"></i> Profile & Form</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">Add agent names, designations, and upload avatars. Enable <strong>"Lead Capture Form"</strong> for specific agents to force a form popup before redirecting to WhatsApp.</p>
+                            </div>
+                            <div class="p-6 bg-white border border-slate-200 rounded-3xl shadow-sm">
+                                <h4 class="font-black text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-paintbrush text-brand"></i> Individual Styling</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed">Customize the background, text, and border radius of each agent's card. You can even set unique WhatsApp icon colors for different agents.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Business Hours (Scheduling) -->
+                <section id="scheduling" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Business Hours (Scheduling)</h2>
+                    <div class="bg-slate-900 text-white p-10 rounded-[40px] relative overflow-hidden">
+                        <i class="fa-solid fa-clock absolute -right-4 -bottom-4 text-white/5 text-9xl"></i>
+                        <h4 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-business-time text-brand"></i> Professional Scheduling</h4>
+                        <p class="text-slate-400 mb-8 leading-relaxed">Never get disturbed during your rest time. Each agent can have an independent schedule based on your WordPress site's timezone.</p>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Set Start & End Time (24h format)</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Multi-select Off-Days (e.g. Sat & Sun)</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Display custom "Offline Text"</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Option to hide agents when offline</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 6. Lead Management -->
+                <section id="lead-management" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Lead Management & CSV</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <p class="text-slate-600 mb-6 leading-relaxed italic">All captured leads are stored under <strong>Chimpjar Chat Builder > Leads</strong>.</p>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-4 text-sm font-bold">
+                                    <i class="fa-solid fa-file-export text-brand"></i> One-click CSV Export for Marketing
+                                </div>
+                                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-4 text-sm font-bold">
+                                    <i class="fa-solid fa-envelope-open-text text-brand"></i> Lead Forwarding to WP Admin Email
+                                </div>
+                                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-4 text-sm font-bold">
+                                    <i class="fa-solid fa-user-secret text-brand"></i> Privacy: Leads stay on your server
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 border border-slate-200 rounded-[32px] shadow-xl">
+                            <h5 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Lead Table Includes:</h5>
+                            <ul class="text-xs space-y-3 font-medium">
+                                <li class="flex justify-between border-b pb-2"><span>Customer Name</span> <span class="text-brand">Captured</span></li>
+                                <li class="flex justify-between border-b pb-2"><span>Email & Phone</span> <span class="text-brand">Captured</span></li>
+                                <li class="flex justify-between border-b pb-2"><span>Initial Message</span> <span class="text-brand">Captured</span></li>
+                                <li class="flex justify-between border-b pb-2"><span>Source Page URL</span> <span class="text-brand">Captured</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. Smart Triggers -->
+                <section id="smart-triggers" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Smart Triggers & GDPR</h2>
+                    <p class="text-slate-600 mb-10 leading-relaxed text-lg">Increase engagement by showing the chat widget at the exact right moment using these advanced triggers.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <div class="text-center p-8 bg-slate-50 rounded-[40px] border border-slate-100 group hover:border-brand transition-all">
+                            <i class="fa-solid fa-hourglass-start text-4xl text-brand mb-6"></i>
+                            <h4 class="font-bold mb-2">Time Delay</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Show widget after <code>X</code> seconds of page load.</p>
+                        </div>
+                        <div class="text-center p-8 bg-slate-50 rounded-[40px] border border-slate-100 group hover:border-brand transition-all">
+                            <i class="fa-solid fa-scroll text-4xl text-brand mb-6"></i>
+                            <h4 class="font-bold mb-2">Scroll Depth</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Show widget after the user scrolls <code>X%</code> of the page.</p>
+                        </div>
+                        <div class="text-center p-8 bg-slate-50 rounded-[40px] border border-slate-100 group hover:border-brand transition-all">
+                            <i class="fa-solid fa-door-open text-4xl text-brand mb-6"></i>
+                            <h4 class="font-bold mb-2">Exit Intent</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Pop-up the widget when the user tries to leave the site.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand/5 border-2 border-dashed border-brand/20 p-8 rounded-[40px] text-center">
+                        <h4 class="text-xl font-bold text-slate-900 mb-2 flex items-center justify-center gap-2"><i class="fa-solid fa-shield-halved text-brand"></i> GDPR Compliance</h4>
+                        <p class="text-slate-600 text-sm max-w-xl mx-auto">Enable the GDPR Consent Checkbox in the **Triggers & Lead** tab to stay legal. Users must agree to your privacy policy before starting the chat.</p>
+                    </div>
+                </section>
+
+                <!-- 8. Display Rules -->
+                <section id="display-rules" class="mb-20 scroll-mt-32 border-t border-slate-100 pt-16">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Display Rules & Targeting</h2>
+                    <div class="flex flex-col md:flex-row gap-12 items-center">
+                        <div class="flex-1 space-y-6">
+                            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                                <h4 class="font-bold text-slate-900 mb-2">Device Visibility</h4>
+                                <p class="text-sm text-slate-500">Show or Hide the widget specifically for Desktop or Mobile users to optimize UX.</p>
+                            </div>
+                            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                                <h4 class="font-bold text-slate-900 mb-2">Page Targeting</h4>
+                                <p class="text-sm text-slate-500">Use "Show Only" or "Hide On" rules with page slugs (e.g. <code>/contact, /checkout</code>) to control widget visibility.</p>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-4 italic">💡 Pro Tip:</p>
+                            <p class="text-slate-600 italic border-l-4 border-slate-200 pl-4">Hide the widget on checkout pages to avoid distracting customers during the final payment steps.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. Shortcodes -->
+                <section id="shortcodes" class="mb-20 scroll-mt-32">
+                    <h2 class="text-3xl font-black text-slate-900 mb-8 tracking-tight">Shortcode Mastery</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-xs font-black text-slate-400 mb-4 uppercase tracking-[0.2em]">Full Floating Widget</p>
+                            <div class="bg-slate-900 p-6 rounded-2xl relative group overflow-hidden shadow-2xl">
+                                <pre><code>[whatsapp_widget]</code></pre>
+                                <span class="absolute top-0 right-0 bg-slate-800 text-[8px] font-bold text-slate-500 px-3 py-1 rounded-bl-lg uppercase tracking-widest">Main Widget</span>
+                            </div>
+                            <p class="mt-4 text-xs text-slate-500 italic">Automatically loads based on display rules. Use this for manual placement via page builders.</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black text-slate-400 mb-4 uppercase tracking-[0.2em]">Single Agent (Inline)</p>
+                            <div class="bg-slate-900 p-6 rounded-2xl relative group overflow-hidden shadow-2xl">
+                                <pre><code>[whatsapp id="123"]</code></pre>
+                                <span class="absolute top-0 right-0 bg-slate-800 text-[8px] font-bold text-slate-500 px-3 py-1 rounded-bl-lg uppercase tracking-widest">Single Agent</span>
+                            </div>
+                            <p class="mt-4 text-xs text-slate-500 italic">Replace <code>123</code> with the unique Agent ID found next to the agent's name in settings.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Support Footer -->
+                <section id="support" class="bg-brand text-white p-12 rounded-[40px] text-center shadow-2xl shadow-brand/40 mt-32 relative overflow-hidden">
+                    <!-- Subtle Glow -->
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-brand-dark to-transparent opacity-50"></div>
+                    
+                    <h2 class="text-4xl font-black mb-6 relative z-10">Need Technical Help?</h2>
+                    <p class="text-white/80 mb-10 max-w-lg mx-auto text-lg font-medium relative z-10 leading-relaxed">Our support team is available 24/7. If you encounter any issues or need custom development, we are just one email away.</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
+                        <a href="mailto:hello@chimpjar.com" class="bg-white text-brand px-12 py-5 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-xl">Send an Email</a>
+                        <a href="https://chimpjar.com" target="_blank" class="bg-brand-dark text-white px-12 py-5 rounded-2xl font-black text-lg border-2 border-white/20 hover:bg-brand-dark transition-all">Support Center</a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Sidebar Active State Highlighter -->
+    <script>
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.sidebar-link');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
