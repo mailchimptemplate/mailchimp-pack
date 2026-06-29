@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WP Accessibility Suite | ADA & WCAG Compliance Plugin | Chimpjar</title>
-    <meta name="description" content="Make your WordPress website ADA & WCAG compliant instantly. Avoid expensive lawsuits with a single one-time payment. The best AccessiBe alternative.">
+    <title>WP Accessibility Suite Pro | ADA & WCAG Compliance Plugin | Chimpjar</title>
+    <meta name="description" content="Make your WordPress website ADA & WCAG compliant instantly. Avoid expensive lawsuits with a single one-time payment. The best self-hosted AccessiBe alternative.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,24 +34,88 @@
 <body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white">
 
     <!-- Navbar -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
-                        <img src="./logo2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
-                </a>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
-                    <a href="#compliance" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Compliance</a>
-                    <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="index.html" class="hidden sm:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
-                    <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
-                </div>
+<!-- Navbar -->
+<nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
+                <img src="./logo2.png" alt="Chimpjar Plugins" width="140" height="33">
+            </a>
+            
+            <!-- Desktop Menu (Hidden on Mobile) -->
+            <div class="hidden lg:flex space-x-6 items-center">
+                <a href="#features" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">UI Features</a>
+                <a href="#trust-badge-sec" class="text-xs font-bold text-brand hover:text-brand-dark transition-colors">9 Engines</a>
+                <a href="#setup" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">How it Works</a>
+                <a href="#comparison" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">SaaS vs Us</a>
+                <a href="https://nuramim.kesug.com/wp1/" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">Live Demo</a>
+                <a href="#pricing" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
+                <a href="#faq" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">FAQ</a>
+            </div>
+            
+            <!-- Right Actions Area -->
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="hidden sm:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
+                <a href="#pricing" class="hidden sm:inline-block bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
+                
+                <!-- Mobile Hamburger Menu Button (Visible ONLY on Mobile/Tablet) -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+    
+    <!-- Mobile Dropdown Menu Panel (Hidden by default) -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl absolute top-20 left-0 w-full shadow-lg z-40 transition-all duration-300">
+        <div class="px-6 py-5 flex flex-col gap-4 font-semibold text-sm">
+            <a href="#features" class="mobile-nav-link text-slate-600 hover:text-slate-900 transition-colors pb-2 border-b border-slate-100">UI Features</a>
+            <a href="#trust-badge-sec" class="mobile-nav-link text-brand hover:text-brand-dark transition-colors pb-2 border-b border-slate-100">9 Engines</a>
+            <a href="#setup" class="mobile-nav-link text-slate-600 hover:text-slate-900 transition-colors pb-2 border-b border-slate-100">How it Works</a>
+            <a href="#comparison" class="mobile-nav-link text-slate-600 hover:text-slate-900 transition-colors pb-2 border-b border-slate-100">SaaS vs Us</a>
+            <a href="https://nuramim.kesug.com/wp1/" class="mobile-nav-link text-slate-600 hover:text-slate-900 transition-colors pb-2 border-b border-slate-100">Live Demo</a>
+            <a href="#pricing" class="mobile-nav-link text-slate-600 hover:text-slate-900 transition-colors pb-2 border-b border-slate-100">Pricing</a>
+            <a href="#faq" class="mobile-nav-link text-slate-600 hover:text-slate-900 transition-colors pb-2">FAQ</a>
+            <a href="index.html" class="mobile-nav-link text-slate-500 hover:text-slate-900 py-2 border-t border-slate-100">&larr; Back to Store</a>
+            <a href="#pricing" class="mobile-nav-link bg-brand hover:bg-brand-dark text-white text-center py-3 rounded-xl font-bold transition-colors shadow-sm mt-2">Get Plugin</a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Toggle JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuBtn = document.getElementById('mobile-menu-btn');
+            var mobileMenu = document.getElementById('mobile-menu');
+            var menuIcon = menuBtn ? menuBtn.querySelector('i') : null;
+            var navLinks = document.querySelectorAll('.mobile-nav-link');
+
+            if (menuBtn && mobileMenu) {
+                // টগল ক্লিক ইভেন্ট
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    if (menuIcon) {
+                        if (mobileMenu.classList.contains('hidden')) {
+                            menuIcon.className = 'fa-solid fa-bars text-xl';
+                        } else {
+                            menuIcon.className = 'fa-solid fa-xmark text-xl';
+                        }
+                    }
+                });
+
+                // কোনো লিংকে ক্লিক করলে ড্রপডাউন মেনুটি স্বয়ংক্রিয়ভাবে বন্ধ করার লজিক
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.add('hidden');
+                        if (menuIcon) {
+                            menuIcon.className = 'fa-solid fa-bars text-xl';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</nav>
 
     <!-- Product Hero Section (Lawsuit Focus) -->
     <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-slate-50">
@@ -65,24 +129,24 @@
                 <!-- Left Text Content -->
                 <div class="max-w-2xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-600 text-xs font-bold mb-6 shadow-sm uppercase tracking-wide">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Protect Your Business
+                        <i class="fa-solid fa-triangle-exclamation"></i> Prevent Costly Lawsuits
                     </div>
                     
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
-                        Make your website <span class="text-brand">ADA Compliant</span> instantly.
+                        Make your website <span class="text-brand">ADA Compliant</span> instantly with AI.
                     </h1>
                     
                     <p class="text-lg text-slate-600 leading-relaxed mb-8 border-l-4 border-brand pl-4">
-                        Don't risk a $50,000 lawsuit. Add an accessibility interface to your WordPress site in 1-click and meet ADA, WCAG 2.1, and EAA regulations without writing a single line of code.
+                        Meet ADA, WCAG 2.1 AA, and EAA regulations in 1-click. Our 100% self-hosted plugin runs automated WCAG audits, fixes low contrast, generates AI Alt-text, and optimizes WooCommerce checkout automatically.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
                         <a href="#pricing" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/30 flex items-center justify-center gap-2">
-                            Secure Your Site Now <i class="fa-solid fa-shield-check"></i>
+                            Lifetime License <i class="fa-solid fa-shield-check"></i>
                         </a>
                         <p class="text-sm font-medium text-slate-500 flex flex-col gap-1">
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> No $49/mo SaaS fees</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> 100% Self-Hosted</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> No monthly fees</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> Core Web Vitals Friendly (Lazy Load)</span>
                         </p>
                     </div>
                 </div>
@@ -96,25 +160,25 @@
                         <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-universal-access"></i></div>
-                                <span class="font-bold text-slate-900 text-lg">Accessibility Menu</span>
+                                <span class="font-bold text-slate-900 text-lg">Accessibility Tools</span>
                             </div>
-                            <i class="fa-solid fa-xmark text-slate-400"></i>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full uppercase tracking-wider"><i class="fa-solid fa-robot"></i> AI Powered</span>
                         </div>
 
                         <!-- Interface Controls (Mockup) -->
                         <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer hover:bg-blue-50 hover:border-brand transition-colors">
-                                <i class="fa-solid fa-magnifying-glass-plus text-brand text-2xl mb-2"></i>
-                                <h4 class="font-bold text-slate-700 text-sm">Bigger Text</h4>
-                            </div>
                             <div class="bg-blue-50 border border-brand rounded-xl p-4 text-center cursor-pointer shadow-sm relative">
                                 <div class="absolute -top-2 -right-2 bg-brand text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]"><i class="fa-solid fa-check"></i></div>
                                 <i class="fa-solid fa-circle-half-stroke text-brand text-2xl mb-2"></i>
-                                <h4 class="font-bold text-slate-700 text-sm">High Contrast</h4>
+                                <h4 class="font-bold text-slate-700 text-sm">Auto Contrast</h4>
                             </div>
                             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer hover:bg-blue-50 hover:border-brand transition-colors">
-                                <i class="fa-solid fa-eye-slash text-brand text-2xl mb-2"></i>
-                                <h4 class="font-bold text-slate-700 text-sm">Hide Images</h4>
+                                <i class="fa-solid fa-microphone text-brand text-2xl mb-2"></i>
+                                <h4 class="font-bold text-slate-700 text-sm">Voice Navigation</h4>
+                            </div>
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer hover:bg-blue-50 hover:border-brand transition-colors">
+                                <i class="fa-solid fa-image text-brand text-2xl mb-2"></i>
+                                <h4 class="font-bold text-slate-700 text-sm">AI Alt-Text</h4>
                             </div>
                             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer hover:bg-blue-50 hover:border-brand transition-colors">
                                 <i class="fa-solid fa-link text-brand text-2xl mb-2"></i>
@@ -125,13 +189,15 @@
                                 <h4 class="font-bold text-slate-700 text-sm">Dyslexia Font</h4>
                             </div>
                             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center cursor-pointer hover:bg-blue-50 hover:border-brand transition-colors">
-                                <i class="fa-solid fa-pause text-brand text-2xl mb-2"></i>
-                                <h4 class="font-bold text-slate-700 text-sm">Stop Animations</h4>
+                                <i class="fa-solid fa-volume-high text-brand text-2xl mb-2"></i>
+                                <h4 class="font-bold text-slate-700 text-sm">Text Reader (TTS)</h4>
                             </div>
                         </div>
 
-                        <div class="mt-6 pt-4 border-t border-slate-100 flex justify-center">
-                            <button class="text-sm font-bold text-slate-400 flex items-center gap-2 hover:text-slate-600"><i class="fa-solid fa-rotate-right"></i> Reset Settings</button>
+                        <!-- Mini Footer showing active trust statement -->
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs text-slate-400 font-bold flex items-center gap-1"><i class="fa-solid fa-shield text-brand"></i> Trust Badge Enabled</span>
+                            <button class="text-xs font-bold text-brand flex items-center gap-1 hover:underline"><i class="fa-solid fa-file-contract"></i> View Statement</button>
                         </div>
                     </div>
                 </div>
@@ -143,12 +209,12 @@
     <!-- Global Standards Ribbon -->
     <div id="compliance" class="border-y border-slate-100 bg-white py-8">
         <div class="max-w-7xl mx-auto px-4 text-center flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 opacity-80">
-            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Built to meet global standards:</span>
+            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Complies with major laws:</span>
             <div class="flex flex-wrap justify-center gap-6 md:gap-10">
-                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold border border-slate-200">ADA</span>
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold border border-slate-200">ADA Title III</span>
                 <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold border border-slate-200">WCAG 2.1 AA</span>
                 <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold border border-slate-200">Section 508</span>
-                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold border border-slate-200">EAA (Europe)</span>
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-bold border border-slate-200">EAA (European Union)</span>
             </div>
         </div>
     </div>
@@ -191,11 +257,11 @@
         </div>
     </section>
 
-    <!-- Features / Solutions -->
+    <!-- UI Features Section -->
     <section id="features" class="py-20 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Comprehensive Solution</h2>
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Front-End Adjustments</h2>
                 <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Open your website to everyone.</h3>
             </div>
 
@@ -221,7 +287,452 @@
             </div>
         </div>
     </section>
-    <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION (NEW) -->
+
+    <!-- ============================================================ -->
+    <!-- DETAILED INDIVIDUAL COMPLIANCE ENGINES SECTIONS (৯টি আলাদা সেকশন) -->
+    <!-- ============================================================ -->
+
+    <!-- 1. Accessibility Trust Badge Section -->
+    <section id="trust-badge-sec" class="py-24 bg-white border-t border-slate-200 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold text-brand uppercase tracking-wider bg-blue-100 px-3 py-1 rounded-full"><i class="fa-solid fa-shield"></i> Engine 01</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">Accessibility Trust Badge</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Display your accessibility compliance status proudly. Choose from 4 elegantly pre-designed SVG trust badges to automatically inject into your footer or place anywhere on your pages using a standard WordPress shortcode.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-brand text-xs"></i> 4 Customizable styles matching your site's branding</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-brand text-xs"></i> 1-Click integration to launch Accessibility Statement modal</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-brand text-xs"></i> Fully customizable HTML layout with native popup support</li>
+                    </ul>
+                </div>
+                <div class="flex justify-center">
+                    <!-- Trust Badge Mockup Graphic -->
+                           <img src="./a3-ezgif.com-optimize.gif" alt="Chimpjar Plugins" width="692" height="596">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SEO Alt-Text Generator & Editor Section -->
+    <section id="alt-text-sec" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 flex justify-center">
+                    <!-- Alt-Text Dashboard Mockup -->
+                           <img src="./a5-ezgif.com-optimize.gif" alt="Chimpjar Plugins" width="692" height="596">
+                </div>
+                <div class="max-w-2xl order-1 lg:order-2">
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider bg-emerald-100 px-3 py-1 rounded-full"><i class="fa-solid fa-robot"></i> Engine 02</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">SEO Alt-Text Generator & Editor</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Instantly resolve missing alt text on your image elements. Our automated crawler scans your Media Library and generates context-aware, highly descriptive alt attributes using state-of-the-art AI.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-emerald-600 text-xs"></i> Batch-generate missing alt tags in 1-click</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-emerald-600 text-xs"></i> Built-in editor to manually modify AI suggestions before saving</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-emerald-600 text-xs"></i> Boost SEO scores by naturally indexing keyword-focused descriptions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Accessibility Audit & Optimizer Section -->
+    <section id="audit-sec" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider bg-indigo-100 px-3 py-1 rounded-full"><i class="fa-solid fa-magnifying-glass-chart"></i> Engine 03</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">Accessibility Audit & Optimizer</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Always know where your compliance stands. Run full site audits right from your WordPress dashboard. The auditor automatically parses your theme architecture and outputs real-time compliance results.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-indigo-600 text-xs"></i> Automated scans for empty links, unlabelled forms, and heading structure</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-indigo-600 text-xs"></i> Gives actionable recommendations and exact HTML selectors</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-indigo-600 text-xs"></i> Keeps track of overall compliance progress metrics in real-time</li>
+                    </ul>
+                </div>
+                <div class="flex justify-center">
+                    <!-- Audit Dashboard Mockup -->
+                           <img src="./a4-ezgif.com-optimize.gif" alt="Chimpjar Plugins" width="692" height="596">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Auto Contrast Analyzer Section -->
+    <section id="contrast-sec" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 flex justify-center">
+                    <!-- Contrast Comparison Graphic -->
+                    <div class="bg-white border border-slate-200 rounded-3xl p-8 max-w-sm w-full shadow-sm">
+                        <div class="mb-4">
+                            <span class="text-xs font-bold text-red-500 bg-red-100 px-2 py-0.5 rounded">Before Fix</span>
+                            <div class="p-3 bg-slate-100 rounded-lg text-slate-400 font-bold mt-2 text-center text-sm">Low Contrast Text (Failed 2.1:1 ratio)</div>
+                        </div>
+                        <div class="text-center text-slate-300 py-2"><i class="fa-solid fa-circle-arrow-down text-lg"></i></div>
+                        <div class="mt-2">
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded">Auto Healed</span>
+                            <div class="p-3 bg-slate-900 rounded-lg text-white font-bold mt-2 text-center text-sm shadow-sm border border-brand/20">Optimized WCAG AA Compliant (Passed 4.5+ ratio)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-2xl order-1 lg:order-2">
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-100 px-3 py-1 rounded-full"><i class="fa-solid fa-circle-half-stroke"></i> Engine 04</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">Auto Contrast Analyzer</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Poor color contrast is the single most common accessibility error on modern websites. The auto contrast analyzer dynamically scans rendered elements on the fly and adjusts their properties.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-amber-600 text-xs"></i> Automatically ensures a strict minimum 4.5:1 WCAG contrast ratio</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-amber-600 text-xs"></i> Dynamically heals text-over-image and colored backgrounds</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-amber-600 text-xs"></i> Zero configuration needed—runs completely autonomously</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WooCommerce Fixer Section -->
+    <section id="woocommerce-sec" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-100 px-3 py-1 rounded-full"><i class="fa-solid fa-basket-shopping"></i> Engine 05</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">WooCommerce Accessibility Fixer</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Make your online store accessible to everyone and boost e-commerce conversion rates. Ensure assistive technologies and blind shoppers can seamlessly navigate product pages, cart drawers, and checkouts.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-blue-600 text-xs"></i> Automatically appends descriptive ARIA labels to quantity selectors (plus/minus buttons)</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-blue-600 text-xs"></i> Fixes unlabelled close/remove buttons inside mini-carts and shop widgets</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-blue-600 text-xs"></i> Automatically assigns 'alert' roles to dynamic WooCommerce success and error messages</li>
+                    </ul>
+                </div>
+                <div class="flex justify-center">
+                    <!-- Shop/Cart Elements Mockup -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 max-w-sm w-full shadow-sm">
+                        <h4 class="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wide border-b border-slate-200 pb-2"><i class="fa-solid fa-cart-shopping text-blue-600"></i> Checkout Cart Item</h4>
+                        <div class="flex gap-4 items-center bg-white p-3 rounded-xl border border-slate-100 shadow-xs mb-4">
+                            <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400"><i class="fa-solid fa-bag-shopping"></i></div>
+                            <div class="flex-grow">
+                                <h5 class="text-xs font-bold text-slate-800">WooCommerce T-Shirt</h5>
+                                <span class="text-[10px] text-slate-400">$18.00</span>
+                            </div>
+                            <!-- Styled accessible quantity selectors -->
+                            <div class="flex items-center border border-slate-200 rounded-md overflow-hidden bg-white text-xs">
+                                <span class="px-2 py-1 bg-slate-50 cursor-pointer font-bold border-r border-slate-100" aria-label="Decrease quantity">-</span>
+                                <input type="number" value="1" class="w-8 text-center bg-white border-0 text-xs pointer-events-none" aria-label="Product quantity">
+                                <span class="px-2 py-1 bg-slate-50 cursor-pointer font-bold border-l border-slate-100" aria-label="Increase quantity">+</span>
+                            </div>
+                        </div>
+                        <div class="text-[10px] bg-blue-50 text-blue-700 px-3 py-2 rounded-lg border border-blue-100/50 flex items-center gap-1.5"><i class="fa-solid fa-circle-info"></i> Semantic ARIA hooks and roles applied.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. AI Voice Command Navigation Section -->
+    <section id="voice-nav-sec" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 flex justify-center">
+                    <!-- Voice Interaction Mockup -->
+                    <div class="bg-white border border-slate-200 rounded-3xl p-8 max-w-sm w-full shadow-sm text-center">
+                        <div class="relative inline-flex items-center justify-center mb-6">
+                            <span class="absolute w-16 h-16 bg-blue-400/20 rounded-full animate-ping"></span>
+                            <div class="relative w-14 h-14 bg-brand text-white rounded-full flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-microphone"></i></div>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Speech Control Banner</h4>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs font-semibold text-slate-700">
+                            Heard: <span class="text-brand font-bold">"Scroll Down"</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-3"><i class="fa-solid fa-circle-check"></i> Executing page animation hands-free</p>
+                    </div>
+                </div>
+                <div class="max-w-2xl order-1 lg:order-2">
+                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wider bg-purple-100 px-3 py-1 rounded-full"><i class="fa-solid fa-microphone-lines"></i> Engine 06</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">AI Voice Command Navigation</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Empower users with motor or physical disabilities to navigate your website completely hands-free using natural voice speech recognition technology.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-purple-600 text-xs"></i> Uses secure, native browser Speech Recognition APIs with zero third-party latency</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-purple-600 text-xs"></i> Supports intuitive command prompts like "Scroll Down", "Go Home", and "Open Menu"</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-purple-600 text-xs"></i> Displays an unobtrusive on-screen banner to guide the user in real-time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Advanced ARIA Settings Section -->
+    <section id="aria-sec" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-100 px-3 py-1 rounded-full"><i class="fa-solid fa-code"></i> Engine 07</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">Advanced ARIA Settings</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Optimized for blind visitors using screen-readers (like JAWS or NVDA). The ARIA system appends hidden attributes and structures to ensure elements on the page make absolute logical sense.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-rose-600 text-xs"></i> Injects dynamic labels into elements without text (like search bars, carts, and close icons)</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-rose-600 text-xs"></i> Prevents keyboard focus from "escaping" modal popup structures</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-rose-600 text-xs"></i> Resolves broken keyboard outlines and structural HTML tags on rendering</li>
+                    </ul>
+                </div>
+                <div class="flex justify-center">
+                    <!-- Clean Code Illustration -->
+                    <div class="bg-slate-950 text-emerald-400 font-mono rounded-3xl p-6 max-w-sm w-full shadow-lg text-xs leading-relaxed border border-slate-800">
+                        <div class="flex gap-2 mb-4 border-b border-slate-800 pb-3">
+                            <span class="w-3 h-3 bg-red-500 rounded-full"></span><span class="w-3 h-3 bg-yellow-500 rounded-full"></span><span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                            <span class="text-[10px] text-slate-500 font-sans ml-2">Dynamic DOM Injector</span>
+                        </div>
+                        <span class="text-slate-500">&lt;!-- WCAG ARIA Fix applied --&gt;</span><br>
+                        &lt;<span class="text-blue-400">button</span> <span class="text-amber-400">class</span>=<span class="text-emerald-300">"cart-icon"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-rose-400 font-bold">aria-label</span>=<span class="text-emerald-300">"Shopping Cart"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-rose-400 font-bold">aria-expanded</span>=<span class="text-emerald-300">"false"</span>&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">svg</span>&gt;...&lt;/<span class="text-blue-400">svg</span>&gt;<br>
+                        &lt;/<span class="text-blue-400">button</span>&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Accessibility Email Report & SMTP Settings Section -->
+    <section id="email-report-sec" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 flex justify-center">
+                    <!-- Email Notification Mockup -->
+                    <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-sm w-full shadow-sm relative">
+                        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+                            <div class="w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-paper-plane"></i></div>
+                            <div class="text-xs">
+                                <h5 class="font-bold text-slate-900 leading-tight">SMTP Delivery Engine</h5>
+                                <p class="text-[10px] text-slate-400">Sending Status: Successful</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-xs">
+                            <p class="font-bold text-slate-800">Monthly Audit Summary Report</p>
+                            <p class="text-slate-500 mt-1">Hello Admin, your monthly website accessibility health check completed. Errors Fixed: 14. Current Score: 96%.</p>
+                            <span class="inline-block mt-3 bg-purple-100 text-purple-700 font-bold px-2.5 py-1 rounded">Report.pdf attached</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-2xl order-1 lg:order-2">
+                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wider bg-purple-100 px-3 py-1 rounded-full"><i class="fa-solid fa-envelope"></i> Engine 08</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">Email Report & SMTP Settings</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Stay informed without manually checking the site. Receive automated, professional accessibility performance audits directly in your email inbox once a month.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-purple-600 text-xs"></i> Automatically delivers monthly site reports to multiple emails</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-purple-600 text-xs"></i> Full SMTP integration to guarantee 100% email deliverability</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-purple-600 text-xs"></i> Perfect for agencies to automatically keep clients updated</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. PageSpeed & Core Web Vitals Optimizer Section -->
+    <section id="pagespeed-sec" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold text-teal-600 uppercase tracking-wider bg-teal-100 px-3 py-1 rounded-full"><i class="fa-solid fa-bolt"></i> Engine 09</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-4 mb-6">PageSpeed & Core Web Vitals Optimizer</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Never trade load speeds for compliance. Traditional SaaS accessibility widgets significantly slow down sites by loading bulky external code. Our optimizer holds execution until user interaction.
+                    </p>
+                    <ul class="space-y-3 text-slate-600 mb-8 font-medium">
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-teal-600 text-xs"></i> Lazyloads all accessibility Javascript sequentially to guarantee 100/100 score</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-teal-600 text-xs"></i> Drastically improves LCP and TBT scores on Google Lighthouse</li>
+                        <li class="flex items-center gap-3 text-sm"><i class="fa-solid fa-circle-check text-teal-600 text-xs"></i> Fully compatible with WP Rocket, LiteSpeed Cache, and other cache plugins</li>
+                    </ul>
+                </div>
+                <div class="flex justify-center">
+                    <!-- PageSpeed Score Mockup -->
+                    <div class="bg-slate-950 text-white rounded-3xl p-8 max-w-sm w-full shadow-lg border border-slate-800 text-center">
+                        <span class="text-xs text-slate-400 font-bold uppercase tracking-widest block mb-4">Mobile Lighthouse Performance</span>
+                        <div class="relative w-32 h-32 mx-auto mb-4 flex items-center justify-center">
+                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                <path class="text-slate-800" stroke-width="2.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="text-emerald-500 animate-pulse" stroke-width="2.5" stroke-dasharray="100, 100" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <span class="absolute font-black text-3xl text-emerald-500">100</span>
+                        </div>
+                        <p class="text-emerald-500 font-bold text-sm tracking-wide">Excellent Core Web Vitals Status</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section (৩ ধাপে সেটআপ) -->
+    <section id="setup" class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Simple Integration</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Active & Compliant in Under 2 Minutes</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Step 1 -->
+                <div class="text-center relative">
+                    <div class="w-16 h-16 bg-blue-100 text-brand rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-sm">1</div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Install & Activate</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Upload the lightweight zip file directly to your WordPress dashboard and click activate. No API keys required.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center relative">
+                    <div class="w-16 h-16 bg-blue-100 text-brand rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-sm">2</div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Customize to Match Brand</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Select your colors, pick icon sizes, adjust widget placement, and select which accessibility profiles to enable.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center relative">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-sm">3</div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Live & Protected</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">The accessibility widget is live immediately, accompanied by your customizable SVG trust badge in the footer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table (SaaS বনাম ওয়ান-টাইম তুলনা) -->
+    <section id="comparison" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Cost vs Value</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Why pay monthly fees?</h3>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900 text-white text-sm">
+                            <th class="p-5 font-bold">Features</th>
+                            <th class="p-5 font-bold text-center bg-brand">WP Accessibility Suite</th>
+                            <th class="p-5 font-bold text-center">SaaS (UserWay/AccessiBe)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-slate-100 font-medium text-slate-700">
+                        <tr>
+                            <td class="p-5">Price Model</td>
+                            <td class="p-5 text-center bg-blue-50/50 text-brand font-bold">One-Time ($29)</td>
+                            <td class="p-5 text-center text-red-500">Recurring ($490+/year)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5">Where scripts are hosted</td>
+                            <td class="p-5 text-center bg-blue-50/50 font-semibold text-slate-900">Your WP Server (Safe)</td>
+                            <td class="p-5 text-center">Third-Party Cloud (Slower)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5">Core Web Vitals friendly</td>
+                            <td class="p-5 text-center bg-blue-50/50 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Yes (Lazy Load)</td>
+                            <td class="p-5 text-center text-red-500"><i class="fa-solid fa-circle-xmark"></i> Slows down PageSpeed</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5">GDPR & Privacy Compliant</td>
+                            <td class="p-5 text-center bg-blue-50/50 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> 100% (No external tracking)</td>
+                            <td class="p-5 text-center text-red-500"><i class="fa-solid fa-circle-xmark"></i> Sends user data to SaaS</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5">AI Alt-Text Generator</td>
+                            <td class="p-5 text-center bg-blue-50/50 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Included</td>
+                            <td class="p-5 text-center">Only in custom enterprise tiers</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5">WooCommerce Support</td>
+                            <td class="p-5 text-center bg-blue-50/50 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> Dedicated Fixer</td>
+                            <td class="p-5 text-center">Standard Support</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo (লাইভ টেস্ট জোন) -->
+    <section id="demo" class="py-20 bg-white border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Live Interactive Sandbox</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Try the accessibility styles right now</h3>
+                <p class="text-slate-500 mt-2 text-sm">Toggle the buttons below to see how our widget dynamically adjusts web elements instantly.</p>
+            </div>
+
+            <!-- Demo interactive block -->
+            <div class="border border-slate-200 rounded-2xl p-8 bg-slate-50" id="sandbox-block">
+                <div class="flex flex-wrap gap-4 mb-8 justify-center border-b border-slate-200 pb-6">
+                    <button id="demo-btn-text" class="px-5 py-2.5 bg-white border border-slate-300 rounded-xl font-bold text-sm shadow-sm hover:border-brand hover:text-brand transition-colors flex items-center gap-2"><i class="fa-solid fa-font"></i> Toggle Larger Text</button>
+                    <button id="demo-btn-contrast" class="px-5 py-2.5 bg-white border border-slate-300 rounded-xl font-bold text-sm shadow-sm hover:border-brand hover:text-brand transition-colors flex items-center gap-2"><i class="fa-solid fa-circle-half-stroke"></i> Toggle High Contrast</button>
+                    <button id="demo-btn-font" class="px-5 py-2.5 bg-white border border-slate-300 rounded-xl font-bold text-sm shadow-sm hover:border-brand hover:text-brand transition-colors flex items-center gap-2"><i class="fa-solid fa-pen-nib"></i> Toggle Dyslexic Font</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm" id="demo-target-container">
+                    <h4 class="font-bold text-xl mb-3 text-slate-900 transition-all" id="demo-target-title">Empowering All Internet Users</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4 transition-all" id="demo-target-text">
+                        This is a simulated demo section representing how our accessibility scripts modify text nodes and contrast settings. Toggle the options above and see how the typography shifts smoothly to support dyslexic or low-vision users.
+                    </p>
+                    <a href="#pricing" class="inline-block text-sm font-bold text-brand hover:underline" id="demo-target-link">Protected by WP Accessibility Suite Pro &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script for the sandbox interactivity -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var btnText = document.getElementById('demo-btn-text');
+                var btnContrast = document.getElementById('demo-btn-contrast');
+                var btnFont = document.getElementById('demo-btn-font');
+
+                var targetTitle = document.getElementById('demo-target-title');
+                var targetText = document.getElementById('demo-target-text');
+                var targetLink = document.getElementById('demo-target-link');
+                var targetContainer = document.getElementById('demo-target-container');
+
+                btnText.addEventListener('click', function() {
+                    targetTitle.classList.toggle('text-2xl');
+                    targetText.classList.toggle('text-base');
+                    this.classList.toggle('text-brand');
+                    this.classList.toggle('border-brand');
+                });
+
+                btnContrast.addEventListener('click', function() {
+                    targetContainer.classList.toggle('bg-slate-950');
+                    targetContainer.classList.toggle('text-white');
+                    targetTitle.classList.toggle('text-white');
+                    targetText.classList.toggle('text-slate-300');
+                    targetLink.classList.toggle('text-yellow-400');
+                    this.classList.toggle('text-brand');
+                    this.classList.toggle('border-brand');
+                });
+
+                btnFont.addEventListener('click', function() {
+                    if (targetContainer.style.fontFamily === 'cursive') {
+                        targetContainer.style.fontFamily = '';
+                    } else {
+                        targetContainer.style.fontFamily = 'cursive';
+                    }
+                    this.classList.toggle('text-brand');
+                    this.classList.toggle('border-brand');
+                });
+            });
+        </script>
+    </section>
+
+    <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION -->
     <section id="custom-setup" class="py-16 bg-white border-t border-slate-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
@@ -234,7 +745,7 @@
                     </div>
                     <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Don't have time to set this up?</h3>
                     <p class="text-slate-400 text-lg mb-0">
-                        Whether you need help configuring this plugin, designing your digital catalogs, or require a completely custom WordPress feature—our expert team is ready to build it for you.
+                        Whether you need help configuring this plugin, generating your accessibility reports, or require a completely custom WordPress feature—our expert team is ready to build it for you.
                     </p>
                 </div>
                 
@@ -246,47 +757,66 @@
             </div>
         </div>
     </section>
-    <!-- Pricing Section (Focus for Ads) -->
-    <section id="pricing" class="py-24 bg-white relative overflow-hidden border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Transparent Pricing</h2>
-            <h3 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-slate-900">The smart AccessiBe alternative.</h3>
-            <p class="text-slate-600 text-lg mb-12 max-w-2xl mx-auto">SaaS companies charge $490/year for this exact same widget. Pay once and secure your WordPress site forever.</p>
 
-            <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl max-w-xl mx-auto transform transition-transform hover:scale-[1.02] duration-300 relative">
-                
-                <div class="absolute -top-4 right-10 bg-gradient-to-r from-brand to-cyan-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3">Lifetime License</div>
+<!-- Pricing Section (Focus for Ads) -->
+<section id="pricing" class="py-24 bg-white relative overflow-hidden border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Transparent Pricing</h2>
+        <h3 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-slate-900">The smart AccessiBe alternative.</h3>
+        <p class="text-slate-600 text-lg mb-12 max-w-2xl mx-auto">SaaS companies charge $490/year for this exact same widget. Pay once and secure your WordPress site forever.</p>
 
-                <div class="flex justify-center items-end gap-1 mb-6 mt-4">
-                    <span class="text-6xl font-extrabold tracking-tight text-white">$29</span>
-                    <span class="text-slate-400 font-medium mb-2">/one-time</span>
-                </div>
-                <p class="text-slate-400 mb-8 border-b border-slate-800 pb-8">Full access to the Accessibility Interface Widget for WordPress.</p>
-                
-                <ul class="space-y-4 text-left mb-10 font-medium text-slate-300">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> 100% ADA & WCAG 2.1 compliance features</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> No recurring monthly or yearly fees</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> Fully customizable colors & icons</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> Self-hosted (No external server tracking)</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> Lifetime Plugin Updates</li>
-                </ul>
-
-                <!-- LEMON SQUEEZY CHECKOUT LINK GOES HERE -->
-                <a href="#" class="block w-full bg-brand hover:bg-blue-500 text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-brand/30">
-                    Secure Your Website Now
-                </a>
-                <p class="text-xs text-slate-500 mt-4"><i class="fa-solid fa-shield-halved"></i> 14-Day Money-Back Guarantee. Secure Checkout.</p>
-            </div>
+        <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl max-w-xl mx-auto transform transition-transform hover:scale-[1.02] duration-300 relative">
             
-            <!-- Agency Upsell Info -->
-            <div class="mt-8 text-center">
-                <p class="text-sm text-slate-600">Are you an agency building sites for clients? <a href="mailto:hello@chimpjar.com" class="text-brand font-bold hover:underline">Contact us for an Agency (10-Sites) License &rarr;</a></p>
+            <div class="absolute -top-4 right-10 bg-gradient-to-r from-brand to-cyan-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3">Lifetime License</div>
+
+            <div class="flex justify-center items-end gap-1 mb-6 mt-4">
+                <span class="text-6xl font-extrabold tracking-tight text-white">$25</span>
+                <span class="text-slate-400 font-medium mb-2">/one-time</span>
             </div>
+            <p class="text-slate-400 mb-8 border-b border-slate-800 pb-8">Full access to the WP Accessibility Suite Pro for WordPress.</p>
+            
+            <ul class="space-y-4 text-left mb-10 font-medium text-slate-300">
+                <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> 
+                    <span>100% ADA & WCAG 2.1 AA compliance widgets</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> 
+                    <span>WooCommerce Fixer & AI Voice Command Navigation</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> 
+                    <span>PageSpeed & Core Web Vitals script Optimizer</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> 
+                    <span>Automated Site Audit, AI Alt-Text & Contrast Repair</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> 
+                    <span>Email Reports, Custom SMTP & Trust Badge Seals</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-brand bg-brand/20 p-1 rounded-full text-xs"></i> 
+                    <span>Lifetime updates & self-hosted (No monthly fees)</span>
+                </li>
+            </ul>
+
+            <!-- LEMON SQUEEZY CHECKOUT LINK GOES HERE -->
+            <a href="https://codecanyon.net/item/chimpjar-accessiwidget-wordpress-web-accessibility-plugin/63852107" class="block w-full bg-brand hover:bg-blue-500 text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-brand/30">
+                Secure Your Website Now
+            </a>
         </div>
-    </section>
+        
+        <!-- Agency Upsell Info -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-slate-600">Are you an agency building sites for clients? <a href="mailto:suppport@chimpjar.com" class="text-brand font-bold hover:underline">Contact us for an Agency (10-Sites) License &rarr;</a></p>
+        </div>
+    </div>
+</section>
 
     <!-- FAQ Section -->
-    <section class="py-24 bg-slate-50 border-t border-slate-200">
+    <section id="faq" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Frequently Asked Questions</h3>
@@ -306,7 +836,17 @@
                 <!-- FAQ Item 3 -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                     <h4 class="text-lg font-bold text-slate-900 mb-2">Does it affect website loading speed?</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">No. Because it doesn't rely on slow third-party external API calls (like SaaS alternatives do), our Vanilla JS widget loads instantly with your site's DOM, keeping your Core Web Vitals perfectly intact.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">No. We have built-in a "Core Web Vitals Optimizer" performance mode. When enabled, the plugin lazyloads all Javascript files only when a user interacts (scrolls, touches, or moves the mouse), keeping your PageSpeed score at 100/100.</p>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">How does the AI Alt-Text Generator work?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">The plugin scans your Media Library and parses images that lack alternative text. Using our AI engine integration, it analyzes the graphical content and outputs clean, contextual descriptions directly to the WP Database, making them instantly readable by screen-readers.</p>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Does it support WooCommerce checkout and product pages?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Yes. Our dedicated WooCommerce Fixer scans dynamically generated cart elements and product pages. It automatically appends descriptive ARIA labels to close icons, quantitator plus/minus buttons, and assigns alert roles to system error notices.</p>
                 </div>
             </div>
         </div>
@@ -358,8 +898,8 @@
                     <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Legal</h4>
                     <ul class="space-y-4 text-sm text-slate-400">
                         <li><a href="terms.html" class="hover:text-brand transition-colors">Terms of Service</a></li>
-                        <li><a href="privacy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
-                        <li><a href="refund.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
+                        <li><a href="refund-policy.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
                         <li><a href="licenses.html" class="hover:text-brand transition-colors">License Details</a></li>
                     </ul>
                 </div>
