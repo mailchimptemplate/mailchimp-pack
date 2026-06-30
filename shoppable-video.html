@@ -36,23 +36,69 @@
 <body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white">
 
     <!-- Navbar -->
+<!-- Navbar -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
                         <img src="./logo2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
                 </a>
+                
+                <!-- Desktop Menu (Hidden on mobile) -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
-                    <a href="#demo" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Live Demo</a>
+                    <a href="#layouts" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Video Layouts</a>
+                    <a href="#roi-qna" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Buyer Q&A</a>
                     <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
                 </div>
+                
                 <div class="flex items-center gap-4">
                     <a href="index.html" class="hidden sm:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
                     <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
+                    
+                    <!-- Mobile Hamburger Toggle Button (Visible only on Mobile) -->
+                    <button type="button" id="mobile-menu-toggle" class="block md:hidden text-slate-600 hover:text-slate-900 focus:outline-none p-2" aria-label="Toggle Menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Menu Panel (Hidden by default, visible when toggled) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#features" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Features</a>
+                <a href="#layouts" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Video Layouts</a>
+                <a href="#roi-qna" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Buyer Q&A</a>
+                <a href="#pricing" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Pricing</a>
+                <a href="index.html" class="block sm:hidden text-sm font-medium text-slate-500 hover:text-slate-900 py-1 border-t border-slate-100 pt-2">&larr; Back to Store</a>
+            </div>
+        </div>
+
+        <!-- Simple Toggle Javascript Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var toggleBtn = document.getElementById('mobile-menu-toggle');
+                var mobileMenu = document.getElementById('mobile-menu');
+                var menuLinks = mobileMenu.querySelectorAll('a');
+
+                if (toggleBtn && mobileMenu) {
+                    // Open/Close toggle handler
+                    toggleBtn.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+
+                    // Close mobile menu automatically when any menu link is clicked
+                    menuLinks.forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            mobileMenu.classList.add('hidden');
+                        });
+                    });
+                }
+            });
+        </script>
     </nav>
 
     <!-- Product Hero Section -->
@@ -224,7 +270,7 @@
             </div>
 
             <!-- Feature 3: No Speed Penalty -->
-            <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-32">
                 <div class="w-full md:w-1/2 order-2 md:order-1">
                     <div class="bg-blue-50 border border-blue-100 rounded-3xl p-8 shadow-inner relative flex justify-center items-center h-full min-h-[300px]">
                         <div class="text-center">
@@ -242,9 +288,346 @@
                 </div>
             </div>
 
+            <!-- DEDICATED SECTIONS FOR THE 4 VIDEO LAYOUTS (WITH DEMO LINKS) -->
+            <div id="layouts" class="pt-24 border-t border-slate-100 mb-32">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Stunning Video Layouts</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">4 Flexible Formats Designed for Conversions</h3>
+                    <p class="text-slate-600 mt-4 text-lg">Perfectly showcase your products using standard, vertical, overlay, or cinematic widescreen formats.</p>
+                </div>
+
+                <!-- Layout 1: Standard Split-Screen -->
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-28 bg-slate-50/50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                    <div class="w-full md:w-1/2">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold mb-4 uppercase tracking-wider">
+                            <i class="fa-solid fa-table-columns"></i> Layout 1: standard
+                        </span>
+                        <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Standard Split-Screen</h4>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            An elegant split-panel design featuring the video player on the left and full WooCommerce product information on the right. Extremely effective for detailed desktop catalog views.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 font-mono text-xs text-slate-500 font-bold">
+                                700 x 400px
+                            </span>
+                            <a href="https://runa22.66ghz.com/wp/product/glowradiance-organic-vitamin-c-face-serum/" target="_blank" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm shadow-brand/20">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <!-- Mockup: Split Screen standard -->
+                        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-lg overflow-hidden flex h-[220px]">
+                            <div class="w-3/5 bg-slate-900 flex items-center justify-center relative">
+                                <span class="text-slate-500 text-xs font-mono"><i class="fa-solid fa-circle-play text-2xl text-brand block mb-2 text-center"></i> Video Part</span>
+                            </div>
+                            <div class="w-2/5 p-4 flex flex-col justify-center border-l border-slate-100">
+                                <h5 class="font-bold text-slate-900 text-sm leading-tight mb-1">Product Title</h5>
+                                <span class="text-brand font-extrabold text-xs mb-3">$129.00</span>
+                                <div class="bg-brand text-white text-[10px] py-1.5 rounded-md text-center font-bold">Add to Cart</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layout 2: Classic TikTok -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-28 bg-slate-50/50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                    <div class="w-full md:w-1/2">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold mb-4 uppercase tracking-wider">
+                            <i class="fa-solid fa-mobile-screen"></i> Layout 2: tiktok
+                        </span>
+                        <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Classic TikTok</h4>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            Classic mobile-first vertical feed. This displays portrait video beautifully on the top, with product descriptions and purchase call-to-actions neatly structured underneath on a clean white card.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 font-mono text-xs text-slate-500 font-bold">
+                                340 x 580px
+                            </span>
+                            <a href="https://runa22.66ghz.com/wp/product/minimalist-nordic-ceramic-table-lamp/" target="_blank" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm shadow-brand/20">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <!-- Mockup: Classic TikTok style -->
+                        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 w-[200px] h-[320px] overflow-hidden flex flex-col">
+                            <div class="flex-grow bg-slate-900 flex items-center justify-center relative">
+                                <span class="text-slate-500 text-xs font-mono"><i class="fa-solid fa-circle-play text-2xl text-brand block mb-2 text-center"></i> Video Top</span>
+                            </div>
+                            <div class="p-3 bg-white border-t border-slate-100">
+                                <h5 class="font-bold text-slate-900 text-[11px] leading-none mb-1">Classic Card</h5>
+                                <div class="bg-brand text-white text-[9px] py-1 rounded-md text-center font-bold">Buy Now</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layout 3: TikTok Immersive Overlay -->
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-28 bg-slate-50/50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                    <div class="w-full md:w-1/2">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold mb-4 uppercase tracking-wider">
+                            <i class="fa-regular fa-clone"></i> Layout 3: tiktok-overlay
+                        </span>
+                        <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">TikTok Immersive Overlay</h4>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            A highly engaging, full-height vertical player where the video spans the entire screen. Product details and checkout buttons float directly on top of the video player with blurred glassmorphism effects.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 font-mono text-xs text-slate-500 font-bold">
+                                340 x 580px
+                            </span>
+                            <a href="https://runa22.66ghz.com/wp/product/sonicpro-wireless-noise-cancelling-headphones/" target="_blank" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm shadow-brand/20">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <!-- Mockup: TikTok Overlay style -->
+                        <div class="bg-slate-900 rounded-2xl shadow-xl border border-slate-800 w-[200px] h-[320px] overflow-hidden relative p-3 flex flex-col justify-end">
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <i class="fa-solid fa-circle-play text-2xl text-brand opacity-60"></i>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md border border-white/15 p-2.5 rounded-xl">
+                                <h5 class="font-bold text-white text-[10px] leading-tight mb-1">Overlay Product</h5>
+                                <div class="bg-brand text-white text-[9px] py-1 rounded-md text-center font-bold">Quick Buy</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layout 4: Cinematic Landscape Full -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 bg-slate-50/50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                    <div class="w-full md:w-1/2">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold mb-4 uppercase tracking-wider">
+                            <i class="fa-solid fa-clapperboard"></i> Layout 4: landscape-full
+                        </span>
+                        <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Cinematic Landscape</h4>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            Wide landscape layout optimal for desktop viewing. Best used for horizontal product showcase videos, with product detail elements floating neatly over the bottom layer.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 font-mono text-xs text-slate-500 font-bold">
+                                800 x 450px
+                            </span>
+                            <a href="https://runa22.66ghz.com/wp/product/mens-classic-slim-fit-denim-jacket/" target="_blank" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm shadow-brand/20">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <!-- Mockup: Landscape Widescreen style -->
+                        <div class="bg-slate-900 rounded-2xl shadow-xl border border-slate-800 w-full max-w-md h-[180px] overflow-hidden relative p-4 flex flex-col justify-end">
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <i class="fa-solid fa-circle-play text-2xl text-brand opacity-60"></i>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md border border-white/15 p-2 rounded-xl max-w-[200px]">
+                                <h5 class="font-bold text-white text-[9px] leading-none mb-1">Cinematic Card</h5>
+                                <div class="bg-brand text-white text-[8px] py-1 rounded font-bold text-center">Add to Cart</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NEW SECTION 4: LIVE PREVIEW & VISUAL BUILDER -->
+            <div id="live-builder" class="flex flex-col md:flex-row items-center gap-12 mb-32 pt-16 border-t border-slate-100">
+                <div class="w-full md:w-1/2">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Interactive Live Preview & Builder</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        No more blind setup or continuous saving. Customize colors, bubble shapes (circle or square), responsive dimensions, and padding with a side-by-side interactive preview in the WordPress editor before publishing.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <span class="block font-bold text-slate-900 text-sm mb-1">Color Controls</span>
+                            <span class="text-xs text-slate-500">Pick any color to match your branding perfectly.</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <span class="block font-bold text-slate-900 text-sm mb-1">Shape Customizer</span>
+                            <span class="text-xs text-slate-500">Toggle between circle or rounded square bubbles.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <!-- Preview Mockup Card -->
+                    <div class="bg-slate-900 text-slate-100 rounded-3xl p-6 shadow-2xl border border-slate-800">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <span class="text-xs text-slate-400">Live Preview Panel</span>
+                        </div>
+                        <!-- Inner Customizer Simulator -->
+                        <div class="space-y-4">
+                            <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/50 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-slate-300">Widget Shape</span>
+                                <div class="flex gap-2">
+                                    <span class="bg-brand text-xs px-3 py-1 rounded-md font-bold">Circle</span>
+                                    <span class="bg-slate-700 text-xs px-3 py-1 rounded-md text-slate-400">Square</span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/50">
+                                <div class="flex justify-between text-xs font-semibold text-slate-300 mb-2">
+                                    <span>Desktop Size</span>
+                                    <span class="text-brand">100px</span>
+                                </div>
+                                <div class="w-full h-1 bg-slate-700 rounded-full relative">
+                                    <div class="absolute inset-y-0 left-0 w-2/3 bg-brand rounded-full"></div>
+                                    <div class="absolute -top-1.5 left-2/3 w-4 h-4 bg-white rounded-full shadow"></div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/50 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-slate-300">Theme Color</span>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-brand ring-2 ring-white"></div>
+                                    <span class="text-xs font-mono text-slate-400">#8b5cf6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- NEW SECTION 5: REAL-TIME ANALYTICS DASHBOARD -->
+            <div id="analytics" class="flex flex-col md:flex-row items-center gap-12 mb-32 pt-16 border-t border-slate-100">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <!-- Admin Statistics Table Mockup -->
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden">
+                        <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+                            <span class="font-bold text-slate-800 text-sm">WP-Admin / Analytics Dashboard</span>
+                            <span class="bg-green-100 text-green-700 text-xs px-2.5 py-0.5 rounded-full font-semibold">Live Tracking</span>
+                        </div>
+                        <div class="divide-y divide-slate-100">
+                            <div class="p-4 flex justify-between items-center text-sm font-medium">
+                                <span class="text-slate-800">Summer Flash Sale</span>
+                                <div class="flex gap-6 text-slate-600 font-mono text-xs">
+                                    <span>👁️ <strong class="text-slate-900">4,281</strong> Views</span>
+                                    <span>🖱️ <strong class="text-slate-900">591</strong> Clicks</span>
+                                    <span class="text-brand font-bold">📈 13.8% CTR</span>
+                                </div>
+                            </div>
+                            <div class="p-4 flex justify-between items-center text-sm font-medium">
+                                <span class="text-slate-800">New Watch Launch</span>
+                                <div class="flex gap-6 text-slate-600 font-mono text-xs">
+                                    <span>👁️ <strong class="text-slate-900">8,920</strong> Views</span>
+                                    <span>🖱️ <strong class="text-slate-900">1,102</strong> Clicks</span>
+                                    <span class="text-brand font-bold">📈 12.3% CTR</span>
+                                </div>
+                            </div>
+                            <div class="p-4 flex justify-between items-center text-sm font-medium">
+                                <span class="text-slate-800">Cosmetics Bundle Promo</span>
+                                <div class="flex gap-6 text-slate-600 font-mono text-xs">
+                                    <span>👁️ <strong class="text-slate-900">2,410</strong> Views</span>
+                                    <span>🖱️ <strong class="text-slate-900">415</strong> Clicks</span>
+                                    <span class="text-brand font-bold">📈 17.2% CTR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Native Dashboard Performance Analytics</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        No external script scripts needed. Track views, clicks, and calculate click-through-rates (CTR) directly within your WordPress list columns. Keep your site analytics 100% self-hosted and compliant.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Fast native Ajax tracking hooks</li>
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Bypass caching issues with nonces</li>
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Light database schema that won't bloat your server</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- NEW SECTION 6: SMART INTENT-BASED TRIGGERS -->
+            <div id="trigger-suite" class="flex flex-col md:flex-row items-center gap-12 mb-32 pt-16 border-t border-slate-100">
+                <div class="w-full md:w-1/2">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Smart Intent-Based Trigger Engine</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        Trigger videos dynamically depending on visitor activities. From catching exit intent to simple timed delays, fine-tune widgets to match user flow perfectly.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 mt-1"><i class="fa-solid fa-eye-slash text-xs"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Exit Intent Monitoring</h5>
+                                <p class="text-xs text-slate-500">Detect when mouse moves off-screen and suggest dynamic offers just-in-time.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 mt-1"><i class="fa-solid fa-cookie-bite text-xs"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Run Once Cookie Rule</h5>
+                                <p class="text-xs text-slate-500">Enable session cookies to avoid showing auto-opened popups repeatedly to regular buyers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <!-- Active Trigger Visualizer -->
+                    <div class="bg-gradient-to-br from-slate-50 to-amber-50/50 p-8 rounded-3xl border border-amber-100 shadow-inner flex justify-center">
+                        <div class="bg-white p-5 rounded-2xl shadow-xl max-w-sm w-full relative overflow-hidden border border-slate-100">
+                            <span class="absolute top-3 right-3 text-[10px] bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse">Exit Triggered</span>
+                            <div class="flex gap-4 items-center">
+                                <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Wait! Don't Miss Out</h4>
+                                    <p class="text-slate-500 text-xs">Watch a 30s tutorial before you leave!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- NEW SECTION 7: TARGETING & SCHEDULER -->
+            <div id="targeting-scheduler" class="flex flex-col md:flex-row items-center gap-12 pt-16 border-t border-slate-100">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <!-- Rule Dashboard UI -->
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl p-6">
+                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Targeting Rules Configurations</span>
+                        <div class="space-y-4 text-xs font-medium text-slate-700">
+                            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-mobile-button text-brand"></i> Show on Devices</span>
+                                <span class="bg-brand/10 text-brand px-3 py-1 rounded-md font-bold text-[10px]">Mobile Only</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-file-invoice-dollar text-brand"></i> Checkout Exclude</span>
+                                <span class="text-green-600 bg-green-100 px-3 py-1 rounded-md font-bold text-[10px]">Active (Hidden)</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-brand"></i> Campaign Duration</span>
+                                <span class="text-slate-500">Oct 01 - Oct 15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-fuchsia-100 text-fuchsia-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-sliders"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Granular Targeting & Scheduling</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        Take full control of where, when, and to whom your widgets are displayed. Perfect for launching seasonal offers or hiding videos on critical sales funnels.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Exclude widgets automatically on Checkout templates</li>
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Target specific page types: Homepage, Shop, Product archives</li>
+                        <li class="flex items-start gap-3 text-slate-700 font-medium"><i class="fa-solid fa-circle-check text-brand mt-1"></i> Automatically launch and expire widgets with date limits</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </section>
-    <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION (NEW) -->
+
+    <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION -->
     <section id="custom-setup" class="py-16 bg-white border-t border-slate-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
@@ -269,7 +652,165 @@
             </div>
         </div>
     </section>
-    <!-- Pricing Section (Focus for Ads) -->
+
+    <!-- PERSUASIVE Q&A SECTION (ROI & Value proposition) -->
+    <section id="roi-qna" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Buying Guide & ROI</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">How Does This Plugin Grow Your Store?</h3>
+                <p class="text-slate-600 mt-4 text-lg">Clear answers to why buying this plugin is a risk-free investment for your WooCommerce store.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Q&A Item 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm shrink-0 mt-1">Q</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-3">Why should store owners choose this shoppable video plugin over standard image galleries?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Modern shoppers are used to scrolling through highly engaging vertical feeds on social media. Static images cannot show a product’s real-world motion, fit, or texture. Shoppable videos show products in real life, increasing customer trust and helping them make buying decisions much faster.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Item 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm shrink-0 mt-1">Q</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-3">What is the direct financial benefit (ROI) of choosing Chimpjar?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Instant cost savings. SaaS platforms like Tolstoy or Videowise charge recurring subscription fees starting at $99/month ($1,188/year). With our flat $39 one-time payment, you eliminate monthly SaaS overhead entirely, keeping that margin inside your own business.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Item 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm shrink-0 mt-1">Q</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-3">How does this plugin actually increase sales and store revenue?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                By completely removing friction from the buyer's journey. Instead of navigating away to look for product pages, customers view live WooCommerce pricing and can click "Add to Cart" directly from the video player. Less friction equals higher conversion rates and fewer abandoned carts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Item 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm shrink-0 mt-1">Q</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-3">How does the self-hosted design help store owners save on hosting fees?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Most SaaS video platforms charge heavy overages once your site traffic grows. With Chimpjar, you can host videos on your server or link to incredibly affordable external storage (like BunnyCDN or AWS S3) with zero platform markups, allowing you to scale without bandwidth limits.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- NEW SECTION: COMPETING SOLUTIONS COMPARISON -->
+    <section id="comparison" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">How We Compare</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">WordPress Freedom vs. Heavy SaaS Fees</h3>
+                <p class="text-slate-600 mt-4 text-lg">Compare Chimpjar side-by-side with expensive monthly subscription tools.</p>
+            </div>
+
+            <!-- Comparison Table Container -->
+            <div class="overflow-x-auto rounded-3xl border border-slate-200 shadow-sm bg-white">
+                <table class="w-full border-collapse text-left text-sm text-slate-700 min-w-[750px]">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200">
+                            <th class="p-6 font-bold text-slate-900 text-base">Key Parameters</th>
+                            <th class="p-6 font-bold text-brand text-base bg-brand/5 border-x border-slate-200">Chimpjar Plugin</th>
+                            <th class="p-6 font-bold text-slate-600 text-base">Standard SaaS (e.g. Tolstoy)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <!-- Pricing Model -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Pricing Model</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> $39 One-Time Payment</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> $99/month (Starting tier)</td>
+                        </tr>
+                        <!-- Bandwidth -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Bandwidth & Streaming Fees</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Unlimited (Host anywhere)</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> Strict monthly limits & overages</td>
+                        </tr>
+                        <!-- Sales Commission -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Sales Commission Cut</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> 0% (Keep 100% of profits)</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> Up to 1%-2% fee per sale</td>
+                        </tr>
+                        <!-- Video Layouts -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Video Layout Variety</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> 4 Distinct Formats Included</td>
+                            <td class="p-6 text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i> Limited to 1 or 2 on base tiers</td>
+                        </tr>
+                        <!-- WooCommerce -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">WooCommerce Integration</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Deep Native Integration</td>
+                            <td class="p-6 text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i> Complex API connections required</td>
+                        </tr>
+                        <!-- Smart Trigger Suite -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Smart Trigger Engine</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Exit-Intent, Auto-Open & Cookies</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> Locked behind premium tiers</td>
+                        </tr>
+                        <!-- Live Customizer Preview -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Live Customizer Preview</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Real-Time Editor Sandbox</td>
+                            <td class="p-6 text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i> Standard static preview fields</td>
+                        </tr>
+                        <!-- Campaign Scheduling -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Campaign Scheduling</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Automated Date-Range Toggles</td>
+                            <td class="p-6 text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i> Manual switching required</td>
+                        </tr>
+                        <!-- GDPR & Privacy -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">GDPR & Privacy Compliance</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> 100% Self-Hosted (Secure)</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> Third-party tracker processing</td>
+                        </tr>
+                        <!-- WordPress Builders -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">WordPress Builders</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Elementor, Divi, Gutenberg</td>
+                            <td class="p-6 text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i> Manual iframe configuration</td>
+                        </tr>
+                        <!-- Performance Analytics -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">User Performance Analytics</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Native Views, Clicks & CTR Columns</td>
+                            <td class="p-6 text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i> Basic metrics restricted on SaaS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+<!-- Pricing Section (Focus for Ads) -->
     <section id="pricing" class="py-24 bg-slate-900 text-white relative overflow-hidden">
         <!-- Abstract glowing circles -->
         <div class="absolute top-0 right-0 w-96 h-96 bg-brand rounded-full blur-[120px] opacity-30"></div>
@@ -291,18 +832,19 @@
                 <p class="text-slate-600 mb-8 border-b border-slate-100 pb-8">Lifetime access to the ultimate Shoppable Video player for WordPress.</p>
                 
                 <ul class="space-y-4 text-left mb-10 font-medium text-slate-700">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Add to Cart directly from video</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Picture-in-Picture (PiP) Mode</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Swipeable TikTok-Style UI</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Self-hosted / Zero bandwidth limits</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Lifetime Updates & Support</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> WooCommerce In-Video Add to Cart & Checkout</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> 4 Cinematic Video Layout Formats Included</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Native Dashboard Analytics (Views, Clicks & CTR)</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Exit-Intent, Auto-Open & Session Cookie Triggers</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Granular Device, Page Targeting & Date Scheduling</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Self-hosted / Unlimited Bandwidth / Lifetime Support</li>
                 </ul>
 
                 <!-- LEMON SQUEEZY CHECKOUT LINK GOES HERE -->
-                <a href="#" class="block w-full bg-slate-900 hover:bg-black text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-slate-900/30">
+                <a href="https://codecanyon.net/item/chimpjar-shoppable-videos-interactive-video-widget-with-woocommerce-integration/63789498" target="_blank" class="block w-full bg-slate-950 hover:bg-black text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-slate-950/30">
                     Get Lifetime Deal Now
                 </a>
-                <p class="text-xs text-slate-400 mt-4"><i class="fa-solid fa-shield-halved"></i> 14-Day Money-Back Guarantee. Secure Checkout.</p>
+
             </div>
         </div>
     </section>
@@ -380,8 +922,8 @@
                     <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Legal</h4>
                     <ul class="space-y-4 text-sm text-slate-400">
                         <li><a href="terms.html" class="hover:text-brand transition-colors">Terms of Service</a></li>
-                        <li><a href="privacy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
-                        <li><a href="refund.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
+                        <li><a href="refund-policy.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
                         <li><a href="licenses.html" class="hover:text-brand transition-colors">License Details</a></li>
                     </ul>
                 </div>
