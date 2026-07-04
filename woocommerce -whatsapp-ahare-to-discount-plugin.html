@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WooCommerce WhatsApp Share to Discount Plugin | Chimpjar</title>
+    <meta name="description" content="Boost your e-commerce conversion and drive organic viral traffic. Automatically generate and apply unique discount coupons only when customers share product pages on WhatsApp.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans:['Inter', 'sans-serif'] },
+                    colors: { 
+                        brand: '#25d366', /* WhatsApp Green for Theme */
+                        'brand-dark': '#128c7e', 
+                        'brand-darker': '#075e54' 
+                    },
+                    boxShadow: { 'sleek': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'sleek-hover': '0 10px 40px -4px rgba(0, 0, 0, 0.1)' },
+                    animation: { 'float-slow': 'float 6s ease-in-out infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white">
+
+    <!-- Navbar (Maintained from your template) -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5 group">
+                        <img src="./logo2.png" alt="Chimpjar WooCommerce Plugins" width="140" height="33">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Key Features</a>
+                    <a href="#layouts" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Verification Modes</a>
+                    <a href="#roi-qna" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Buyer Q&A</a>
+                    <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="hidden sm:block text-sm font-medium text-slate-500 hover:text-slate-900">&larr; Back to Store</a>
+                    <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm shadow-brand/30">Get Plugin</a>
+                    
+                    <!-- Mobile Hamburger Toggle Button -->
+                    <button type="button" id="mobile-menu-toggle" class="block md:hidden text-slate-600 hover:text-slate-900 focus:outline-none p-2" aria-label="Toggle Menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#features" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Key Features</a>
+                <a href="#layouts" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Verification Modes</a>
+                <a href="#roi-qna" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Buyer Q&A</a>
+                <a href="#pricing" class="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1 transition-colors">Pricing</a>
+                <a href="index.html" class="block sm:hidden text-sm font-medium text-slate-500 hover:text-slate-900 py-1 border-t border-slate-100 pt-2">&larr; Back to Store</a>
+            </div>
+        </div>
+
+        <!-- Simple Toggle Javascript Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var toggleBtn = document.getElementById('mobile-menu-toggle');
+                var mobileMenu = document.getElementById('mobile-menu');
+                var menuLinks = mobileMenu.querySelectorAll('a');
+
+                if (toggleBtn && mobileMenu) {
+                    toggleBtn.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+
+                    menuLinks.forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            mobileMenu.classList.add('hidden');
+                        });
+                    });
+                }
+            });
+        </script>
+    </nav>
+
+    <!-- Product Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-slate-50">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/3"></div>
+            <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-fuchsia-400/10 rounded-full blur-[100px] translate-y-1/3 translate-x-1/3"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-bold mb-6 shadow-sm uppercase tracking-wide">
+                        <i class="fa-solid fa-fire text-orange-500"></i> The Ultimate Viral Growth Loop
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                        Turn WhatsApp shares into <span class="text-brand">guaranteed</span> sales.
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                        Automatically generate and apply unique discount coupons only when customers share product pages on WhatsApp. Lower your advertising costs with native referral tracking, fraud prevention, and custom visual controls.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg shadow-brand/30">
+                            Get Lifetime Access &rarr;
+                        </a>
+                        <a href="#layouts" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+                            Explore Verification Modes
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Mobile Mockup -->
+                <div class="w-full lg:w-1/2 flex justify-center relative">
+                    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 p-4 max-w-sm w-full relative overflow-hidden">
+                        <div class="bg-slate-50 px-4 py-3 border-b border-slate-100 flex justify-between items-center rounded-t-2xl">
+                            <span class="font-bold text-xs text-slate-600">checkout-preview.png</span>
+                            <span class="bg-brand/10 text-brand text-[10px] font-bold px-2.5 py-0.5 rounded-full">Share Unlocked</span>
+                        </div>
+                        <div class="p-6 text-center space-y-4">
+                            <div class="w-16 h-16 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mx-auto"><i class="fa-brands fa-whatsapp"></i></div>
+                            <h4 class="font-bold text-slate-900 text-lg">Unlock 10% Off!</h4>
+                            <p class="text-xs text-slate-500">Share this amazing Nordic Table Lamp on WhatsApp to automatically apply your coupon at checkout.</p>
+                            
+                            <!-- WhatsApp Share Button with sizing style simulation -->
+                            <button class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2 shadow-md shadow-brand/20">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Share & Claim Discount
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Floating Ring Pulse Simulator -->
+                    <div class="absolute -right-8 bottom-12 bg-white p-3 rounded-2xl shadow-xl z-20 animate-float-slow" style="animation-delay: 1.5s;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand/10 rounded-full flex items-center justify-center text-brand text-lg"><i class="fa-solid fa-gift"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-semibold">Floating Sticky Bubble</p>
+                                <p class="text-sm font-bold text-slate-900">Pulsating Ring Effect</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <div class="border-y border-slate-100 bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 opacity-60">
+            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Designed for high-growth:</span>
+            <div class="flex flex-wrap justify-center gap-8">
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-cart-shopping"></i> WooCommerce Shops</span>
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-bullhorn"></i> Social Commerce</span>
+                <span class="flex items-center gap-2 font-bold text-lg text-slate-800"><i class="fa-solid fa-share-nodes"></i> Viral Marketing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Features Section -->
+    <section id="features" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Incentive Social Sharing</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Stop spending thousands on retargeting ads.</h3>
+            </div>
+
+            <!-- Feature 1: Unique Dynamic Coupon -->
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-inner flex justify-center">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 w-full max-w-sm text-center">
+                            <div class="w-12 h-12 bg-brand/10 text-brand rounded-full flex items-center justify-center text-xl mx-auto mb-4"><i class="fa-solid fa-ticket"></i></div>
+                            <span class="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-1">Coupon Applied</span>
+                            <div class="font-mono font-bold text-2xl text-slate-900 bg-slate-50 border border-dashed border-slate-300 py-2.5 rounded-xl mb-4">WA-XYZ892</div>
+                            <p class="text-slate-500 text-sm">Discount applied successfully to your active shopping cart session!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-qrcode"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Unique Dynamic Coupon Generator</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Never worry about leaked generic discount codes. Our plugin utilizes native WooCommerce CRUD structures to dynamically generate a unique coupon code for every single user, restricting usages to exactly one time per customer.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 2: Anti-Cheat Guard -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-24">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="bg-red-50 border border-red-100 rounded-3xl p-8 shadow-inner flex justify-center">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 w-full max-w-sm text-center">
+                            <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xl mx-auto mb-4 animate-pulse"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h4 class="font-bold text-slate-900 text-lg mb-2">Claim Blocked</h4>
+                            <p class="text-slate-500 text-sm">Our anti-cheat systems detected a duplicate request from this IP address.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-user-shield"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Secure Anti-Cheat Shield</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Prevent fraud and coupon farming. The plugin's security layer monitors user IP addresses and browser cookies. Store owners can restrict users to earning only 1 coupon every X days, keeping profit margins secure.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 3: Product Level Customization -->
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-32">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-inner relative flex justify-center items-center h-full min-h-[300px]">
+                        <div class="text-center">
+                            <i class="fa-solid fa-box text-6xl text-brand mb-4"></i>
+                            <div class="bg-white px-6 py-3 rounded-xl shadow-md font-bold text-slate-700 text-sm border border-slate-100">WooCommerce Meta Box Integration</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-sliders"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Granular Product-Level Controls</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        You don't have to apply discounts globally. A beautiful native WooCommerce Meta Box sits directly inside your Product Data panel, allowing you to force enable, completely disable, or customize discount values and messages for individual products.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Verification Options Section -->
+            <div id="layouts" class="pt-24 border-t border-slate-100 mb-32">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Smart Verification Modes</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">3 Flexible Methods to Suit Your Audits</h3>
+                    <p class="text-slate-600 mt-4 text-lg">Control how strictly you want to verify WhatsApp sharing before rewarding users with discounts.</p>
+                </div>
+
+                <!-- Verification 1: Focus Timer -->
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-28 bg-slate-50/50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                    <div class="w-full md:w-1/2">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold mb-4 uppercase tracking-wider">
+                            <i class="fa-solid fa-hourglass-start"></i> Mode 1: Smart Timer
+                        </span>
+                        <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Smart Timer & Focus Check</h4>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            Intelligently calculates browser tab focus timings and elapsed duration. If a user quickly triggers the WhatsApp window and closes it in under X seconds, the system denies coupon unlocking.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 font-mono text-xs text-slate-500 font-bold">
+                                Recommended: 5s delay
+                            </span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-lg p-6 text-center">
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-brand h-full rounded-full transition-all duration-1000" style="width: 60%"></div>
+                            </div>
+                            <span class="text-xs text-slate-400 block mt-3 font-mono">Analyzing share actions...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification 2: Instant Unlocking -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-28 bg-slate-50/50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                    <div class="w-full md:w-1/2">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold mb-4 uppercase tracking-wider">
+                            <i class="fa-solid fa-bolt"></i> Mode 2: Instant
+                        </span>
+                        <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Instant Coupon Generation</h4>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            Zero friction. The coupon unlocks immediately once the user clicks "Share on WhatsApp". Highly recommended for stores with focus on maximizing overall purchase conversion.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 font-mono text-xs text-slate-500 font-bold">
+                                Lowest Friction
+                            </span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-lg p-6 text-center">
+                            <div class="text-brand text-3xl font-extrabold mb-2">Claim Instantly</div>
+                            <p class="text-slate-500 text-xs">Unlock your code immediately upon opening WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification 3: Manual Confirmation -->
+                <div class="flex flex-col md:flex-row items-center gap-12 bg-slate-50/50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                    <div class="w-full md:w-1/2">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold mb-4 uppercase tracking-wider">
+                            <i class="fa-regular fa-circle-check"></i> Mode 3: Manual Confirm
+                        </span>
+                        <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">"I Have Shared" Confirmation</h4>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                            Forces user compliance. After sharing, customers click a secondary "I have shared" validation button inside the modal. An automated delay rule protects this button from instant misuse.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="bg-white px-4 py-2.5 rounded-xl border border-slate-200 font-mono text-xs text-slate-500 font-bold">
+                                Forced Engagement
+                            </span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-lg p-6 text-center">
+                            <button class="bg-brand text-white font-bold py-3 px-6 rounded-xl text-sm w-full shadow-lg shadow-brand/20"><i class="fa-solid fa-check"></i> I have shared! Claim Coupon</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NEW SECTION 4: STICKY BUBBLE WIDGET -->
+            <div id="sticky-bubble" class="flex flex-col md:flex-row items-center gap-12 mb-32 pt-16 border-t border-slate-100">
+                <div class="w-full md:w-1/2">
+                    <div class="w-12 h-12 bg-green-100 text-brand rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-gift"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">6-Position Floating folding Bubble Widget</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        Increase visibilities with a sticky folding bubble widget. Position it in 6 coordinates (Top, Middle, Bottom - Left/Right) with customized icons, tooltips, and pulsating wave rings.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <span class="block font-bold text-slate-900 text-sm mb-1">Pulse Wave Ring</span>
+                            <span class="text-xs text-slate-500">A glowing animated ring effect drawing immediate attention.</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <span class="block font-bold text-slate-900 text-sm mb-1">Custom Tooltip Text</span>
+                            <span class="text-xs text-slate-500">Add dynamic notifications (e.g., Get Coupon!) next to the bubble.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <!-- Sticky Bubble Preview Mockup -->
+                    <div class="bg-slate-900 text-slate-100 rounded-3xl p-6 shadow-2xl border border-slate-800">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <span class="text-xs text-slate-400">Bubble Position Control</span>
+                        </div>
+                        <!-- Inner Customizer Simulator -->
+                        <div class="space-y-4">
+                            <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/50 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-slate-300">Screen Position</span>
+                                <div class="flex gap-2">
+                                    <span class="bg-brand text-xs px-3 py-1 rounded-md font-bold">Bottom Right</span>
+                                    <span class="bg-slate-700 text-xs px-3 py-1 rounded-md text-slate-400">Middle Left</span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/50 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-slate-300">Pulsating Ring Wave</span>
+                                <span class="text-xs text-green-400 font-bold uppercase">Enabled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW SECTION 5: REFERRAL ANALYTICS -->
+            <div id="analytics" class="flex flex-col md:flex-row items-center gap-12 mb-32 pt-16 border-t border-slate-100">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <!-- Admin Statistics Table Mockup -->
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden">
+                        <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+                            <span class="font-bold text-slate-800 text-sm">WP-Admin / Referral Traffic Log</span>
+                            <span class="bg-green-100 text-green-700 text-xs px-2.5 py-0.5 rounded-full font-semibold">Live Tracking</span>
+                        </div>
+                        <div class="divide-y divide-slate-100">
+                            <table class="w-full text-xs font-medium text-slate-700">
+                                <thead>
+                                    <tr class="bg-slate-100 text-left text-slate-500">
+                                        <th class="p-3">Referral Token</th>
+                                        <th class="p-3">Product Shared</th>
+                                        <th class="p-3">Visitor IP</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-slate-100">
+                                        <td class="p-3"><code>WA-4ef8a</code></td>
+                                        <td class="p-3">Ceramic Table Lamp</td>
+                                        <td class="p-3">192.168.1.41</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-100">
+                                        <td class="p-3"><code>WA-9a8f2</code></td>
+                                        <td class="p-3">Noise Cancelling Headphones</td>
+                                        <td class="p-3">103.41.9.112</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4">Native Dashboard Referral Analytics</h4>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        Don't share blindly. The plugin automatically generates unique tracking tokens and monitors clicks. Discover exactly which shared product links are bringing new organic traffic and conversion clicks to your store.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DONE-FOR-YOU / CUSTOM SETUP SECTION -->
+    <section id="custom-setup" class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+                <!-- Abstract Glow -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+                
+                <div class="w-full md:w-2/3 relative z-10 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold mb-4 uppercase tracking-wide">
+                        <i class="fa-solid fa-laptop-code text-brand"></i> Done-For-You Service
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Don't have time to set this up?</h3>
+                    <p class="text-slate-400 text-lg mb-0">
+                        Whether you need help configuring this plugin, designing your discount campaigns, or require a completely custom WordPress feature—our expert team is ready to build it for you.
+                    </p>
+                </div>
+                
+                <div class="w-full md:w-1/3 relative z-10 flex justify-center md:justify-end">
+                    <a href="mailto:hello@chimpjar.com" class="w-full text-center bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg">
+                        Hire Our Team &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSUASIVE Q&A SECTION (ROI & Value proposition) -->
+    <section id="roi-qna" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Buying Guide & ROI</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">How Does This Plugin Grow Your Store?</h3>
+                <p class="text-slate-600 mt-4 text-lg">Clear answers to why buying this plugin is a risk-free investment for your WooCommerce store.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Q&A Item 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm shrink-0 mt-1">Q</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-3">How does WhatsApp Sharing lower advertising costs?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Standard ads require continuously paying for views and clicks. When you incentivize customers to share your products directly with their close friends or WhatsApp groups, you receive high-quality, trusted referral traffic. Warm leads from friends convert much faster than cold traffic from paid ads.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Item 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm shrink-0 mt-1">Q</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-3">What is the advantage of unique dynamic coupons over generic codes?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Generic codes like "SHARE10" are quickly leaked on coupon-scitaping websites, causing you to lose margin on customers who never shared. Our plugin automatically creates a unique coupon dynamically inside WooCommerce, restricting usages to only once per customer.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Item 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm shrink-0 mt-1">Q</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-3">How does the anti-cheat shield prevent exploiters?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Some technical users try to clear their cache or repeatedly click buttons to farm coupons. The plugin secures your margins by performing double validation checks on browser cookies and IP addresses, ensuring that limit rules (e.g. max 1 coupon per week) are strictly followed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETING SOLUTIONS COMPARISON -->
+    <section id="comparison" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">How We Compare</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Highly Specialized Features vs. Generic Share Bars</h3>
+                <p class="text-slate-600 mt-4 text-lg">Compare Chimpjar WhatsApp Share with standard social share tools.</p>
+            </div>
+
+            <!-- Comparison Table Container -->
+            <div class="overflow-x-auto rounded-3xl border border-slate-200 shadow-sm bg-white">
+                <table class="w-full border-collapse text-left text-sm text-slate-700 min-w-[750px]">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200">
+                            <th class="p-6 font-bold text-slate-900 text-base">Key Parameters</th>
+                            <th class="p-6 font-bold text-brand text-base bg-brand/5 border-x border-slate-200">Chimpjar WhatsApp Discount</th>
+                            <th class="p-6 font-bold text-slate-600 text-base">Generic Social Share Buttons</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <!-- Pricing Model -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Dynamic Coupon Generation</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Yes, Unique Woo Codes</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> No (Must use generic static codes)</td>
+                        </tr>
+                        <!-- Verification -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">3 Smart Verification Modes</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Included (Timer, Instant, Claim)</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> No checks (Click and close works)</td>
+                        </tr>
+                        <!-- Anti-Cheat -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Anti-Cheat Guard</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Yes (Cookie & IP limits)</td>
+                            <td class="p-6 text-rose-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> No prevention against spam</td>
+                        </tr>
+                        <!-- Bubble Widget -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">6-Position Folding Bubble</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Included with Custom Tooltips</td>
+                            <td class="p-6 text-slate-500 font-semibold"><i class="fa-solid fa-circle-xmark mr-2"></i> Simple static share bars</td>
+                        </tr>
+                        <!-- WooCommerce Meta -->
+                        <tr>
+                            <td class="p-6 font-semibold text-slate-900">Product Level Overrides</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-brand/5 border-x border-slate-200"><i class="fa-solid fa-circle-check mr-2"></i> Native WooCommerce Meta Box</td>
+                            <td class="p-6 text-slate-500"><i class="fa-solid fa-circle-xmark mr-2"></i> Applied globally to all products</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Abstract glowing circles -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand rounded-full blur-[120px] opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-fuchsia-600 rounded-full blur-[120px] opacity-20"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-3">Ditch the Ad Spend</h2>
+            <h3 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Zero Monthly Fees. Pure Organic Traffic.</h3>
+            <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">Get complete access to the ultimate WooCommerce WhatsApp Share to Discount plugin with a single, one-time payment.</p>
+
+            <div class="bg-white text-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl max-w-xl mx-auto transform transition-transform hover:scale-[1.02] duration-300 border-4 border-brand/20 relative">
+                
+                <div class="absolute -top-4 right-10 bg-gradient-to-r from-orange-400 to-rose-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3">Organic Sales Machine</div>
+
+                <div class="flex justify-center items-end gap-1 mb-6 mt-4">
+                    <span class="text-6xl font-extrabold tracking-tight text-slate-900">$19</span>
+                    <span class="text-slate-500 font-medium mb-2">/one-time</span>
+                </div>
+                <p class="text-slate-600 mb-8 border-b border-slate-100 pb-8">Lifetime access to the ultimate social referral engine for WordPress.</p>
+                
+                <ul class="space-y-4 text-left mb-10 font-medium text-slate-700">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> WooCommerce Dynamic Unique Coupon Generation</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> 3 Smart Share Verification Modes</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> 6-Position Folding Bubble with Pulse Wave & Tooltip</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Anti-Cheat Shield (Cookie & IP limitation tracker)</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> WooCommerce Product-level Settings (Meta Box)</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand bg-brand/10 p-1 rounded-full text-xs"></i> Self-hosted / Native Referral Log / Lifetime Support</li>
+                </ul>
+
+                <a href="https://codecanyon.net" target="_blank" class="block w-full bg-slate-950 hover:bg-black text-white text-lg font-bold py-4 rounded-xl transition-colors shadow-lg shadow-slate-950/30">
+                    Get Lifetime Deal Now
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Can we verify actual message sent on WhatsApp?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Due to Meta's end-to-end encryption privacy policies, no website can read private user chats. We solve this by using smart timer-delay focus tracking, "I have shared" manual confirmation barriers, or tracking referral traffic clicks.</p>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Does it slow down my website load speed?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Not at all. The plugin assets and styles are completely lightweight, minified, and optimized. Scripts only trigger when visitors load a WooCommerce single product, keeping your score high.</p>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Can I translate the text to other languages?</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Yes. All strings inside the PHP files utilize standard WordPress translation helpers, making the plugin 100% translation ready with Loco Translate or WPML.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Premium SaaS Footer -->
+    <footer class="bg-slate-950 text-slate-300 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+                
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="./logoW2.png" alt="WhatsApp CRM Plugin" width="140" height="33">
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-md">
+                        Premium WordPress plugins and highly converting email templates designed to supercharge your online business. No monthly fees, ever.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-brand hover:text-white hover:border-brand transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Products</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="whatsapp-crm.html" class="hover:text-brand transition-colors ">WhatsApp CRM</a></li>
+                        <li><a href="shoppable-video.html" class="hover:text-brand transition-colors">Shoppable Video</a></li>
+                        <li><a href="accessibility.html" class="hover:text-brand transition-colors">WP Accessibility</a></li>
+                        <li><a href="size-guide.html" class="hover:text-brand transition-colors">Size Guide</a></li>
+                        <li><a href="flipbook.html" class="hover:text-brand transition-colors">Flipbook Maker</a></li>						
+                        <li><a href="mailchimp-bundle.html" class="hover:text-brand transition-colors">Email Templates</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="about-us.html" class="hover:text-brand transition-colors">About Us</a></li>					
+                        <li><a href="contact-support.html" class="hover:text-brand transition-colors">Contact Support</a></li>
+                        <li><a href="custom-development.html" class="hover:text-brand transition-colors">Custom Development</a></li>
+                        <li><a href="affiliate-program.html" class="hover:text-brand transition-colors">Affiliate Program</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="terms.html" class="hover:text-brand transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-brand transition-colors">Privacy Policy</a></li>
+                        <li><a href="refund-policy.html" class="hover:text-brand transition-colors">Refund Policy</a></li>
+                        <li><a href="licenses.html" class="hover:text-brand transition-colors">License Details</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-sm text-slate-500">
+                    &copy; 2026 Chimpjar. All rights reserved.
+                </div>
+                
+                <div class="flex items-center gap-4 text-2xl text-slate-600">
+                    <i class="fa-brands fa-stripe hover:text-indigo-400 transition-colors" title="Powered by Stripe"></i>
+                    <i class="fa-brands fa-paypal hover:text-blue-400 transition-colors" title="PayPal Accepted"></i>
+                    <i class="fa-brands fa-cc-visa hover:text-blue-500 transition-colors"></i>
+                    <i class="fa-brands fa-cc-mastercard hover:text-orange-500 transition-colors"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
