@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BumpJar – Dynamic WooCommerce Order Bump Plugin by ChimpJar</title>
+    <meta name="description" content="Boost your Average Order Value (AOV) on WooCommerce checkout with smart, high-converting order bumps, dynamic discounts, sound effects, and real-time analytics. Zero monthly fees.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { 
+                        brand: '#7c3aed', /* Violet 600 */
+                        'brand-dark': '#6d28d9', 
+                        'brand-darker': '#5b21b6',
+                        'accent': '#f43f5e' /* Rose 500 */
+                    },
+                    boxShadow: { 
+                        'sleek': '0 4px 20px -2px rgba(124, 58, 237, 0.08)', 
+                        'sleek-hover': '0 10px 40px -4px rgba(124, 58, 237, 0.15)' 
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand selection:text-white">
+
+<!-- Navbar -->
+<nav class="fixed w-full bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo / Brand Name -->
+            <a href="#" class="flex-shrink-0 flex items-center gap-2.5 group">
+                <span class="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl bg-brand flex items-center justify-center text-white shadow-md shadow-brand/30">
+                        <i class="fa-solid fa-bolt text-lg"></i>
+                    </div>
+                    Bump<span class="text-brand font-medium">Jar</span>
+                </span>
+                <span class="text-[10px] bg-slate-100 text-slate-500 font-extrabold px-2 py-0.5 rounded-full border border-slate-200 uppercase tracking-widest hidden sm:inline-block">by ChimpJar</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#features" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Features</a>
+                <a href="#how-it-works" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">How It Works</a>
+                <a href="#templates" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Templates</a>
+                <a href="#comparison" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Why BumpJar</a>
+                <a href="#faq" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">FAQs</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#pricing" class="bg-brand hover:bg-brand-dark text-white text-sm px-5 py-2.5 rounded-lg font-bold transition-all shadow-sm shadow-brand/30">Get Plugin</a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-brand focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-lg">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+            <a href="#features" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Features</a>
+            <a href="#how-it-works" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">How It Works</a>
+            <a href="#templates" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Templates</a>
+            <a href="#comparison" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Why BumpJar</a>
+            <a href="#faq" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">FAQs</a>
+            <hr class="border-slate-100 my-2">
+            <a href="#pricing" class="block px-3 py-3 text-base font-medium text-brand hover:bg-purple-50 rounded-lg">Get Plugin</a>
+        </div>
+    </div>
+</nav>
+
+<!-- JavaScript to handle Mobile Toggle -->
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = mobileMenuButton.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+            icon.classList.replace('fa-xmark', 'fa-bars');
+        } else {
+            icon.classList.add('fa-xmark');
+            icon.classList.remove('fa-bars');
+        }
+    });
+</script>
+
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-slate-50">
+    <!-- Abstract Background Blur -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-400/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            
+            <!-- Left Content -->
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-bold mb-6 shadow-sm uppercase tracking-wide">
+                    <i class="fa-solid fa-rocket text-brand"></i> Average Order Value (AOV) Booster
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                    Skyrocket WooCommerce sales with <span class="text-brand">1-Click Order Bumps</span>.
+                </h1>
+                
+                <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                    Turn single purchases into high-value orders instantly. Display irresistible cross-sells, dynamic discounts, and urgency countdown timers right on your WooCommerce checkout page.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
+                    <a href="#pricing" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-brand/30 flex items-center justify-center gap-2">
+                        Get BumpJar Lifetime
+                    </a>
+                    <a href="#how-it-works" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-sm flex items-center justify-center gap-2">
+                        See Demo &rarr;
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 text-sm font-medium text-slate-500">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> No Monthly Fees</span>
+                    <span class="hidden sm:inline text-slate-300">•</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> Audio Chime Feedback</span>
+                    <span class="hidden sm:inline text-slate-300">•</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand"></i> Smart Auto Cross-Sells</span>
+                </div>
+            </div>
+
+            <!-- Right Visual Mockup (Interactive Order Bump Display) -->
+            <div class="relative mx-auto w-full max-w-lg lg:max-w-full">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand/20 to-purple-300/20 rounded-full blur-2xl transform scale-90"></div>
+                
+                <div class="relative transform transition-transform hover:-translate-y-1 duration-500">
+                    <!-- Modern Checkout Box Mockup -->
+                    <div class="bg-white rounded-3xl p-6 shadow-2xl border border-slate-200 text-slate-800">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                                <span class="text-xs text-slate-400 font-semibold ml-2">Checkout Order Summary</span>
+                            </div>
+                            <span class="text-[10px] bg-purple-50 text-brand border border-purple-200 px-2 py-0.5 rounded-full font-bold uppercase">LIVE PREVIEW</span>
+                        </div>
+                        
+                        <!-- Simulated Order Bump Box (Modern Template Style) -->
+                        <div class="border-2 border-dashed border-brand bg-purple-50/50 rounded-2xl p-5 relative overflow-hidden">
+                            <div class="flex items-start gap-3.5">
+                                <!-- Thumbnail Image -->
+                                <div class="w-16 h-16 rounded-xl bg-slate-200 flex-shrink-0 overflow-hidden border border-slate-200 shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=150&auto=format&fit=crop&q=80" alt="Product Thumbnail" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Text Content -->
+                                <div class="flex-grow">
+                                    <div class="flex items-center gap-2 flex-wrap mb-1">
+                                        <input type="checkbox" checked class="w-4 h-4 accent-brand cursor-pointer">
+                                        <span class="bg-brand text-white text-[10px] font-extrabold px-2 py-0.5 rounded uppercase tracking-wider">EXCLUSIVE OFFER</span>
+                                        <span class="font-bold text-slate-900 text-sm">Extended 1-Year Warranty</span>
+                                    </div>
+                                    
+                                    <!-- Price Highlight -->
+                                    <div class="flex items-center gap-2 text-xs mb-2 pl-6">
+                                        <span class="text-slate-500">Special Price:</span>
+                                        <span class="line-through text-slate-400">$29.00</span>
+                                        <span class="bg-red-100 text-red-600 font-black px-2 py-0.5 rounded border border-red-200 text-xs">$14.50 (50% OFF)</span>
+                                    </div>
+
+                                    <p class="text-xs text-slate-500 leading-relaxed pl-6 mb-3">
+                                        Protect your device against accidental damage. 100% instant replacement guarantee.
+                                    </p>
+
+                                    <!-- Timer -->
+                                    <div class="inline-flex items-center gap-1.5 text-[11px] font-bold text-red-600 bg-amber-100 border border-amber-300 px-2.5 py-1 rounded-full pl-6 ml-6">
+                                        ⏰ Offer Expires in: <span class="font-mono">04:52</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sound Badge Overlay -->
+                            <div class="mt-4 pt-3 border-t border-purple-200/60 flex items-center justify-between text-[11px] text-slate-500">
+                                <span class="flex items-center gap-1.5 text-brand font-bold"><i class="fa-solid fa-volume-high animate-bounce"></i> Interactive Audio Chime On Check</span>
+                                <span class="text-slate-400 font-semibold">+ $14.50 added to cart</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases Banner -->
+<div class="border-y border-slate-100 bg-white py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 opacity-80">
+        <span class="text-xs font-extrabold text-slate-400 uppercase tracking-widest">Built to increase:</span>
+        <div class="flex flex-wrap justify-center gap-8">
+            <span class="flex items-center gap-2 font-bold text-base text-slate-800"><i class="fa-solid fa-chart-line text-lg text-brand"></i> Average Order Value</span>
+            <span class="flex items-center gap-2 font-bold text-base text-slate-800"><i class="fa-solid fa-bag-shopping text-lg text-brand"></i> Cross-Sell Conversions</span>
+            <span class="flex items-center gap-2 font-bold text-base text-slate-800"><i class="fa-solid fa-wallet text-lg text-brand"></i> Store Profit Margin</span>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-20 bg-slate-50 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl mx-auto mb-16">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-xs mb-3">Effortless Setup</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Boost Sales in 3 Simple Steps</h3>
+            <p class="text-slate-600 mt-4 text-sm sm:text-base">No complex funnel builders or coding skills needed. Works seamlessly with native WooCommerce checkout.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Step 1 -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">1</div>
+                <div class="w-14 h-14 bg-purple-50 text-brand rounded-full flex items-center justify-center text-2xl mx-auto mb-6 mt-2">
+                    <i class="fa-solid fa-hand-pointer"></i>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Select Your Bump Product</h4>
+                <p class="text-slate-600 text-xs leading-relaxed">Choose a fallback bump product or enable Smart Cross-Sells to auto-detect related products from the customer's cart.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">2</div>
+                <div class="w-14 h-14 bg-purple-50 text-brand rounded-full flex items-center justify-center text-2xl mx-auto mb-6 mt-2">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Customize Style & Offer</h4>
+                <p class="text-slate-600 text-xs leading-relaxed">Pick from 3 pre-made templates, set dynamic percentage/fixed discounts, custom colors, and enable urgency countdown timers.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">3</div>
+                <div class="w-14 h-14 bg-purple-50 text-brand rounded-full flex items-center justify-center text-2xl mx-auto mb-6 mt-2">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Watch Revenue Grow</h4>
+                <p class="text-slate-600 text-xs leading-relaxed">Customers add bump items with 1 click. Track views, total conversions, and revenue generated right on your dashboard.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Features Section -->
+<section id="features" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-xs mb-3">Packed With Value</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Features designed for maximum conversions.</h3>
+        </div>
+
+        <!-- 3x2 Feature Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Feature 1 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-purple-100 text-brand rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-network-wired"></i></div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Smart Linked Cross-Sells</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Automatically detects Linked Cross-Sell products attached to items in the customer's cart and displays them dynamically.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-pink-100 text-pink-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-volume-high"></i></div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Interactive Audio Feedback</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Triggers a subtle, satisfying "cash register chime" sound via Web Audio API whenever a customer checks the bump box.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-percent"></i></div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Dynamic Discount System</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Offer exclusive percentage (%) or fixed ($) discounts with eye-catching strikethrough regular prices on the checkout page.</p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-stopwatch"></i></div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">FOMO Urgency Countdown</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Add live countdown timers with session storage persistence. Encourages instant decision making before the deal expires.</p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-filter"></i></div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Minimum Cart Amount Rule</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Set smart rules to display order bumps only when cart totals reach a specific minimum threshold (e.g. $50+).</p>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chart-pie"></i></div>
+                <h4 class="text-xl font-bold text-slate-900 mb-3">Revenue Analytics Dashboard</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Track Total Bump Views, Conversions, and Total Extra Revenue generated in real-time right inside your WP Admin panel.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Templates Section -->
+<section id="templates" class="py-20 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-xs mb-3">Pre-made Design Presets</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">3 Stunning Design Templates Included</h3>
+            <p class="text-slate-600 mt-4 text-sm sm:text-base">Match any WordPress theme style with built-in design presets and native WordPress color pickers.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Template 1 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Preset #1</div>
+                <h4 class="font-bold text-slate-900 text-lg mb-4">Classic Dashed Border</h4>
+                <div class="border-2 border-dashed border-purple-400 bg-purple-50/50 p-4 rounded-xl text-xs space-y-2">
+                    <span class="bg-purple-600 text-white font-bold px-2 py-0.5 rounded text-[10px]">SPECIAL OFFER</span>
+                    <p class="font-bold text-slate-800">Add Phone Case for $9.99</p>
+                    <p class="text-slate-500 text-[11px]">Protects your smartphone against accidental drops.</p>
+                </div>
+            </div>
+
+            <!-- Template 2 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md ring-2 ring-brand/20">
+                <div class="text-xs font-bold text-brand uppercase tracking-wider mb-4">Preset #2 (Most Popular)</div>
+                <h4 class="font-bold text-slate-900 text-lg mb-4">Modern Elevated Shadow</h4>
+                <div class="border border-slate-200 border-l-4 border-l-brand bg-white p-4 rounded-xl shadow-lg text-xs space-y-2">
+                    <span class="bg-brand text-white font-bold px-2 py-0.5 rounded text-[10px]">LIMITED OFFER</span>
+                    <p class="font-bold text-slate-800">Add Premium Accessories Bag</p>
+                    <p class="text-slate-500 text-[11px]">Includes compartments for all your chargers and cables.</p>
+                </div>
+            </div>
+
+            <!-- Template 3 -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Preset #3</div>
+                <h4 class="font-bold text-slate-900 text-lg mb-4">Gradient Highlight</h4>
+                <div class="border-2 border-purple-400 bg-gradient-to-r from-purple-100 to-white p-4 rounded-xl text-xs space-y-2">
+                    <span class="bg-slate-900 text-white font-bold px-2 py-0.5 rounded text-[10px]">EXCLUSIVE</span>
+                    <p class="font-bold text-slate-800">Add 2-Year Extended Protection</p>
+                    <p class="text-slate-500 text-[11px]">Hassle-free replacement guarantee valid today only.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Competitor Comparison Table -->
+<section id="comparison" class="py-20 bg-white border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl mx-auto mb-16">
+            <h2 class="text-brand font-bold tracking-wide uppercase text-xs mb-3">Smart Investment</h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">How BumpJar Compares</h3>
+            <p class="text-slate-600 mt-4 text-sm sm:text-base">Why pay $200+/year for heavy funnel builders when you can own a lightweight, high-converting order bump plugin forever?</p>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900 text-white">
+                            <th class="p-4 sm:p-5 text-sm font-bold">Features</th>
+                            <th class="p-4 sm:p-5 text-sm font-bold text-center text-purple-300">BumpJar</th>
+                            <th class="p-4 sm:p-5 text-sm font-bold text-center text-slate-400">Heavy Funnel Builders</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm font-medium text-slate-700">
+                        <tr>
+                            <td class="p-4 sm:p-5">One-time Lifetime Payment Available</td>
+                            <td class="p-4 sm:p-5 text-center text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-4 sm:p-5 text-center text-slate-400 text-lg"><i class="fa-solid fa-circle-xmark"></i> <span class="block text-[10px] text-slate-400">$199-$299/year</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 sm:p-5">Built-in Interactive Audio Chime Sound</td>
+                            <td class="p-4 sm:p-5 text-center text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-4 sm:p-5 text-center text-slate-400 text-lg"><i class="fa-solid fa-circle-xmark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 sm:p-5">Smart Linked Cross-Sells Auto-Detection</td>
+                            <td class="p-4 sm:p-5 text-center text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-4 sm:p-5 text-center text-slate-400 text-lg"><i class="fa-solid fa-circle-xmark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 sm:p-5">Lightweight (Zero Checkout Lag)</td>
+                            <td class="p-4 sm:p-5 text-center text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-4 sm:p-5 text-center text-slate-400 text-lg"><i class="fa-solid fa-circle-xmark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 sm:p-5">Real-time Revenue & Conversion Analytics</td>
+                            <td class="p-4 sm:p-5 text-center text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-4 sm:p-5 text-center text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Analytics & ROI Revenue Projection Section -->
+<section id="analytics-roi" class="py-24 bg-slate-900 text-white relative overflow-hidden border-t border-slate-800">
+    <!-- Subtle Background Glows -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/20 border border-brand/40 text-purple-300 text-xs font-bold mb-4 uppercase tracking-widest backdrop-blur-md">
+                <i class="fa-solid fa-calculator text-brand"></i> Real Profit Potential
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
+                Turn your existing traffic into <span class="text-emerald-400">Pure Extra Revenue</span>.
+            </h2>
+            <p class="text-slate-400 mt-4 text-base sm:text-lg">
+                You don't need to spend more money on Facebook or Google Ads. Monetize the customers who are already buying on your checkout page!
+            </p>
+        </div>
+
+        <!-- 2 Column ROI Calculation Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Side: Real Math Calculation Box -->
+            <div class="lg:col-span-7 bg-slate-800/80 border border-slate-700/80 rounded-3xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl">
+                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-chart-line text-emerald-400"></i> The Math Behind Order Bumps
+                </h3>
+                
+                <!-- Calculation Breakdown Grid -->
+                <div class="space-y-6 text-sm">
+                    
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+                        <span class="text-slate-300 font-medium">Your Monthly Store Orders:</span>
+                        <span class="text-white font-extrabold text-base bg-slate-900 px-3 py-1 rounded-lg border border-slate-700">500 Orders</span>
+                    </div>
+
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+                        <span class="text-slate-300 font-medium">Average Bump Accept Rate (25% - 30%):</span>
+                        <span class="text-brand font-extrabold text-base bg-purple-950/60 border border-brand/30 px-3 py-1 rounded-lg">150 Customers</span>
+                    </div>
+
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+                        <span class="text-slate-300 font-medium">Bump Product Price (e.g. Warranty/Item):</span>
+                        <span class="text-yellow-400 font-extrabold text-base bg-slate-900 px-3 py-1 rounded-lg border border-slate-700">$15.00</span>
+                    </div>
+
+                    <!-- Highlighted Total Extra Revenue -->
+                    <div class="bg-gradient-to-r from-emerald-950/80 to-slate-900 border-2 border-emerald-500/50 rounded-2xl p-6 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest block mb-1">Your Extra Monthly Profit:</span>
+                            <span class="text-slate-400 text-xs">Without spending $1 extra on advertising</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-3xl sm:text-4xl font-black text-emerald-400 tracking-tight">+$2,250<span class="text-lg text-emerald-500">/mo</span></span>
+                            <span class="block text-[11px] text-emerald-300 font-semibold">+ $27,000 Extra / Year!</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right Side: Visual Growth Comparison Cards -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Stat Card 1 -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brand flex items-center justify-center text-xl flex-shrink-0 border border-brand/20">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">+20% to +35% AOV Boost</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Order Bumps have an average acceptance rate of 28% across WooCommerce stores because buyers are already in impulse-buying mode.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stat Card 2 -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0 border border-emerald-500/20">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">Instant 100% ROI</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            A single $29 lifetime purchase of BumpJar pays for itself after your very first 2 or 3 checkout bump orders!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stat Card 3 -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl flex-shrink-0 border border-amber-500/20">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">Built-in Revenue Tracking</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Track views, conversions, and total extra revenue live in your WP Admin dashboard so you always know your exact profit.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- Discount / Promo Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative bg-gradient-to-br from-brand to-brand-dark rounded-[2rem] overflow-hidden shadow-2xl shadow-brand/20">
+            
+            <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-black/10 rounded-full blur-2xl"></div>
+
+            <div class="relative z-10 px-8 py-12 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+                
+                <!-- Text Side -->
+                <div class="text-center lg:text-left lg:max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold mb-6 uppercase tracking-widest backdrop-blur-md border border-white/30">
+                        <i class="fa-solid fa-bolt-lightning"></i> Special Launch Offer
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+                        Get 50% OFF <br class="hidden md:block"> on BumpJar Licenses Today!
+                    </h2>
+                    <p class="text-purple-100 text-lg mb-0 leading-relaxed">
+                        To celebrate our launch, we are offering an exclusive discount for the first <span class="font-bold text-white underline">100 store owners</span>. Start boosting your checkout revenue now!
+                    </p>
+                </div>
+
+                <!-- Coupon Side -->
+                <div class="w-full max-w-sm">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl transform lg:rotate-3 transition-transform hover:rotate-0 duration-500">
+                        <p class="text-slate-500 text-center text-xs font-bold uppercase tracking-widest mb-4">Use coupon code at checkout</p>
+                        
+                        <!-- Coupon Box -->
+                        <div class="relative group cursor-pointer">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-brand to-purple-400 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                            <div class="relative flex items-center justify-between bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl px-6 py-4">
+                                <span class="text-2xl font-black text-slate-800 tracking-widest">BUMP50</span>
+                                <i class="fa-regular fa-copy text-slate-400 group-hover:text-brand transition-colors"></i>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 space-y-3">
+                            <a href="#pricing" class="block w-full text-center bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand/30">
+                                Claim Discount Now
+                            </a>
+                            <p class="text-center text-[10px] text-slate-400 font-medium uppercase">
+                                <i class="fa-regular fa-clock mr-1"></i> Valid for the first 100 purchases
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <h2 class="text-brand font-bold tracking-wide uppercase text-xs mb-3">Transparent Pricing</h2>
+        <h3 class="text-4xl md:text-5xl font-extrabold mb-12 tracking-tight text-slate-900">Choose the perfect plan for your store.</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            
+            <!-- 1. Free Plan -->
+            <div class="bg-white text-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col h-full">
+                <h4 class="text-lg font-bold text-slate-900 mb-1">Basic (Free)</h4>
+                <div class="flex items-end gap-1 mb-4">
+                    <span class="text-4xl font-extrabold tracking-tight text-slate-900">$0</span>
+                    <span class="text-slate-500 text-xs font-medium mb-1">/forever</span>
+                </div>
+                <ul class="space-y-3 text-xs font-medium text-slate-600 mb-8 flex-grow">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-slate-400"></i> Single Custom Bump Product</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-slate-400"></i> Classic Dashed Template</li>
+                    <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Audio Sound Effect</li>
+                    <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Smart Cross-Sells Auto-Detect</li>
+                    <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Countdown Urgency Timer</li>
+                    <li class="flex items-center gap-2 opacity-40"><i class="fa-solid fa-xmark"></i> No Analytics Dashboard</li>
+                </ul>
+                <a href="#" class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-bold py-3 rounded-lg transition-colors">
+                    Download Free
+                </a>
+            </div>
+
+            <!-- 2. Single Site -->
+            <div class="bg-white text-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col h-full border-t-4 border-t-purple-400">
+                <h4 class="text-lg font-bold text-slate-900 mb-1">Starter</h4>
+                <div class="flex items-end gap-1 mb-4">
+                    <span class="text-4xl font-extrabold tracking-tight text-slate-900">$29</span>
+                    <span class="text-slate-500 text-xs font-medium mb-1">/year (1 Site)</span>
+                </div>
+                <ul class="space-y-3 text-xs font-medium text-slate-600 mb-8 flex-grow">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-slate-900">1 Site License</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Smart Cross-Sells Auto-Detection</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Interactive Audio Chime Sound</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> All 3 Design Templates</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Urgency Countdown Timer</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Minimum Cart Amount Rule</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Real-time Analytics Dashboard</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> 1 Year Updates & Support</li>
+                </ul>
+                <a href="#" class="block w-full text-center border-2 border-brand text-brand hover:bg-brand hover:text-white text-sm font-bold py-3 rounded-lg transition-all">
+                    Buy Starter
+                </a>
+            </div>
+
+            <!-- 3. Unlimited Agency -->
+            <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-xl transform scale-105 z-10 flex flex-col h-full relative border border-slate-800">
+                <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-brand text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full">
+                    Best Value
+                </div>
+                <h4 class="text-lg font-bold text-white mb-1">Developer</h4>
+                <div class="flex items-end gap-1 mb-4">
+                    <span class="text-4xl font-extrabold tracking-tight text-white">$59</span>
+                    <span class="text-slate-400 text-xs font-medium mb-1">/year (Unlimited)</span>
+                </div>
+                <ul class="space-y-3 text-xs font-medium text-slate-300 mb-8 flex-grow">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-white">Unlimited Site Licenses</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Smart Cross-Sells Auto-Detection</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Interactive Audio Chime Sound</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> All 3 Design Templates</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Urgency Countdown Timer</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Minimum Cart Amount Rule</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Real-time Analytics Dashboard</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> 1 Year Priority Support</li>
+                </ul>
+                <a href="#" class="block w-full text-center bg-brand hover:bg-brand-dark text-white text-sm font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand/30">
+                    Get Developer Plan
+                </a>
+            </div>
+
+            <!-- 4. Ultimate Lifetime -->
+            <div class="bg-white text-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col h-full">
+                <h4 class="text-lg font-bold text-slate-900 mb-1">Ultimate Lifetime</h4>
+                <div class="flex items-end gap-1 mb-4">
+                    <span class="text-4xl font-extrabold tracking-tight text-slate-900">$99</span>
+                    <span class="text-slate-500 text-xs font-medium mb-1">/one-time (Unlimited)</span>
+                </div>
+                <ul class="space-y-3 text-xs font-medium text-slate-600 mb-8 flex-grow">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> <span class="font-bold text-slate-900">Unlimited Sites Lifetime</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> All Pro Features Included</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Interactive Audio Chime Sound</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Smart Cross-Sells Auto-Detection</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Real-time Analytics Dashboard</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand"></i> Lifetime Updates & VIP Support</li>
+                </ul>
+                <a href="#" class="block w-full text-center bg-slate-900 hover:bg-black text-white text-sm font-bold py-3 rounded-lg transition-colors">
+                    Buy Lifetime License
+                </a>
+            </div>
+
+        </div>
+        <p class="text-xs text-slate-500 mt-10"><i class="fa-solid fa-shield-halved text-brand"></i> All plans come with a 14-Day Money-Back Guarantee. Encrypted via Stripe & PayPal.</p>
+    </div>
+</section>
+
+<!-- Money-Back Guarantee -->
+<section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="border-2 border-dashed border-purple-200 bg-purple-50/35 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-purple-100 rounded-full blur-2xl opacity-50"></div>
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <div class="w-16 h-16 bg-white border border-purple-200 text-brand rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-950 mb-3">14-Day Money-Back Guarantee</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    100% Risk-Free Trial! If BumpJar doesn't increase your WooCommerce average order value or meet your expectations, simply contact us within 14 days for a full refund.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-24 bg-white border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl font-bold text-slate-900 tracking-tight">Frequently Asked Questions</h3>
+        </div>
+
+        <div class="space-y-6">
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Does BumpJar work with standard WooCommerce checkout pages?</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Yes! BumpJar works natively with standard WooCommerce checkout shortcodes (`[woocommerce_checkout]`) and virtually all popular WooCommerce themes like Astra, WoodMart, Divi, and OceanWP.</p>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <h4 class="text-lg font-bold text-slate-900 mb-2">How does the Smart Cross-Sells auto-detection work?</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">When enabled, BumpJar inspects the products inside the customer's cart. If those products have Linked Cross-Sell items configured in WooCommerce, BumpJar automatically displays that related item as the order bump offer.</p>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Will the audio sound effect slow down my site?</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Not at all. The audio chime is generated instantly using modern Web Audio API built right into web browsers. No extra sound files are downloaded, making it 100% lightweight.</p>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Can I offer custom discounts on bump products?</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Yes! You can set percentage discounts (e.g. 20% OFF) or fixed amount discounts (e.g. $5 OFF). BumpJar automatically calculates the discount and updates the WooCommerce cart live via AJAX.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-950 text-slate-300 py-16 border-t border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+            
+            <div class="lg:col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-xl font-black text-white tracking-tight flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white">
+                            <i class="fa-solid fa-bolt text-base"></i>
+                        </div>
+                        Bump<span class="text-brand font-medium">Jar</span>
+                    </span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-md">
+                    High-converting, dynamic order bump plugins for WooCommerce. Created by ChimpJar. Boost your average order value effortlessly.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Features</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="#features" class="hover:text-brand transition-colors">Smart Cross-Sells</a></li>
+                    <li><a href="#features" class="hover:text-brand transition-colors">Audio Chime Sound</a></li>
+                    <li><a href="#templates" class="hover:text-brand transition-colors">Design Templates</a></li>
+                    <li><a href="#features" class="hover:text-brand transition-colors">Revenue Analytics</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Company</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="https://chimpjar.com" class="hover:text-brand transition-colors">ChimpJar Home</a></li>					
+                    <li><a href="mailto:hello@chimpjar.com" class="hover:text-brand transition-colors">Contact Support</a></li>
+                    <li><a href="#" class="hover:text-brand transition-colors">Documentation</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-6 uppercase text-sm tracking-wider">Legal</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="#" class="hover:text-brand transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-brand transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-brand transition-colors">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-slate-500">
+                &copy; 2026 ChimpJar. All rights reserved.
+            </div>
+            
+            <div class="flex items-center gap-4 text-2xl text-slate-600">
+                <i class="fa-brands fa-stripe hover:text-indigo-400 transition-colors" title="Powered by Stripe"></i>
+                <i class="fa-brands fa-paypal hover:text-blue-400 transition-colors" title="PayPal Accepted"></i>
+                <i class="fa-brands fa-cc-visa hover:text-blue-500 transition-colors"></i>
+                <i class="fa-brands fa-cc-mastercard hover:text-orange-500 transition-colors"></i>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
